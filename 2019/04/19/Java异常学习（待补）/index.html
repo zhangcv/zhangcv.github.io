@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JAVA 异常JAVA 异常：就是程序在运行时出现不正常情况。&amp;nbsp; &amp;nbsp; 异常由来：问题也是现实生活中一个具体的事务，也可以通过java的类的形式进行描述，并封装成对象。 其实就是java对不正常情况就行描述后的对象的体现。 &amp;nbsp; &amp;nbsp; 对于问题的划分 严重问题：java通过 Error类进行描述对于Error一般不编写针对性的代码对其进行处理 非严重问题：">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA 异常">
+<meta property="og:url" content="http://zhangcv.github.io/2019/04/19/Java异常学习（待补）/index.html">
+<meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
+<meta property="og:description" content="JAVA 异常JAVA 异常：就是程序在运行时出现不正常情况。&amp;nbsp; &amp;nbsp; 异常由来：问题也是现实生活中一个具体的事务，也可以通过java的类的形式进行描述，并封装成对象。 其实就是java对不正常情况就行描述后的对象的体现。 &amp;nbsp; &amp;nbsp; 对于问题的划分 严重问题：java通过 Error类进行描述对于Error一般不编写针对性的代码对其进行处理 非严重问题：">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-19T12:40:08.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA 异常">
+<meta name="twitter:description" content="JAVA 异常JAVA 异常：就是程序在运行时出现不正常情况。&amp;nbsp; &amp;nbsp; 异常由来：问题也是现实生活中一个具体的事务，也可以通过java的类的形式进行描述，并封装成对象。 其实就是java对不正常情况就行描述后的对象的体现。 &amp;nbsp; &amp;nbsp; 对于问题的划分 严重问题：java通过 Error类进行描述对于Error一般不编写针对性的代码对其进行处理 非严重问题：">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://zhangcv.github.io/2019/04/19/Java异常学习（待补）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JAVA 异常 | Zhangcv's Personal Website</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhangcv's Personal Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+<script>
+    
+    window.onload = function(){
+        var path = 'https://zhangcv.github.io/'; //这里要改成你博客的地址
+        var localhostItem = String(window.location).split(path)[1];
+        var LiNode = document.querySelectorAll('#menu > li > a')
+        
+        for(var i = 0; i< LiNode.length;i++){
+            var item = String(LiNode[i].href).split(path)[1];
+            if(item == localhostItem && item != undefined){
+                LiNode[i].setAttribute('style','border-bottom:1px solid black');
+            }
+        }
+    };
+
+</script></div>
+	  <a href="https://github.com/zhangcv" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/04/19/Java异常学习（待补）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content="Jack's Ideas & Blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhangcv's Personal Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA 异常
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 13:30:30 / Modified: 20:40:08" itemprop="dateCreated datePublished" datetime="2019-04-19T13:30:30+08:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JAVA-异常"><a href="#JAVA-异常" class="headerlink" title="JAVA 异常"></a>JAVA 异常</h2><h3 id="JAVA-异常：就是程序在运行时出现不正常情况。"><a href="#JAVA-异常：就是程序在运行时出现不正常情况。" class="headerlink" title="JAVA 异常：就是程序在运行时出现不正常情况。"></a>JAVA 异常：就是程序在运行时出现不正常情况。</h3><p>&nbsp; &nbsp; 异常由来：问题也是现实生活中一个具体的事务，也可以通过java的类的形式进行描述，并封装成对象。<br> 其实就是java对不正常情况就行描述后的对象的体现。</p>
+<p>&nbsp; &nbsp; 对于问题的划分</p>
+<h3 id="严重问题：java通过-Error类进行描述"><a href="#严重问题：java通过-Error类进行描述" class="headerlink" title="严重问题：java通过 Error类进行描述"></a>严重问题：java通过 Error类进行描述</h3><pre><code>对于Error一般不编写针对性的代码对其进行处理
+</code></pre><h3 id="非严重问题：-Exception类进行描述"><a href="#非严重问题：-Exception类进行描述" class="headerlink" title="非严重问题：     Exception类进行描述"></a>非严重问题：     Exception类进行描述</h3><pre><code>针对性的代码对其进行处理
+</code></pre><p>无论Error或者Exception都具有一些共性<br>Throwable<br>    &nbsp; &nbsp; &nbsp; &nbsp; |–Error<br>    &nbsp; &nbsp; &nbsp; &nbsp; |–Exception</p>
+<h3 id="OutofMemory-内存溢出。Error"><a href="#OutofMemory-内存溢出。Error" class="headerlink" title="OutofMemory 内存溢出。Error"></a>OutofMemory 内存溢出。Error</h3><p>try<br>{<br>    需要被检测的代码<br>}</p>
+<p>catch{<br>    处理异常的代码<br>}<br>finally<br>{<br>一定会执行的语句；<br>}</p>
+<h3 id="3、对捕获到的异常对象进行常见方法操作"><a href="#3、对捕获到的异常对象进行常见方法操作" class="headerlink" title="3、对捕获到的异常对象进行常见方法操作"></a>3、对捕获到的异常对象进行常见方法操作</h3><pre><code>String getMessage(); 异常信息
+e.toString 异常名称
+e.printStackTrace(); 异常名称 异常信息 异常出现的位置 默认的异常处理机制
+</code></pre><p>在函数上声明异常。<br>便于提高安全性， throws</p>
+<h3 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h3><p>项目中出现特有的问题，未被java所描述并封装对象。<br>将特有的问题。进行自定义的异常封装。</p>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p>自定义的异常在打印的时候 没有异常的信息。<br>因为自定义的异常并未定义信息.<br>如何定义异常信息呢？父类中已经把异常信息的操作都完成了<br>所以子类在构造的时候，讲异常信息传递给父类通过super();语句<br>那么就可以直接通过getMessage语句获取<br>继承Exception原因；<br>异常体系有一个特点：因为异常类和异常对象都被抛出。<br>他们都具备可抛型。这个可抛型是Throwable这个体系中独有特点。</p>
+<pre><code>class FushuException extends Exception()
+{
+    private int value;
+
+    FushuException(String msg,int value)
+    {
+    super(msg);
+    this.value = value ;
+    }
+    public int getValue()
+    {
+    return value;
+    }
+}
+}
+
+class Throwable
+{
+private String msg;
+
+Throwable(Sttring msg)
+    {
+    this.msg=msg;
+    }
+public String getMessage()
+    {
+    return msg;
+    }
+}
+
+class Exception extends Throwable
+{
+Exception(String message)
+{
+    super(message);
+    }
+}
+自定义异常定义
+</code></pre><p>类继承Exception或者RuntimeExcertion</p>
+<p>2,让该类具备操作异常的共性方法定义自定义异常的信息时,可以使用父类已经定义好的功能异常异常信息传递给父类的构造函数</p>
+<pre><code>class MYException extends Exception {
+MyException(String message)
+    {
+    super(message)
+    }
+}
+</code></pre><p>自定义异常按照java的面向对象思想,将程序中出现的特有问题进行封装<br>异常的好处<br>1,将问题进行封装<br>2,将正常流程代码和问题处理代码相分高,方便于阅读</p>
+<p>异常的处理原则<br>1,处理方式有两种try或者throws<br>2,调用到抛出异常的功能时,抛出几个,就处理几个。<br>一个xy对应多个catch<br>3,多个cat类的catch放到最下面<br>4,catch内,需要定义针对性的处理方式。不要简单的定义printstackfrace,输出语句也不要不写.<br> 当捕获到的异常，本功能处理布料是，可以继续在catch中抛出。</p>
+<pre><code>try
+ {
+       throws new AException
+ }
+ catch(AException e)
+ {
+   throw e;
+ }
+</code></pre><p>如果该异常处理不了，但比不属于该功能出现的异常。<br>    可以将异常转换后，在抛出和该功能相关的异常。<br>    或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，当调用者知道，并处理。也可以将捕获异常处理后，转换新的异常。</p>
+<pre><code>      try
+{
+      throws new AException
+}
+catch(AException e)
+{
+  //对AException处理
+  throw new BException();
+}
+</code></pre><p>  比如汇款的例子。</p>
+<p>异常的注意</p>
+<p>1.子类抛出的异常必须是父类的异常的子类或者子集<br> 2.如果父类或者接口没有异常抛出时,子类覆盖出现异常,只能try不不能抛。</p>
+<p>final关键字<br>1、修饰类 变量（成员变量，静态变量，局部变量），函数<br>2、修饰的类不可以被继承。<br>3、修饰的函数不可以被覆盖。<br>4、修饰的变量是一个常量，只能赋值一次<br>内部类只能访问局部当中的 fina修饰的变量</p>
+<pre><code>class Circle
+{
+ private static double pi=3.14;
+    private double radius;
+    public Circle(double r)
+    {
+            radius =r;
+    }
+    public static double compare(Circle[] cir)
+    {
+        //补全代码，求数组中的最大值。
+        int max=0;
+        for(int x =1;x&lt;cir.length;x++)
+        {
+            if(cir[x].radius&gt;cir[max].radius)
+                max =x;
+        }
+        return cir[max].radius;
+    }
+}
+class TC
+{
+    public static void main(String[] args)
+    {
+            Circle cir[]=new Circle[3];//创建了一个类类型数组
+            System.out.println(&quot;最大的半径值是：&quot;+Circle.compare(cir));
+    }
+}
+</code></pre><p>在一个类中编写一个方法,这个方法搜索一个字符数组中是否存在某个字符如果存在,则返回这个字符在字符数组中第一次出现的位置(序号从0开始计算否则,返回-1。要搜索的字符效组和字符都以参数形式传递传递给该方法,如果传入的数组为nu11,应抛出I11ega1ArgumentException异常在类的main方法中以各种可能出现的憤况测试验证该方法编写得是否正确例如,字符不存在,字符存在,传入的数组为mu11等<br>无序数组</p>
+<pre><code>public int getIndex(Char[] arr,Char key)
+{
+    if(arr==null)
+        throw new IillegalArgumentException();
+    for(int x = 0;x&lt;arr.length;x++)
+    {
+        if(arr[x]==key)
+            return x;
+    }
+    return -1;
+}
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/17/HTML学习/" rel="next" title="Java Web?html">
+                <i class="fa fa-chevron-left"></i> Java Web?html
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/LeetCode08. 字符串转换整数 (atoi)/" rel="prev" title="LeetCode08. 字符串转换整数 (atoi)">
+                LeetCode08. 字符串转换整数 (atoi) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Jack">
+            
+              <p class="site-author-name" itemprop="name">Jack</p>
+              <div class="site-description motion-element" itemprop="description">Jack's Ideas & Blogs</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-异常"><span class="nav-number">1.</span> <span class="nav-text">JAVA 异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA-异常：就是程序在运行时出现不正常情况。"><span class="nav-number">1.1.</span> <span class="nav-text">JAVA 异常：就是程序在运行时出现不正常情况。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#严重问题：java通过-Error类进行描述"><span class="nav-number">1.2.</span> <span class="nav-text">严重问题：java通过 Error类进行描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非严重问题：-Exception类进行描述"><span class="nav-number">1.3.</span> <span class="nav-text">非严重问题：     Exception类进行描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OutofMemory-内存溢出。Error"><span class="nav-number">1.4.</span> <span class="nav-text">OutofMemory 内存溢出。Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、对捕获到的异常对象进行常见方法操作"><span class="nav-number">1.5.</span> <span class="nav-text">3、对捕获到的异常对象进行常见方法操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">多异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义异常"><span class="nav-number">1.7.</span> <span class="nav-text">自定义异常</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack</span>
+
+  
+
+  
+</div>
+"
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+"
+
+<br>
+<!--站点统计-->
+<!--<a href=”httpsa://new.cnzz.com/v1/login.php?siteid=127688378”><img src=”httpsa://web.umeng.com/static/img/main/icon.gif” alt=”cnzz_icon“></a><script type=”text/javascript“>var cnzz_s_tag = document.createElement(‘script’); cnzz_s_tag.type = ‘text/javascript’; cnzz_s_tag.async = true; cnzz_s_tag.charset = ‘utf-8’; cnzz_s_tag.src = ‘httpsa://w.cnzz.com/c.php?id=127688378&async=1’; var root_s = document.getElementsByTagName(‘script’)[0]; root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>-->
+
+<!-- cnzz stats -->
+<script type="text/javascript">var cnzz_s_tag = document.createElement('script');cnzz_s_tag.type = 'text/javascript';cnzz_s_tag.async = true;cnzz_s_tag.charset = 'utf-8';cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1276883782&async=1';var root_s = document.getElementsByTagName('script')[0];root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+	
+    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+
+<br>
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.0.1"></script>
+
+  <script src="/js/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- canvas-nest-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
+
