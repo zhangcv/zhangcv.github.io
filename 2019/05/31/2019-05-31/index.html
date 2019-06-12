@@ -115,9 +115,9 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zhangcv.github.io/2019/05/31/2019-05-31/4_2019-05-31_21-38-04.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/05/31/2019-05-31/SSH连接成功_2019-05-31_21-51-07.jpg">
-<meta property="og:image" content="http://zhangcv.github.io/2019/05/31/2019-05-31/JavaJDK_2019-05-31_21-05-29.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/05/31/2019-05-31/2JavaJDK_2019-05-31_21-05-29.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/05/31/2019-05-31/3Hadoop_2019-05-31_21-11-29.jpg">
-<meta property="og:updated_time" content="2019-06-01T13:39:41.944Z">
+<meta property="og:updated_time" content="2019-06-12T07:46:03.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop单例和伪分布式(环境搭建)">
 <meta name="twitter:description" content="一、准备1234561.1创建hadoop用户$ sudo useradd -m hadoop -s /bin/bash  #创建hadoop用户，并使用/bin/bash作为shell$ sudo passwd hadoop                   #为hadoop用户设置密码，之后需要连续输入两次密码$ sudo adduser hadoop sudo             #为">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-01 21:39:41" itemprop="dateModified" datetime="2019-06-01T21:39:41+08:00">2019-06-01</time>
+                <time title="Modified: 2019-06-12 15:46:03" itemprop="dateModified" datetime="2019-06-12T15:46:03+08:00">2019-06-12</time>
               
             
           </span>
@@ -495,7 +495,7 @@
 <p>另外推荐使用vim来编辑环境变量，即最后一句使用指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <p>如果没有vim,可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> apt-get install vim</span><br></pre></td></tr></table></figure></p>
 <p>来进行下载。<br>最下面添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jdk8</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk1.8.0_11</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
-<p>source ~/.bashrc之后<br><img src="/2019/05/31/2019-05-31/JavaJDK_2019-05-31_21-05-29.jpg" alt="在这里插入图片描述"><br>三、安装hadoop-2.6.0<br>先下载hadoop-2.6.0.tar.gz，链接如下:<br><a href="http://mirrors.hust.edu.cn/apache/hadoop/common/" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/hadoop/common/</a></p>
+<p>source ~/.bashrc之后<br><img src="/2019/05/31/2019-05-31/2JavaJDK_2019-05-31_21-05-29.jpg" alt="在这里插入图片描述"><br>三、安装hadoop-2.6.0<br>先下载hadoop-2.6.0.tar.gz，链接如下:<br><a href="http://mirrors.hust.edu.cn/apache/hadoop/common/" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/hadoop/common/</a></p>
 <p>下面进行安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo tar -zxvf  hadoop-2.6.0.tar.gz -C /usr/<span class="built_in">local</span>    <span class="comment">#解压到/usr/local目录下</span></span><br><span class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">$ sudo mv  hadoop-2.6.0    hadoop                      <span class="comment">#重命名为hadoop</span></span><br><span class="line">$ sudo chown -R hadoop ./hadoop                        <span class="comment">#修改文件权限</span></span><br></pre></td></tr></table></figure></p>
 <p>给hadoop配置环境变量，将下面代码添加到.bashrc文件:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hadoop</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=<span class="variable">$HADOOP_HOME</span>/etc/hadoop</span><br><span class="line"><span class="built_in">export</span> YARN_CONF_DIR=<span class="variable">$HADOOP_HOME</span>/etc/hadoop</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/sbin</span><br></pre></td></tr></table></figure></p>
 <p>同样，执行source ~./bashrc使设置生效，并查看hadoop是否安装成功<br><img src="/2019/05/31/2019-05-31/3Hadoop_2019-05-31_21-11-29.jpg" alt="在这里插入图片描述"><br>四、伪分布式配置<br>Hadoop 可以在单节点上以伪分布式的方式运行，Hadoop 进程以分离的 Java 进程来运行，节点既作为 NameNode 也作为 DataNode，同时，读取的是 HDFS 中的文件。Hadoop 的配置文件位于 /usr/local/hadoop/etc/hadoop/ 中，伪分布式需要修改2个配置文件 core-site.xml 和 hdfs-site.xml 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。首先将jdk1.8的路径添（export JAVA_HOME=/usr/java/jdk1.8.0_11）加到hadoop-env.sh文件 </p>
