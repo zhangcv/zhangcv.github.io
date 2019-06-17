@@ -113,14 +113,14 @@
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
 <meta property="og:description" content="MapReduce的基本原理Hadoop作为一个分布式架构的实现方案，它的核心思想包括以下几个方面：HDFS文件系统，MapReduce的编程模型以及RPC框架。无论是怎样的架构，一个系统的关键无非是存储结构和业务逻辑。HDFS分布式文件系统是整个Hadoop的基础。在HDFS文件系统之中，大文件被分割成很多的数据块，每一块都有可能分布在集群的不同节点中。也就是说在HDFS文件系统中，文件的情况是">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/2019-06-10/1.jpg">
-<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/2019-06-10/2.jpg">
-<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/2019-06-10/3.jpg">
-<meta property="og:updated_time" content="2019-06-13T23:49:15.933Z">
+<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/1.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/2.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/3.jpg">
+<meta property="og:updated_time" content="2019-06-17T08:55:45.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce">
 <meta name="twitter:description" content="MapReduce的基本原理Hadoop作为一个分布式架构的实现方案，它的核心思想包括以下几个方面：HDFS文件系统，MapReduce的编程模型以及RPC框架。无论是怎样的架构，一个系统的关键无非是存储结构和业务逻辑。HDFS分布式文件系统是整个Hadoop的基础。在HDFS文件系统之中，大文件被分割成很多的数据块，每一块都有可能分布在集群的不同节点中。也就是说在HDFS文件系统中，文件的情况是">
-<meta name="twitter:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/2019-06-10/1.jpg">
+<meta name="twitter:image" content="http://zhangcv.github.io/2019/06/13/2019-06-13/1.jpg">
 
 
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-14 07:49:15" itemprop="dateModified" datetime="2019-06-14T07:49:15+08:00">2019-06-14</time>
+                <time title="Modified: 2019-06-17 16:55:45" itemprop="dateModified" datetime="2019-06-17T16:55:45+08:00">2019-06-17</time>
               
             
           </span>
@@ -489,8 +489,8 @@
 <h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><p>有了上一步生成的数据，我们就可以做数据的查询了。生成的文件仍然是在HDFS文件系统中，通过终端输入参数（可以是明文或者是密文），然后用MapReduce进行查找，结果输出到文件中。</p>
 <h3 id="导出JAR包放到Hadoop中运行"><a href="#导出JAR包放到Hadoop中运行" class="headerlink" title="导出JAR包放到Hadoop中运行"></a>导出JAR包放到Hadoop中运行</h3><p>把文件导出成JAR包，在终端使用命令<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">生成密文：</span><br><span class="line">bin/hadoop jar <span class="string">[jar包路径]</span> <span class="string">[输入文件路径]</span> <span class="string">[输出路径]</span></span><br><span class="line">查询</span><br><span class="line">bin/hadoop jar <span class="string">[jar包路径]</span> <span class="string">[输入文件路径]</span> <span class="string">[输出路径]</span> <span class="string">[密文或者明文]</span></span><br><span class="line">生成的密文结果实例：</span><br></pre></td></tr></table></figure></p>
 <p>部分代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">import java.security.MessageDigest;</span><br><span class="line"> </span><br><span class="line">import org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line">import org.apache.hadoop.io.LongWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.conf.Configuration;</span><br><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line">import org.apache.hadoop.mapreduce.Job;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line">/**</span><br><span class="line"> * 目地很简单。不需要reduce处理，直接在Map中解决问题</span><br><span class="line"> * @author hadoop</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">    private static String s=null;</span><br><span class="line">    //定义Map处理类</span><br><span class="line">    static class TestMapper extends Mapper&lt;LongWritable, Text, Text, Text&gt;&#123;</span><br><span class="line">        //重写map方法</span><br><span class="line">        public void map(LongWritable key, Text value, Context context)throws  InterruptedException &#123;</span><br><span class="line">             try&#123;</span><br><span class="line">                 //查询MD5的值</span><br><span class="line">                int index=value.find(s);</span><br><span class="line">                <span class="keyword">if</span>(index&gt;=0)&#123;</span><br><span class="line">                    System.out.println(<span class="string">"=================="</span>+value.toString());</span><br><span class="line">                    context.write(new Text(<span class="string">"result"</span>), value);</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;catch (Exception e)&#123;</span><br><span class="line">                 e.printStackTrace();</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">/**</span><br><span class="line"> * MD5计算</span><br><span class="line"> * @param str</span><br><span class="line"> * @<span class="built_in">return</span></span><br><span class="line"> */</span><br><span class="line">public static String getMD5(String str) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        // 生成一个MD5加密计算摘要</span><br><span class="line">        MessageDigest md = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">        // 计算md5函数</span><br><span class="line">        md.update(str.getBytes());</span><br><span class="line">        // digest()最后确定返回md5 <span class="built_in">hash</span>值，返回值为8为字符串。因为md5 <span class="built_in">hash</span>值是16位的hex值，实际上就是8位的字符</span><br><span class="line">        // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的<span class="built_in">hash</span>值</span><br><span class="line">        byte[] encrypt = md.digest();</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (byte t : encrypt) &#123;</span><br><span class="line">            String s = Integer.toHexString(t &amp; 0xFF);</span><br><span class="line">            <span class="keyword">if</span> (s.length() == 1) &#123;</span><br><span class="line">                s = <span class="string">"0"</span> + s;</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(s);</span><br><span class="line">        &#125;</span><br><span class="line">        String res = sb.toString();</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> null;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">            //必须要传递的是自定的mapper和reducer的类，输入输出的路径必须指定，输出的类型&lt;k3,v3&gt;必须指定</span><br><span class="line">            //将自定义的MyMapper和MyReducer组装在一起</span><br><span class="line">             </span><br><span class="line">     </span><br><span class="line">            //参数（明文或者MD5值）</span><br><span class="line">            s=args[2];</span><br><span class="line">            Configuration conf=new Configuration();</span><br><span class="line">            String jobName=Test.class.getSimpleName();</span><br><span class="line">            //首先写job，知道需要conf和jobname在去创建即可</span><br><span class="line">            Job job = Job.getInstance(conf, jobName);</span><br><span class="line">            //如果要打包运行改程序，则需要调用如下行</span><br><span class="line">            job.setJarByClass(Test.class);</span><br><span class="line">            //读取HDFS內容：设置输入路径</span><br><span class="line">            FileInputFormat.setInputPaths(job, new Path(args[0]));</span><br><span class="line">            //指定解析&lt;k1,v1&gt;的类（谁来解析键值对）</span><br><span class="line">            //*指定解析的类可以省略不写，因为设置解析类默认的就是TextInputFormat.class</span><br><span class="line">            job.setInputFormatClass(TextInputFormat.class);</span><br><span class="line">            //指定自定义mapper类</span><br><span class="line">            job.setMapperClass(TestMapper.class);</span><br><span class="line">            //指定map输出的key2的类型和value2的类型  &lt;k2,v2&gt;</span><br><span class="line">            //下面两步可以省略，当&lt;k3,v3&gt;和&lt;k2,v2&gt;类型一致的时候,&lt;k2,v2&gt;类型可以不指定</span><br><span class="line">            job.setMapOutputKeyClass(Text.class);</span><br><span class="line">            job.setMapOutputValueClass(Text.class);</span><br><span class="line">            //分区(默认1个)，排序，分组，规约 采用 默认</span><br><span class="line">//            job.setCombinerClass(null);</span><br><span class="line">            //接下来采用reduce步骤</span><br><span class="line">            //指定自定义的reduce类</span><br><span class="line">//            job.setReducerClass(null);</span><br><span class="line">            //指定输出的&lt;k3,v3&gt;类型</span><br><span class="line">            job.setOutputKeyClass(Text.class);</span><br><span class="line">            job.setOutputValueClass(Text.class);</span><br><span class="line">            //指定输出&lt;K3,V3&gt;的类</span><br><span class="line">            //下面这一步可以省</span><br><span class="line">//            job.setOutputFormatClass(TextOutputFormat.class);</span><br><span class="line">            //指定输出路径</span><br><span class="line">            FileOutputFormat.setOutputPath(job, new Path(args[1]));</span><br><span class="line">            //写的mapreduce程序要交给resource manager运行</span><br><span class="line">            job.waitForCompletion(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/2019/06/13/2019-06-13/2019-06-10/1.jpg" alt="无"><br>加密</p>
-<p><img src="/2019/06/13/2019-06-13/2019-06-10/2.jpg" alt="无"><br>解密之后<br><img src="/2019/06/13/2019-06-13/2019-06-10/3.jpg" alt="无"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/2019/06/13/2019-06-13/1.jpg" alt="无"><br>加密</p>
+<p><img src="/2019/06/13/2019-06-13/2.jpg" alt="无"><br>解密之后<br><img src="/2019/06/13/2019-06-13/3.jpg" alt="无"></p>
 
       
     </div>
@@ -536,6 +536,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/16/2019-06-16/" rel="prev" title="SpringAOP代理">
+                SpringAOP代理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -606,7 +610,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -635,7 +639,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -662,7 +668,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

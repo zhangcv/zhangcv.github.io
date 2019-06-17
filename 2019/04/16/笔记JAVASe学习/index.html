@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ru:12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Se学习笔记">
+<meta property="og:url" content="http://zhangcv.github.io/2019/04/16/笔记JAVASe学习/index.html">
+<meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
+<meta property="og:description" content="ru:12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-17T10:15:09.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Se学习笔记">
+<meta name="twitter:description" content="ru:12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://zhangcv.github.io/2019/04/16/笔记JAVASe学习/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java Se学习笔记 | Zhangcv's Personal Website</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhangcv's Personal Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+<script>
+    
+    window.onload = function(){
+        var path = 'https://zhangcv.github.io/'; //这里要改成你博客的地址
+        var localhostItem = String(window.location).split(path)[1];
+        var LiNode = document.querySelectorAll('#menu > li > a')
+        
+        for(var i = 0; i< LiNode.length;i++){
+            var item = String(LiNode[i].href).split(path)[1];
+            if(item == localhostItem && item != undefined){
+                LiNode[i].setAttribute('style','border-bottom:1px solid black');
+            }
+        }
+    };
+
+</script></div>
+	  <a href="https://github.com/zhangcv" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/04/16/笔记JAVASe学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content="Jack's Ideas & Blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhangcv's Personal Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java Se学习笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-16 19:30:30" itemprop="dateCreated datePublished" datetime="2019-04-16T19:30:30+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-17 18:15:09" itemprop="dateModified" datetime="2019-06-17T18:15:09+08:00">2019-06-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ru:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1、java的集合体系来说Collection是一个顶级接口,JDK并没有直接提供实现类来实现接而是间接的提供了Set和Lst接口进行实现</span><br><span class="line">2、List接口ArrayListLinkedList</span><br><span class="line">1)ArrayList有序的,重复的集合可以通过索引进行数据的访问,常用的APIgetaddremoveclearcontains…,如果遍历集合的长度使用s</span><br><span class="line">ie()方法,数组中的Length属性区分。arraylist中有toArray方法,他的作用是将集合转换为数组的,(版本的不同7以下classCastExce</span><br><span class="line">ption,7以上的版本进行自动的拆箱装箱)。</span><br><span class="line">2)ArrayList源码,ArrayList底层的实现是有数组实现的,当我们使用ArrayList默认的构造方法的时候,底层会生出一个长度为10的Object类型的数组,如果说长度超过10个,底层会生成新的数组,数组的长度(扩容)数组*15+1(针对JDK6JDK7是使用的自动扩容机制)。</span><br><span class="line">3)当我们直接打印Ls变量的时候,ust中每个元素的toString(方法,在我们的实际开发中,我们通常都会重写tostring方法,方便我们后续的调试</span><br><span class="line">4)ArrayList进行固定位置的添加和删除的时候,尽量不要用remove和add(@,@)方法,如果进行添加和删除,必须整体移动集合,代价是比较高的。</span><br><span class="line">5)LinkedListt时</span><br><span class="line">于LinkedList来说,也是Lt的实现类,我们建议使用ad第二个方法重载进行数据的添加</span><br><span class="line">6)Linkedlist源码Linlist底层是由链表实现的(双向链表),源码中的Node元素就是我们演示中的Element元素,</span><br><span class="line">7)集合转换为数组使用集合的toArray方法,数组转换为集合使用Arrays.asList(可变参数),可变参数可以使用数组赋值。</span><br><span class="line">8)ArrayList适合于读取数据,LinkedList适合于操作数据(添加删除等)</span><br><span class="line">9)使用LinkedList实现Stack的数据的存取</span><br><span class="line">10)ArrayList和LinkedList的比较List接口的实现类ArrayList与LinkedList的比较存储结构Arrayist是线性顺序存储LinkedList对象间彼此串连起来的一个链表操作性</span><br><span class="line">能ArrayList适合随机查询的场合LinkedList元素的插入和删除操作性高</span><br><span class="line">LinkedList要多一些</span><br><span class="line"></span><br><span class="line">3、当使用HashSet时hashcode(就会调用,hashset判断已经存储在集合中的对象的hashcode值是否与新添加的hashcode值一致,不一致,直接添加。如果一样,再进行equals方法的比较,如果equals方法返回<span class="literal">true</span>,说明对象存在了,就不会添加新的元素,否则添加进去。</span><br><span class="line">4、Treeset是一个遵循自然</span><br><span class="line">排序的集合,我们需要在声明TreeSet的时候必须定义一个规范而这个规范就是Computor接口的实现类</span><br><span class="line">5、<span class="built_in">set</span>的遍历,我们使用Iterator进行遍历has Next next</span><br><span class="line">1)第一种使用Whle去遍历Iteratorhashnext判断是否有下一个值,ne对t方法进行值的读取</span><br><span class="line">2)<span class="keyword">for</span>循环，进行Set元素的获取</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">无重复 一两个对象e1和e2,如果e1.equals(e2)返回<span class="literal">true</span>,则认为e1和e2重复</span><br><span class="line"></span><br><span class="line">lesson2</span><br><span class="line"></span><br><span class="line">1、Map(映射)K,V键值对的映射,在Map结构中Key是不允许重复的,Value是可以重复的,每一个键最多只能映射一个值</span><br><span class="line">2、HashMap中的key的集合可以使用<span class="built_in">set</span>接口进行表示,Value的集合可以使用Collectionlist</span><br><span class="line">3、HashMap遍历的方式有两种1)思路通过map中keyset()方法获取所有的<span class="built_in">set</span>集合,遍历<span class="built_in">set</span>集合,通过map.get(key)获取到value</span><br><span class="line"></span><br><span class="line">Set setKey = map.keySet();//所有的Key</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (Iterator iter = setKey.iterator();iter.hasNext();) </span><br><span class="line">		&#123;</span><br><span class="line">			String key = (String)iter.next();</span><br><span class="line"></span><br><span class="line">			String value = (String) map.get(key);</span><br><span class="line"></span><br><span class="line">			System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">2)、Map中的内部类Entry对象,Entry对象维护了HashMap中的kv键值对,也就是说Kv组成了一个Entry对象,所以我在遍历HashMap的时候,我们hashMap中的所有的En</span><br><span class="line">try对象遍历出来,然后利用Entry对象的getKey getvalue方法获取到K v值</span><br><span class="line">Set <span class="built_in">set</span> = map.entrySet();//entry 对象</span><br><span class="line">		<span class="keyword">for</span> (Iterator iter = set.iterator(); iter.hasNext();)&#123;</span><br><span class="line">				</span><br><span class="line">			Map.Entry entry = (Map.Entry)iter.next();</span><br><span class="line"></span><br><span class="line">			String key = (String) entry.getKey();</span><br><span class="line">			String value = (String)entry.getValue();</span><br><span class="line"></span><br><span class="line">			System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3)、HashMap和HashTable比较arraylist vector Map线程不安全性能高Table线程安全率低。</span><br><span class="line"></span><br><span class="line">HashMap与Hashtable的比较</span><br><span class="line">√Hashtable是基于陈旧的Dictionary类的,HashMap是Java1.2引进的Map接口的一个实现。</span><br><span class="line">√Hashtable是线程安全的,也就是说是同步的,而HashMap是线程序不安全的,不是同步的。</span><br><span class="line">√HashMap允许将null作为一个entry的key或者vaue,而Hashtable不允许。</span><br><span class="line"></span><br><span class="line">如何选择集合类</span><br><span class="line">Set内存放的元素不允许重复,List存放的元素有一定的顺序。</span><br><span class="line">√Map的应用主要在利用键/值对进行快速查询ArrayList和LinkedList的区别在于随机查询性能上ArrayList要好,</span><br><span class="line">但LinkedList的中间元素的插入与删除性能好。</span><br><span class="line">√HashSet和TreeSet的区别在于集合内元素是否排序。]</span><br><span class="line">4泛型就是变量类型的参数化,目标编译时候不报错,运行的时候一定不会报错泛型是实现通用框架的基础定义一个类的时候&lt;&gt;定义当前类的变量的类型 A T ,声明这个类的对象的时候,你传具体的变量的类型。</span><br><span class="line">5.补充:HashSet底层的实现是由 HashMap 实现的,当我们调用 HashSet 中的 add 方法时,本质上是往 HashMap 中的 Key 放入了我们添加的值,而 HashMap 中的 vue 永远常量值,Object</span><br><span class="line">6对于Java中常量的命名规范所有的单词都是大写的,如果有多个单词,那么每个单词之间使用下划线连接public static final String JAVA_CLASSS_TEST=100;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Lesson3</span><br><span class="line">1、JavaFile是独立于操作系统,\表示的目录结构         /目录结构</span><br><span class="line"></span><br><span class="line">linux文件路径分隔符为 /  ，windows的文件路径分隔符为  \ </span><br><span class="line">file.separator=\</span><br><span class="line"></span><br><span class="line">2、Fil类的对象,表示了磁盘上的文件或者目录,当使用File进行创建文件的时候,创建文件的父目录必须存在</span><br><span class="line">3、递归方法自身调用自身,</span><br><span class="line">对于递归来说,一定要有出口,避免死循环</span><br><span class="line">4、使用Fle进行文件创建的时候createNewFilel)fle,dirmkdirs.</span><br><span class="line">5、对于Nio下的包中的Paths Files辅助类,进行文件和目录的创建的,paths目录 files文件 files move copy WatcherService 监控文件状态的类</span><br><span class="line">6、流是一种资源,Java程序通过流来完成输入和输岀。流向输入流和输岀流,参照物是程序。</span><br><span class="line">7、数据流指的是所有数据通信通道中数据的起点和终点。</span><br><span class="line">8、字符流是基于字节流的,Java中所有输入输出的基础都是字节流,	字节流inputstream  outputstream		字符流reader  writer.</span><br><span class="line">9、在流的层级结构中,只要是以Stream结尾的流成为字节流 Reader Writer 字符流</span><br><span class="line"></span><br><span class="line">10、字节流字节流用于向字节流读写8位二进制的字节,字节流,通用用于图像或者音频等二进制数据。</span><br><span class="line">11、字符流用于向字符流读写16位的二进制字符。</span><br><span class="line">12、节点流直接跟目标资源交互的流为节点流</span><br><span class="line">过滤流(包裝流、处理流)	包装节点流,为节点流添加功能。</span><br><span class="line">13、如何将缓冲区中的内容写入到目标资源中。</span><br><span class="line">1)bos.close()</span><br><span class="line">2)bos默认缓冲区满</span><br><span class="line">3)flush(强制的将缓冲区的资源输出到目标资源</span><br><span class="line">14、inputstream有三个<span class="built_in">read</span>方法,当我们使用无参的<span class="built_in">read</span>法的时候,他的返回值是独到的具体的那个字节数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Lesson4</span><br><span class="line">把字符串转化为字符数组</span><br><span class="line">char[] ch = new char[str.length()];</span><br><span class="line">		//字符</span><br><span class="line">str.getChars(0, str.length(), ch, 0);</span><br><span class="line"></span><br><span class="line">1字符流如何将字节流转换为字符流</span><br><span class="line">1)InputstreamReader 将输入字节流转换为输入字符流</span><br><span class="line">2)OutputstreamWriter 将输出的字符流转换为输出的字节流</span><br><span class="line">3)Filereader 以字符的方法进行文件的读取(输入)Fileinputstream</span><br><span class="line">4)Fillewriter 将字符写入到目标文件FileOutputStream</span><br><span class="line">2  ByteArrayInputstream   CharArrayReader</span><br><span class="line"></span><br><span class="line">☆3 源码 :当我们使用inputstream方法的<span class="built_in">read</span>方法读取字节的时候,Java并没有提供<span class="built_in">read</span>方法的实现,而是交由底层操作系统来实现的。</span><br><span class="line">4、inputstream outputstream reader writer.</span><br><span class="line">字节Fileinputstream bytearrayInpustream</span><br><span class="line">处理流bufferedinputstrem  datainputstream</span><br><span class="line"></span><br><span class="line">5.System.in  out 在流系统中称为标准的输入和输出 键盘就是标准的输入  控制台就是标准的输出</span><br><span class="line"></span><br><span class="line">6.序列化：对象转换为字节保存起来，然后再以后还原这对象，这种机制就叫做对象的序列化。</span><br><span class="line"></span><br><span class="line">7.一个类的对象要想实现序列化必须实现Serializable接口</span><br><span class="line"></span><br><span class="line">8.流：ObjectInputStream ObjectOutputStream</span><br><span class="line"></span><br><span class="line">9.序列化的过程中，static类型的变量是无法序列化的，如果在序列化的过程中,A包含了对B的引用，那么B也会同A一并的序列化，如果B不允许序列化，那么这时A序列化的时候，就会发生异常，这时候必须将B类型的变量使用transient关键字进行标注。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### OutputStreamWriter、PrintWriter和BufferedWriter区别</span></span><br><span class="line">================================================================================================================================================================</span><br><span class="line">	1.</span><br><span class="line">	PrintWriter无追加模式，若写入已有文件，将清空原文件，重新写入；</span><br><span class="line">	其println自动换行；</span><br><span class="line">	OutputStreamWriter与BufferedWriter有追加模式，append设置为<span class="literal">true</span>时，在已有文件末尾追加；append=<span class="literal">false</span>时，从已有文件第一行开始覆盖写入，若写入内容比原有文件短，则只覆盖部分内容；</span><br><span class="line">	BufferedWriter需手动换行，bw.newLine();</span><br><span class="line">	OutputStreamWriter和BufferedWriter的缺省buffer size,OutputStreamWriter是8k bytes，BufferedWriter是8k chars。</span><br><span class="line">	2.</span><br><span class="line">	OutputStreamWriter，PrintWriter能控制编码，BufferedWriter不能。OutputStreamWriter底层使用的是StreamEncoder，也就是对charset进行了编</span><br><span class="line">	码，举个例子，你是完全可以本地采用比如gb2312的编码而写到一个utf-8文件里去的，这个时候你会用OutputStreamWriter。当然缺省的话是</span><br><span class="line">	使用本地的charset。即使使用缺省的charset，OutputStreamWriter是会把没法转码的字符转成malformed surrogate，而BufferedWriter是不会的;</span><br><span class="line">	</span><br><span class="line">	3.</span><br><span class="line">	BufferedWriter能控制封包大小，OutputStreamWriter，PrintWriter不能。假设你操作socket，采用buffer可以使得封包大小更合理；</span><br><span class="line">	</span><br><span class="line">	4.</span><br><span class="line">	BufferedWriter封装的是writer，也就是当buffer满了让别的writer去处理输出，而OutputStreamWriter封装的事数据流(OutputStream)，它是让数据流去处理输出。</span><br><span class="line">	stream和writer的不同不用说.</span><br><span class="line">	</span><br><span class="line">	一个是二进制数据，一个是字符数据，这两个根本就不一样了。</span><br><span class="line">示例程序如下：</span><br><span class="line">************************************************************************************************************</span><br><span class="line">OutputStreamWriter osw=null;</span><br><span class="line">        PrintWriter pw=null;</span><br><span class="line">        BufferedWriter bw=null;</span><br><span class="line">        try&#123;</span><br><span class="line">            osw=new OutputStreamWriter(new FileOutputStream(<span class="string">"D:/test/write1.txt"</span>,<span class="literal">false</span>),<span class="string">"GBK"</span>);</span><br><span class="line">            pw=new PrintWriter(<span class="string">"D:/test/write1.txt"</span>,<span class="string">"GBK"</span>);</span><br><span class="line">            bw=new BufferedWriter(new FileWriter(<span class="string">"D:/test/write1.txt"</span>,<span class="literal">false</span>));</span><br><span class="line">            String str=<span class="string">"9．    分别使用OutputStreamWriter、PrintWriter和BufferedWriter"</span>;</span><br><span class="line">            String str2=<span class="string">"类将三行字符串写入到文本文件中，"</span>;</span><br><span class="line">            String str3=<span class="string">"仔细分析有何差别"</span>;</span><br><span class="line"> </span><br><span class="line">            String str4=<span class="string">"youedkdkdkdkdlkaldalelrladl"</span>;</span><br><span class="line">            String str5=<span class="string">"youedkdkdkdkdlkaldalelrladl"</span>;</span><br><span class="line">            String str6=<span class="string">"youedkdkdkdkdlkaldalelrladl"</span>;</span><br><span class="line"> </span><br><span class="line">            String str7=<span class="string">"ssssssssssssssssssdtfwserewdd"</span>;</span><br><span class="line">            String str8=<span class="string">"ssssssssssssssssssdtfwserewdd"</span>;</span><br><span class="line">            String str9=<span class="string">"ssssssssssssssssssdtfwserewdd"</span>;</span><br><span class="line"> </span><br><span class="line">            pw.println(str);</span><br><span class="line">            pw.println(str2);</span><br><span class="line">            pw.println(str3);</span><br><span class="line">            pw.flush();</span><br><span class="line">            pw.close();</span><br><span class="line">            osw.write(str4+<span class="string">"\r\n"</span>);</span><br><span class="line">            osw.write(str5+<span class="string">"\r\n"</span>);</span><br><span class="line">            osw.write(str6+<span class="string">"\r\n"</span>);</span><br><span class="line">            osw.close();</span><br><span class="line">             </span><br><span class="line">            bw.write(str7);</span><br><span class="line">            bw.newLine();</span><br><span class="line">            bw.write(str8);</span><br><span class="line">            bw.newLine();</span><br><span class="line">            bw.write(str9);</span><br><span class="line">            bw.flush();</span><br><span class="line">            bw.close();</span><br><span class="line"> </span><br><span class="line">             </span><br><span class="line">        &#125;</span><br><span class="line">        catch(UnsupportedEncodingException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        catch(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">================================================================================================================================================================</span><br><span class="line">private void writeObject(java.io.ObjectOutputStream out) throws Exception&#123;&#125;</span><br><span class="line">private void readObject(java.io.ObjectInputStream <span class="keyword">in</span>) throws IOException,ClassNotFoundException&#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lesson5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1、进程运行中的程序。(程序是静态的概念,进程是动态的概念)。</span><br><span class="line">独立性、动态性、并发性。</span><br><span class="line">2、进程是由线程来组成的。</span><br><span class="line">3、目的最大化的使用CUP,提高当前应用的性能。</span><br><span class="line">4、程和线程的区</span><br><span class="line">√每个进程都有独立的代码和数据空间,进程的切换会有很大的开销</span><br><span class="line">√同一类线程共享代码和数据空间,每个线程有独立运行的栈和程序计数器,线程切换的开销小</span><br><span class="line">多进程和多线程    示例   HostAParty.java</span><br><span class="line">√多进程在操作系统中能同时运行多个任务(程序)</span><br><span class="line">√多线程在同一应用程序中有多个顺序流同时执行</span><br><span class="line">5.优点：</span><br><span class="line">1)多线程共享内存，节约系统 资源成本</span><br><span class="line">2)充分利用CPU，执行并发任务，效率高</span><br><span class="line">3)java内置多线程编程</span><br><span class="line"></span><br><span class="line">6、Java如何实现多线程？</span><br><span class="line">1）Thread类</span><br><span class="line"></span><br><span class="line">2）Runnable</span><br><span class="line"></span><br><span class="line">3）Calable接口</span><br><span class="line"></span><br><span class="line">4）Futrue接口</span><br><span class="line">7、对于我们的Java系统来说都是针对于多线程运行的,我们的main方法就是一个主线程</span><br><span class="line">8、线程的实现有两种方式1)继承Thread类2)实现Runnable接口run方法就是线程执行的代码start()才是真正的执行线程的方法</span><br><span class="line"></span><br><span class="line">9、Thread类和Runnable接口的区别1)Thread类也实现了Runnable接口,因此他实现了Runnable接口</span><br><span class="line">中的run方法。</span><br><span class="line">2)Thread类中有Runnable接口的引用,这个变量名字叫做target</span><br><span class="line"></span><br><span class="line">☆3)当我们使用第一种方式生成线程的时候，我们需要重写run方法，因为Thread类继承了Runnable接口，而且run方法中如果没有传递实现了Runnable接口实现类的话，run方式就是个空方法，什么都不做。</span><br><span class="line"></span><br><span class="line">☆4）使用第二种方式创建线程的时候，我们需要Runnable接口，然后实现类Runnable接口的实现类以参数的方式传递到Thread类中，那么当调用Thread类中的run方法的时候，我们就是调用的实现类Runnable接口的那个run方法</span><br><span class="line"></span><br><span class="line">10、对于线程的执行是不可控的，那么我通常会通过一些手段来控制线程</span><br><span class="line">1)循环</span><br><span class="line"></span><br><span class="line">11、多线程对同一资源进行访问的注意点：</span><br><span class="line">1)如果一个类中的变量是一个全局变量，多线程对这个对象的变量进行操作的时候，他们对成员变量的操作会影响到其他的线程(如果说一个线程修改了全局变量，那么其他线程访问该变量的时候，一定会受到影响，比如A a=1 ，B访问a=1  对于成员变量来说，线程是共享成员变量的)</span><br><span class="line"></span><br><span class="line">2)如果一个类的变量是局部变量，多线程对这个对象的局部变量进行访问的时候，每一个线程都会对局部变量进行一次赋值(copy)，换句话说，每一个线程都有自己的一份局部变量，对于局部变量的改变不会影响到其他线程。</span><br><span class="line"></span><br><span class="line">12、线程的同步：</span><br><span class="line">（并发问题）</span><br><span class="line">我们使用Synchrionized关键字进行线程的同步，Synchronized就是一个锁。</span><br><span class="line">13、synchronized：当使用多线程访问同一个资源的时候，有可能会发生线程的同步问题，那么我使用Synchronized关键字进行同步的解决</span><br><span class="line">14、Java中每一个对象都有一个默认的锁或者是监视器(monitor)。当访问某个对象的Synchronized方法的时候，表将该对象上锁，这时候任何的线程都无法访问这个Synchronized方法了，直到该线程运行完毕或者发生异常的时候，该线程就会释放锁。</span><br><span class="line"></span><br><span class="line">15、使用Static和Synchronized关键字修饰方法的时候，他上锁的对象是当前对象的Class对象。因此当线程分别访问同一个类的两个对象的Static \synch 方法时，他们执行的是顺序。</span><br><span class="line">☆用Synchronized关键字声明的静态方法，同时只能被一个执行线程访问，但是其他线程可以访问这个对象的非静态方法。即：两个线程可以同时访问一个对象的两个不同的Synchronized方法，其中一个是静态方法，另一个是非静态方法。</span><br><span class="line">在一个对象被某个线程锁定之后，其他线程都是可以访问这个对象的所有非同步方法的。</span><br><span class="line"></span><br><span class="line">线程中常用的一些方法</span><br><span class="line">方法           功能</span><br><span class="line">isAlive() △判断线程是否还活〃着,即线程是否还未终止</span><br><span class="line">getpriority()③获得线程的优先级数值</span><br><span class="line">setpriority() ⑦设置线程的优先级数值</span><br><span class="line">Thread.sep() ⑤(将当前线程睡眠指定毫秒数调用某线程的该方法,将当前线程与该线程\合并〃,即等待</span><br><span class="line">join()①该线程结束,再恢复当前线程的运行。</span><br><span class="line">yield() √让出cPU,当前线程进入就绪队列等待调度。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">17、当使用Sleep方法进行线程休眠的时候，线程不会让出资源的。</span><br><span class="line">18、<span class="built_in">wait</span>()、notify()通常情况是结合在一起的，他们必须定义在Synchronized块或者synchronized修饰的方法中的。</span><br><span class="line"></span><br><span class="line">锁</span><br><span class="line">@对象的锁标志</span><br><span class="line">---每个对象都有一个锁标志</span><br><span class="line">---使用Synchronized可与锁标志交互</span><br><span class="line">@Synchronized关键字的用法有两种：</span><br><span class="line">---Synchronized语句</span><br><span class="line">---Synchronized方法</span><br><span class="line">@synchronized语句</span><br><span class="line">synchronized(obj)</span><br><span class="line">	&#123;</span><br><span class="line">	//synchronized语句块</span><br><span class="line">	//对obj的成员只能进行同步访问</span><br><span class="line">	......</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">public synchronized void calc2() </span><br><span class="line">&#123;....&#125;</span><br><span class="line"></span><br><span class="line">public void calc()</span><br><span class="line">&#123;</span><br><span class="line">	synchronized(this)</span><br><span class="line">	&#123;</span><br><span class="line">	......</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2019.3.18</span><br><span class="line"></span><br><span class="line">groovy 	swift</span><br><span class="line"></span><br><span class="line">scale 	spark</span><br><span class="line"></span><br><span class="line">JDK8 </span><br><span class="line">☆函数式：Java 方法传方法  <span class="built_in">return</span> 一个方法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">☆Lambda表达式和函数式接口</span><br><span class="line"></span><br><span class="line">1、StreamAPI	2、Funtional	3、(Predicate)	4、optional	5、方法的引用	6、JDK8时间类</span><br><span class="line"></span><br><span class="line">JDK四个函数式接口</span><br><span class="line">1)Consumer </span><br><span class="line">2）Function</span><br><span class="line">3)predicate</span><br><span class="line">4)optional</span><br><span class="line"></span><br><span class="line">什么是函数式接口？</span><br><span class="line"></span><br><span class="line">被标注了@functionalInterface的注解的接口就是一个函数式接口</span><br><span class="line">☆1)函数接口中只有一个抽象方法</span><br><span class="line">☆2）对于函数式接口的实现，Lambda\方法引用\构造方法引用</span><br><span class="line">☆3）如果一个接口中声明了一个抽象方法，但是这个接口没有使用FunctionalInterface注解标注，那么编译器也会把他当做函数式接口处理</span><br><span class="line"></span><br><span class="line">实现：Lambda在Java 中 他既是一个操作符也是一个对象，Lisp-&gt;</span><br><span class="line">---------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Lesson7</span><br><span class="line"></span><br><span class="line">Lamba是由 -&gt; 操作符构成的，左边是 方法的参数 ，右边是 值执行体。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">（）-&gt; 参数的类型即可以明确的声明，也可以根据上下文推断：（Integer <span class="built_in">integer</span>）  	（<span class="built_in">integer</span>）</span><br><span class="line"></span><br><span class="line">Lambada的语法结构：</span><br><span class="line">右侧的执行体中，有两种表现方式</span><br><span class="line">1)表达式 <span class="built_in">return</span>  根据JDK8 的类型推断 expression</span><br><span class="line">2)statement&#123;<span class="built_in">return</span> 方法体&#125;</span><br><span class="line"></span><br><span class="line">Stream 和Lambda 和集合是密切相关的。</span><br><span class="line"></span><br><span class="line">Function 函数式接口，就是进行函数的转换，给定一个输入得到一个产出</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Stream</span><br><span class="line">在linux 管道 PipeLine</span><br><span class="line"></span><br><span class="line">optional</span><br><span class="line"><span class="keyword">if</span>(null!=student)</span><br><span class="line">&#123;</span><br><span class="line">	student.address         //条件不为空，address可能为空</span><br><span class="line"> &#125;</span><br><span class="line">Optional--------NullPointerExcption，是一个包装类(容器类)，他主要的作用就是包装将要发生空指针异常的对象</span><br><span class="line"></span><br><span class="line">对于Optional对象来说他没有public类型的构造方法，他的对象的实例必须借助于三个Static类型的方法</span><br><span class="line">1)empty()  	创建一个值为空的optional</span><br><span class="line">2)of()		创建一个值为value的optional</span><br><span class="line">3)ofnullable()	如果你给我一个value值，如果不为空 of(T value) 如果为空 empty()</span><br><span class="line"></span><br><span class="line">Optional类中的ifPresent\orElse\orElseGet 来确保空指针异常的方法。</span><br><span class="line"></span><br><span class="line">方法引用： 本质上就是一个Lambda表达式，方法应用也是函数指针，Function pointer</span><br><span class="line"></span><br><span class="line">☆方法引用的类型</span><br><span class="line"></span><br><span class="line">☆1)静态 方法引用	--类型::静态方法名</span><br><span class="line"></span><br><span class="line">☆2)对象的实例方法	--对象名::实例方法名</span><br><span class="line"></span><br><span class="line">3)任意对象的实例方法	--对象::实例方法</span><br><span class="line"></span><br><span class="line">4)构造方法引用 		--类名::new</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">calender  simpledateformat</span><br><span class="line"></span><br><span class="line">jdk8 joda-Time框架的使用，因为JDK8来说，本质上是借助于Joda进行封装的</span><br><span class="line"></span><br><span class="line">JDK8中的时间类有LocalDate\LocalTime</span><br><span class="line"></span><br><span class="line">1)LocalDate:表示的是年月日 LocalDate没有Public的构造方法，要想实例化它 使用LocalDate.now of</span><br><span class="line"></span><br><span class="line">2)LocalTime:表示的是时分秒</span><br><span class="line"></span><br><span class="line">1、JDBc(Javadatabaseconnection,JDBC就是使用Java操作数据库的简称。</span><br><span class="line">1)DriverManager管理数据驱动的</span><br><span class="line">2)Connection建立应用和数据库的连接的</span><br><span class="line">3)Statement(prepredStatme\t发送各种soQL语句和返回结果集的。</span><br><span class="line">4)Resultset丛Statement中执行的各种结果</span><br><span class="line"></span><br><span class="line">3、进行数据库的连接。</span><br><span class="line">1)加载驱动类</span><br><span class="line">Mysql:com.mysqljdbcDriver.</span><br><span class="line"></span><br><span class="line">Oracleoracle.jdbc.driver.OracleDriver.</span><br><span class="line"></span><br><span class="line">2)使用DriverManager进行连接</span><br><span class="line">Mysql:jdbc:mysql://localhost:3306/neusoft</span><br><span class="line"></span><br><span class="line">Oracle:jdbc:oracle:thin:@localhost:1521:orcl</span><br><span class="line"></span><br><span class="line">4、</span><br><span class="line">Driver 接口：他出现的目的就是为各个供应商提供一种标准。</span><br><span class="line"></span><br><span class="line">5、</span><br><span class="line"></span><br><span class="line">JDBC中如果执行增删改 就用 statement.execute(sql)</span><br><span class="line">sql executeQuery</span><br><span class="line"></span><br><span class="line">JDBC java database connection  JDBC就是使用java 操作数据库的简称。</span><br><span class="line"></span><br><span class="line">2、</span><br><span class="line">1）DriverManager :管理数据驱动的</span><br><span class="line">2)Connection：建立应用和数据库的连接的</span><br><span class="line">3)Statement(prepredStatment):发送各种SQL语句和返回结果集的。</span><br><span class="line">4)ResultSet:从Statment中执行的各种结果</span><br><span class="line"></span><br><span class="line">Dao模型 </span><br><span class="line">3、</span><br><span class="line">在JDBC中如果想返回主键，我们需要在conn.preparedStatement()的方法重载中使用Statement.RETURN_GENERATED_KEYS进行标注。然后用PreparedStatement.getGeneratedKeys();</span><br><span class="line">获取主键的值</span><br><span class="line"><span class="keyword">if</span>(rs.next())</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(rs.getObject(1));</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">BLOB的存储大小</span><br><span class="line">MYSQL对于大数据的存放</span><br><span class="line"></span><br><span class="line">TinyBlob    255K</span><br><span class="line"></span><br><span class="line">Blob        65K</span><br><span class="line"></span><br><span class="line">MediumBlob   16M</span><br><span class="line"></span><br><span class="line">LongBlob     4G</span><br><span class="line"></span><br><span class="line">对于JDBC中的事务的提交是自动的，如果修改事务的提交 我们需要修改Conn.setAutocommit(<span class="literal">false</span>)方法.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Serializable 同步  			事务操作完，下一个事务才能开始</span><br><span class="line">repeatable Read 可重复读  	避免幻读和重复读			   (Mysql)</span><br><span class="line">Read Commited 读提交    	第一次没提交，第二次就读不到  (sql server Oracle)</span><br><span class="line">Read Uncommited 读未提交 	第一个没提交，第二个能读，出现脏读现象</span><br><span class="line"></span><br><span class="line">DBUtils：</span><br><span class="line">1）QueryRunner类  Update通用的增删改   query查</span><br><span class="line">2) DBUtils 处理器</span><br><span class="line">ResultSetHandler:精细化的获取那些字段封装到返回的类型中，</span><br><span class="line">ResultSetHandler中handle方法返回值的类型就是这个处理器所返回的类型。</span><br><span class="line"></span><br><span class="line">BeanHandler:返回一个对象，返回一个（数据库中记录中对应的一个对象）</span><br><span class="line">beanHandler(class),Class类型代表的就是返回的类型</span><br><span class="line"></span><br><span class="line">BeanListHandle:返回一个对象的集合，集合是在数据库中的。</span><br><span class="line"></span><br><span class="line">Maphandler:把数据库中一条记录转换为Map集合中的一条记录</span><br><span class="line"></span><br><span class="line">MapListHandler：所有的集合转换为一个MapList</span><br><span class="line"></span><br><span class="line">ScalarHandler:返回指定列的值，或者一个统计函数的值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1、泛型定义在类 接口 方法</span><br><span class="line">2、泛型的限制Textends Object  (? extends Object)</span><br><span class="line">(T super List)</span><br><span class="line"></span><br><span class="line">3/  泛型限制的两种情况 </span><br><span class="line">1定义类的时候， 定义好  泛型</span><br><span class="line">2、初始化的时候， 限定泛型</span><br><span class="line"></span><br><span class="line">反射</span><br><span class="line"></span><br><span class="line">【1】类加载器  bootstrap根类加载器</span><br><span class="line">	Extension扩展类加载器		System系统加载器</span><br><span class="line">【2】 	反射</span><br><span class="line">Constructor ：newInstance()</span><br><span class="line"></span><br><span class="line">Field : <span class="built_in">set</span>(obj,value)</span><br><span class="line"></span><br><span class="line">Method : invoke(obj,obj...)</span><br><span class="line"></span><br><span class="line">动态代理   Proxy</span><br><span class="line">	invocatonHandler</span><br><span class="line"></span><br><span class="line">JAVA 异常：就是程序在运行时出现不正常情况。</span><br><span class="line">异常由来：问题也是现实生活中一个具体的事务，也可以通过java的类的形式进行描述，并封装成对象。</span><br><span class="line">其实就是java对不正常情况就行描述后的对象的体现。</span><br><span class="line"></span><br><span class="line">对于问题的划分</span><br><span class="line">严重问题：java通过 Error类进行描述</span><br><span class="line">	对于Error一般不编写针对性的代码对其进行处理</span><br><span class="line"></span><br><span class="line">非严重问题： 	Exception类进行描述</span><br><span class="line">	针对性的代码对其进行处理</span><br><span class="line">无论Error或者Exception都具有一些共性</span><br><span class="line">Throwable</span><br><span class="line">	|--Error</span><br><span class="line">	|--Exception</span><br><span class="line">OutofMemory 内存溢出。Error </span><br><span class="line"></span><br><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">	需要被检测的代码</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">catch&#123;</span><br><span class="line">	处理异常的代码</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">一定会执行的语句；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3、对捕获到的异常对象进行常见方法操作</span><br><span class="line">	String getMessage(); 异常信息</span><br><span class="line">	e.toString 异常名称</span><br><span class="line">	e.printStackTrace(); 异常名称 异常信息 异常出现的位置 默认的异常处理机制</span><br><span class="line"></span><br><span class="line">在函数上声明异常。</span><br><span class="line">便于提高安全性， throws</span><br><span class="line"></span><br><span class="line">多异常处理</span><br><span class="line"></span><br><span class="line">项目中出现特有的问题，未被java所描述并封装对象。</span><br><span class="line">将特有的问题。进行自定义的异常封装。</span><br><span class="line"></span><br><span class="line">自定义的异常在打印的时候 没有异常的信息。</span><br><span class="line">因为自定义的异常并未定义信息.</span><br><span class="line">如何定义异常信息呢？父类中已经把异常信息的操作都完成了</span><br><span class="line">所以子类在构造的时候，讲异常信息传递给父类通过super();语句</span><br><span class="line">那么就可以直接通过getMessage语句获取</span><br><span class="line">继承Exception原因；</span><br><span class="line">异常体系有一个特点：因为异常类和异常对象都被抛出。</span><br><span class="line">他们都具备可抛型。这个可抛型是Throwable这个体系中独有特点。</span><br><span class="line"></span><br><span class="line">class FushuException extends Exception()</span><br><span class="line">&#123;</span><br><span class="line">	private int value;</span><br><span class="line">	</span><br><span class="line">	FushuException(String msg,int value)</span><br><span class="line">	&#123;</span><br><span class="line">	super(msg);</span><br><span class="line">	this.value = value ;</span><br><span class="line">	&#125;</span><br><span class="line">	public int getValue()</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="built_in">return</span> value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Throwable</span><br><span class="line">&#123;</span><br><span class="line">private String msg;</span><br><span class="line"></span><br><span class="line">Throwable(Sttring msg)</span><br><span class="line">	&#123;</span><br><span class="line">	this.msg=msg;</span><br><span class="line">	&#125;</span><br><span class="line">public String getMessage()</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="built_in">return</span> msg;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Exception extends Throwable</span><br><span class="line">&#123;</span><br><span class="line">Exception(String message)</span><br><span class="line">&#123;</span><br><span class="line">	super(message);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">自定义异常定义类继承Exception或者RuntimeExcertion</span><br><span class="line"></span><br><span class="line">2,让该类具备操作异常的共性方法定义自定义异常的信息时,可以使用父类已经定义好的功能异常异常信息传递给父类的构造函数</span><br><span class="line">class MYException extends Exception &#123;</span><br><span class="line">MyException(String message)</span><br><span class="line">	&#123;</span><br><span class="line">	super(message)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">自定义异常按照java的面向对象思想,将程序中出现的特有问题进行封装</span><br><span class="line">异常的好处</span><br><span class="line">1,将问题进行封装</span><br><span class="line">2,将正常流程代码和问题处理代码相分高,方便于阅读</span><br><span class="line"></span><br><span class="line">异常的处理原则</span><br><span class="line">1,处理方式有两种try或者throws</span><br><span class="line">2,调用到抛出异常的功能时,抛出几个,就处理几个。</span><br><span class="line">一个xy对应多个catch</span><br><span class="line">3,多个cat类的catch放到最下面</span><br><span class="line">4,catch内,需要定义针对性的处理方式。不要简单的定义printstackfrace,输出语句也不要不写.</span><br><span class="line"> 当捕获到的异常，本功能处理布料是，可以继续在catch中抛出。</span><br><span class="line">  try</span><br><span class="line">  &#123;</span><br><span class="line">		throws new AException</span><br><span class="line">  &#125;</span><br><span class="line">  catch(AException e)</span><br><span class="line">  &#123;</span><br><span class="line">	throw e;</span><br><span class="line">  &#125;</span><br><span class="line">	如果该异常处理不了，但比不属于该功能出现的异常。</span><br><span class="line">	可以将异常转换后，在抛出和该功能相关的异常。</span><br><span class="line">	或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，当调用者知道，并处理。也可以将捕获异常处理后，转换新的异常。</span><br><span class="line">	try</span><br><span class="line">  &#123;</span><br><span class="line">		throws new AException</span><br><span class="line">  &#125;</span><br><span class="line">  catch(AException e)</span><br><span class="line">  &#123;</span><br><span class="line">	//对AException处理</span><br><span class="line">	throw new BException();</span><br><span class="line">  &#125;</span><br><span class="line">  比如汇款的例子。</span><br><span class="line">  </span><br><span class="line">异常的注意</span><br><span class="line">1,子类抛出的异常必须是父类的异常的子类或者子集</span><br><span class="line">2,如果父类或者接口没有异常抛出时,子类覆盖出现异常,只能try不不能抛。</span><br><span class="line"></span><br><span class="line">final关键字</span><br><span class="line">1、修饰类 变量（成员变量，静态变量，局部变量），函数</span><br><span class="line">2、修饰的类不可以被继承。</span><br><span class="line">3、修饰的函数不可以被覆盖。</span><br><span class="line">4、修饰的变量是一个常量，只能赋值一次</span><br><span class="line">内部类只能访问局部当中的 fina修饰的变量</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Circle</span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">	private static double pi=3.14;</span><br><span class="line">	private double radius;</span><br><span class="line">	public Circle(double r)</span><br><span class="line">	&#123;</span><br><span class="line">			radius =r;</span><br><span class="line">	&#125;</span><br><span class="line">	public static double compare(Circle[] cir)</span><br><span class="line">	&#123;</span><br><span class="line">		//补全代码，求数组中的最大值。</span><br><span class="line">		int max=0;</span><br><span class="line">		<span class="keyword">for</span>(int x =1;x&lt;cir.length;x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(cir[x].radius&gt;cir[max].radius)</span><br><span class="line">				max =x;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> cir[max].radius;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class TC</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">			Circle cir[]=new Circle[3];//创建了一个类类型数组</span><br><span class="line">			System.out.println(<span class="string">"最大的半径值是："</span>+Circle.compare(cir));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在一个类中编写一个方法,这个方法搜索一个字符数组中是否存在某个字符如果存在,则返回这个字符在字符数组中</span><br><span class="line">第一次出现的位置(序号从0开始计算否则,返回-1。要搜索的字符效组和字符都以参数形式传递传递给该方法,如果</span><br><span class="line">传入的数组为nu11,应抛出I11ega1ArgumentException异常在类的main方法中以各种可能出现的憤况测试验证该方法</span><br><span class="line">编写得是否正确例如,字符不存在,字符存在,传入的数组为mu11等</span><br><span class="line">无序数组</span><br><span class="line"></span><br><span class="line">public int getIndex(Char[] arr,Char key)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr==null)</span><br><span class="line">		throw new IillegalArgumentException();</span><br><span class="line">	<span class="keyword">for</span>(int x = 0;x&lt;arr.length;x++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[x]==key)</span><br><span class="line">			<span class="built_in">return</span> x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/16/LeetCode第六题之Z字形变换/" rel="next" title="LeetCode06. Z字形变换">
+                <i class="fa fa-chevron-left"></i> LeetCode06. Z字形变换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/17/笔记HTML学习/" rel="prev" title="Java Web学习html">
+                Java Web学习html <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Jack">
+            
+              <p class="site-author-name" itemprop="name">Jack</p>
+              <div class="site-description motion-element" itemprop="description">Jack's Ideas & Blogs</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack</span>
+
+  
+
+  
+</div>
+"
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+"
+
+<br>
+<!--站点统计-->
+<!--<a href=”httpsa://new.cnzz.com/v1/login.php?siteid=127688378”><img src=”httpsa://web.umeng.com/static/img/main/icon.gif” alt=”cnzz_icon“></a><script type=”text/javascript“>var cnzz_s_tag = document.createElement(‘script’); cnzz_s_tag.type = ‘text/javascript’; cnzz_s_tag.async = true; cnzz_s_tag.charset = ‘utf-8’; cnzz_s_tag.src = ‘httpsa://w.cnzz.com/c.php?id=127688378&async=1’; var root_s = document.getElementsByTagName(‘script’)[0]; root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>-->
+
+<!-- cnzz stats -->
+<script type="text/javascript">var cnzz_s_tag = document.createElement('script');cnzz_s_tag.type = 'text/javascript';cnzz_s_tag.async = true;cnzz_s_tag.charset = 'utf-8';cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1276883782&async=1';var root_s = document.getElementsByTagName('script')[0];root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+	
+    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+
+<br>
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.0.1"></script>
+
+  <script src="/js/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- canvas-nest-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
+
