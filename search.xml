@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SpringAOP编码式事务]]></title>
+    <url>%2F%2F2019%2F06%2F21%2F2019-06-21%2F</url>
+    <content type="text"><![CDATA[asda]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SpringAOP常用注解]]></title>
     <url>%2F%2F2019%2F06%2F18%2F2019-06-18%2F</url>
     <content type="text"><![CDATA[Spring常用注解 SpringAOP如何来实现事务的管理的 注解1)@Controller 标注控制器层2)@Service 标注服务层3)@Repository 标注数据访问层4)@Resource 标注当前注入 建议使用，因为@Resource耦合度会低 5)@Autowired 标注的是注入 6)@Component 表示标注所有的对象到容器中。（万能的注解） 面试Resource、Autowired 问区别和联系？相同点1.使用注解的方法注入bean。2.注解的位置可以是容器类中的属性，也可以是其中的setter方法不同点（1）默认按名称进行注入，通过name属性进行指定对应bean的Id或者name；userService这个接口的实现类，找不到会以类型注入。@Resource(name=”predicteDao”)（2）不使用name也可，比如@Resourceprivate UserService userService;默认会按类型注入，和 @Autowired效果一样。 Autowired是默认类型注入。 当我们使用注解方式配置好了关联之后，我们需要让关联生效 applicationContext.xml1234567891011&lt;bean id="userController" class="com.neusoft.controller.UserController"&gt; &lt;property name="userService" ref="userService"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;bean id="userService" class="com.neusoft.service.impl.UserServiceImpl"&gt; &lt;property name="userDao" ref="userDao"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;bean id="userDao" class="com.neusoft.dao.impl.UserDaoImpl"&gt; &lt;/bean&gt; Controller 1234567@ComponentUserController&#123; @Resource private UserService userService; ....&#125; UserServiceImpl 123456@ServiceUserServiceImpl&#123; @Resource private UserDao userDao;&#125; UserDaoImpl 1@Repository 其他总结：]]></content>
@@ -350,9 +361,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode13罗马数字转整数]]></title>
-    <url>%2F%2F2019%2F04%2F22%2FLeetCode13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[描述：罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。 示例 1:输入: “III”输出: 3 示例 2：输入: “IV”输出: 4 示例 3:输入: “IX”输出: 9 示例 4:输入: “LVIII”输出: 58解释: L = 50, V= 5, III = 3. 示例 5:输入: “MCMXCIV”输出: 1994解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码： 12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; public int romanToInt(String s) &#123; HashMap&lt;String,Integer&gt; map = new HashMap&lt;String,Integer&gt;(); map.put("I",1); map.put("IV",4); map.put("V",5); map.put("VI",6); map.put("IX",9); map.put("X",10); map.put("XL",40); map.put("L",50); map.put("XC",90); map.put("C",100); map.put("CD",400); map.put("D",500); map.put("CM",900); map.put("M",1000); int res=0; int i=0; int n =s.length(); while(i&lt;n) &#123; if(i&lt;n-1 &amp;&amp; map.containsKey(s.substring(i,i+2))) &#123; res +=map.get(s.substring(i,i+2)); i+=2; &#125; else if(map.containsKey(s.substring(i,i+1))) &#123; res +=map.get(s.substring(i,i+1)); i+=1; &#125; &#125; return res; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode12整数转罗马数字]]></title>
+    <url>%2F%2F2019%2F04%2F22%2FLeetCode12%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1:输入: 3输出: “III” 示例 2:输入: 4输出: “IV” 示例 3:输入: 9输出: “IX” 示例 4:输入: 58输出: “LVIII”解释: L = 50, V = 5, III = 3. 示例 5:输入: 1994输出: “MCMXCIV”解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码：1234567891011121314151617class Solution &#123; public String intToRoman(int num) &#123; int values[] = &#123;1000,900,500,400,100,90,50,40,10,9,5,4,1&#125;; String reps[]=&#123;"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"&#125;; String res=""; for(int i = 0;i&lt;13;i++) &#123; while(num&gt;=values[i]) &#123; num -=values[i]; res+=reps[i]; &#125; &#125; return res; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -361,9 +372,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode12整数转罗马数字]]></title>
-    <url>%2F%2F2019%2F04%2F22%2FLeetCode12%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1:输入: 3输出: “III” 示例 2:输入: 4输出: “IV” 示例 3:输入: 9输出: “IX” 示例 4:输入: 58输出: “LVIII”解释: L = 50, V = 5, III = 3. 示例 5:输入: 1994输出: “MCMXCIV”解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码：1234567891011121314151617class Solution &#123; public String intToRoman(int num) &#123; int values[] = &#123;1000,900,500,400,100,90,50,40,10,9,5,4,1&#125;; String reps[]=&#123;"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"&#125;; String res=""; for(int i = 0;i&lt;13;i++) &#123; while(num&gt;=values[i]) &#123; num -=values[i]; res+=reps[i]; &#125; &#125; return res; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode13罗马数字转整数]]></title>
+    <url>%2F%2F2019%2F04%2F22%2FLeetCode13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[描述：罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。 示例 1:输入: “III”输出: 3 示例 2：输入: “IV”输出: 4 示例 3:输入: “IX”输出: 9 示例 4:输入: “LVIII”输出: 58解释: L = 50, V= 5, III = 3. 示例 5:输入: “MCMXCIV”输出: 1994解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码： 12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; public int romanToInt(String s) &#123; HashMap&lt;String,Integer&gt; map = new HashMap&lt;String,Integer&gt;(); map.put("I",1); map.put("IV",4); map.put("V",5); map.put("VI",6); map.put("IX",9); map.put("X",10); map.put("XL",40); map.put("L",50); map.put("XC",90); map.put("C",100); map.put("CD",400); map.put("D",500); map.put("CM",900); map.put("M",1000); int res=0; int i=0; int n =s.length(); while(i&lt;n) &#123; if(i&lt;n-1 &amp;&amp; map.containsKey(s.substring(i,i+2))) &#123; res +=map.get(s.substring(i,i+2)); i+=2; &#125; else if(map.containsKey(s.substring(i,i+1))) &#123; res +=map.get(s.substring(i,i+1)); i+=1; &#125; &#125; return res; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -498,31 +509,31 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 04寻找两个有序数组的中位数]]></title>
-    <url>%2F%2F2019%2F04%2F08%2FLeetCode04%20%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[4. 寻找两个有序数组的中位数 解题思路寻找中位数，最终定位为寻找第K位的值。k是根据总体数据量的奇、偶性计算得到的。 1 、假设nums1.length = m, nums2.length = n; m &lt; n。 2、若(m + n) % 2 == 0, 表示两数组之和为偶数，应该是有两个中位数，需要求均值。如果和为奇数，则只有一位，在代码设计最初考虑该问题。 3、为了使得方法的统一，在最初时，对数组进行处理，统一使得传进方法的短数组为nums1，这样在后续进行k/2与。 4、如果len1-start1 == 0,则表示nums1已经全部加入前k个了，则第k个为nums2[k -1]; 在方法findKth（）中的k是一直变化的，初始时，k为两个数组中排序之后的第k个数的位置；k在方法中的真正含义为“还需要找到多少个数才能达到k个”；因此假设nums1.length ==0;,此时len1-start1 == 0, 则中位数就是nums2[k - 1],即在nums1中找到了0个数，还需要找k个数，第k个数就是nums[k - 1]; 5、 如果k == 1,则表示前k-1小的数已经找过了，则第k个数肯定是nums1[start1]和nums2[start2]中较小的那个数。 6、 下面接着就是常规的情况：即nums1中包含一部分k,nums2中也包含一部分的k,因此就从每个数组的k/2那里开始比较（也相当于每次都会有一半的数被加入前k个，因此时间复杂度为O（log(m + n)））。 采用p1和p2分别记录当前nums1和nums2需要比较的那个位，由于nums1比较短，因此有可能k/2的位置已经超出了nums1的长度，因此nums1还需要做特殊处理，即求解p1处所示；由于p1做了特殊处理，那p2也就要做特殊处理。总之，start1~p1和start2~p2的和一定为k。 1）若nums1[p1 - 1] &lt; nums[p2 - 1],则表明【start1, p1)之间的值在前k个数中；2）若nums[p1 - 1] &gt; nums2[p2- 1],则表明【start2, p2)之间的值在前k个数中；3）若两值相等，则表明【start1, p1)+【start2， p2）的个数为k,则结果直接返回其中一个即可。 边界问题1、为什么比较的p1和p2的前一个位的数，而不是p1和p2位置的数呢？这就是边界问题。 举例说明：假设start1== start2 == 0, 则p1 = Math.min(len1, k / 2); p2 = k - p1,即p1 + p2 == k;；假设p1 = 5, p2 = 7; 则k = 12; 在数组中nums[5]其实是第6个数，nums[7]其实是第8个数，所以我们比较的是nums1[p1 - 1]与nums2[p2 - 1]的值。 2、注意每个数组的start位置，其实是有效数据的前一位，因此可以直接做差来求数据的个数。例如[1,3,4,5]，记录为start=0,length=4。在后续进行推进修改时，start仍旧为有效数据位的前一位。 123456789101112131415161718192021222324252627282930313233343536public class Solution &#123; public double findMedianSortedArrays(int[] nums1, int[] nums2) &#123; int len1 = nums1.length; int len2 = nums2.length; int size = len1 + len2; if(size % 2 == 1) return findKth(nums1, 0, len1, nums2, 0, len2, size / 2 + 1); else return (findKth(nums1, 0, len1, nums2, 0, len2, size / 2) + findKth(nums1, 0, len1, nums2, 0, len2, size / 2 + 1)) /2; &#125; public double findKth(int[] nums1, int start1, int len1, int[] nums2, int start2, int len2, int k) &#123; if(len1 - start1 &gt; len2 -start2) // 传进来的时候统一让短的数组为nums1 return findKth(nums2, start2, len2, nums1, start1, len1, k); if(len1 - start1 == 0) // 表示nums1已经全部加入前K个了，第k个为nums2[k - 1]; return nums2[k - 1]; if(k == 1) return Math.min(nums1[start1], nums2[start2]); // k==1表示已经找到第k-1小的数，下一个数为两个数组start开始的最小值 int p1 = start1 + Math.min(len1 - start1, k / 2); // p1和p2记录当前需要比较的那个位 int p2 = start2 + k - p1 + start1; if(nums1[p1 - 1] &lt; nums2[p2 - 1]) return findKth(nums1, p1, len1, nums2, start2, len2, k - p1 + start1); else if(nums1[p1 - 1] &gt; nums2[p2 -1]) return findKth(nums1, start1, len1, nums2, p2, len2, k - p2 + start2); else return nums1[p1 - 1]; &#125;&#125;]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LeetCode066加一]]></title>
-    <url>%2F%2F2019%2F04%2F08%2FLeetCode066%E5%8A%A0%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[LeetCode067加一给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。 你可以假设除了整数 0 之外，这个整数不会以零开头。 示例 1: 输入: [1,2,3] 输出: [1,2,4] 解释: 输入数组表示数字 123。 示例 2: 输入: [4,3,2,1] 输出: [4,3,2,2] 解释: 输入数组表示数字 4321。 代码 class Solution { public int[] plusOne(int[] digits) { int n=digits.length-1,i; digits[n]+=1; while(n&gt;0) { if(digits[n]&lt;10)break; digits[n]-=10; digits[n-1]+=1; n--; } if(digits[0]&gt;=10) { digits[0]-=10; int[] ans=new int[digits.length+1]; ans[0] =1; System.arraycopy(digits,0,ans,1,digits.length); return ans; } else return digits; } }]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 03两数相加]]></title>
     <url>%2F%2F2019%2F04%2F08%2FLeetCode02%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%2F</url>
     <content type="text"><![CDATA[2 两数相加给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。 示例： 输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)输出：7 -&gt; 0 -&gt; 8原因：342 + 465 = 807 Java：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123; ListNode head,p=head=new ListNode(-1); int flag=0; while(l1!=null&amp;&amp;l2!=null)&#123; p.next=l1; p=p.next; int t=l1.val; p.val=( l1.val+ l2.val + flag)%10;//个位 flag=(t +l2.val+flag)/10;//进位 l1=l1.next; l2=l2.next; &#125; //如 111 + 11 while(l1!=null) &#123; p.next=l1; p=p.next; int t=l1.val; p.val=(t+flag)%10; flag=(t+flag)/10; l1=l1.next; &#125; while(l2!=null) &#123; p.next=l2; p=p.next; int t=l2.val; p.val=(t+flag)%10; flag=(t+flag)/10; l2=l2.next; &#125; if(flag==1) &#123; p.next=new ListNode(1); &#125; return head.next; &#125;&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode03无重复字符的最长子串]]></title>
+    <url>%2F%2F2019%2F04%2F08%2FLeetCode03%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[2 LeetCode03无重复字符的最长子串注意先想到的解决思路是先遍历整个字符串，然后对遍历到的每个字符后的字符做处理（检查是否有重复元素），我们通过建立一个空的字符串，如果检查的字符在这个空的字符串中没有的话，我们将他加入这个空字符串中，并且记录这个空字符串的长度。解法 123456789101112131415161718192021222324252627class Solution &#123; public int lengthOfLongestSubstring(String s) &#123; int resultLength=0; int n = s.length(); for(int i=0;i&lt;n;i++) for(int j=i+1;j&lt;=n;j++) if(judgeresult(s,i,j)) resultLength = Math.max(resultLength,j-i);//取length最长 return resultLength; &#125; public boolean judgeresult(String s,int i,int j) &#123; Set&lt;Character&gt; set=new HashSet&lt;&gt;(); for(int k=i;k&lt;j;k++) &#123; char charStr=s.charAt(k); if(set.contains(charStr)) &#123; return false; &#125; else set.add(charStr); &#125; return true; &#125;&#125; 此方法超时 字符串String类中有一个charAt方法来获取字符串中的字符 String s = &quot;nihaoHHH换行&quot;; s.charAt(1); HashMap 123456789101112131415161718class Solution &#123; public static int lengthOfLongestSubstring(String s) &#123; if(s.length()==0) return 0; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int max = 0; for(int i=0,j=0;i&lt;s.length();i++)&#123; if(map.containsKey(s.charAt(i)))&#123; j = Math.max(j,map.get(s.charAt(i))+1); &#125; map.put(s.charAt(i),i); max = Math.max(max,i-j+1); &#125; return max; &#125;&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode 04寻找两个有序数组的中位数]]></title>
+    <url>%2F%2F2019%2F04%2F08%2FLeetCode04%20%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[4. 寻找两个有序数组的中位数 解题思路寻找中位数，最终定位为寻找第K位的值。k是根据总体数据量的奇、偶性计算得到的。 1 、假设nums1.length = m, nums2.length = n; m &lt; n。 2、若(m + n) % 2 == 0, 表示两数组之和为偶数，应该是有两个中位数，需要求均值。如果和为奇数，则只有一位，在代码设计最初考虑该问题。 3、为了使得方法的统一，在最初时，对数组进行处理，统一使得传进方法的短数组为nums1，这样在后续进行k/2与。 4、如果len1-start1 == 0,则表示nums1已经全部加入前k个了，则第k个为nums2[k -1]; 在方法findKth（）中的k是一直变化的，初始时，k为两个数组中排序之后的第k个数的位置；k在方法中的真正含义为“还需要找到多少个数才能达到k个”；因此假设nums1.length ==0;,此时len1-start1 == 0, 则中位数就是nums2[k - 1],即在nums1中找到了0个数，还需要找k个数，第k个数就是nums[k - 1]; 5、 如果k == 1,则表示前k-1小的数已经找过了，则第k个数肯定是nums1[start1]和nums2[start2]中较小的那个数。 6、 下面接着就是常规的情况：即nums1中包含一部分k,nums2中也包含一部分的k,因此就从每个数组的k/2那里开始比较（也相当于每次都会有一半的数被加入前k个，因此时间复杂度为O（log(m + n)））。 采用p1和p2分别记录当前nums1和nums2需要比较的那个位，由于nums1比较短，因此有可能k/2的位置已经超出了nums1的长度，因此nums1还需要做特殊处理，即求解p1处所示；由于p1做了特殊处理，那p2也就要做特殊处理。总之，start1~p1和start2~p2的和一定为k。 1）若nums1[p1 - 1] &lt; nums[p2 - 1],则表明【start1, p1)之间的值在前k个数中；2）若nums[p1 - 1] &gt; nums2[p2- 1],则表明【start2, p2)之间的值在前k个数中；3）若两值相等，则表明【start1, p1)+【start2， p2）的个数为k,则结果直接返回其中一个即可。 边界问题1、为什么比较的p1和p2的前一个位的数，而不是p1和p2位置的数呢？这就是边界问题。 举例说明：假设start1== start2 == 0, 则p1 = Math.min(len1, k / 2); p2 = k - p1,即p1 + p2 == k;；假设p1 = 5, p2 = 7; 则k = 12; 在数组中nums[5]其实是第6个数，nums[7]其实是第8个数，所以我们比较的是nums1[p1 - 1]与nums2[p2 - 1]的值。 2、注意每个数组的start位置，其实是有效数据的前一位，因此可以直接做差来求数据的个数。例如[1,3,4,5]，记录为start=0,length=4。在后续进行推进修改时，start仍旧为有效数据位的前一位。 123456789101112131415161718192021222324252627282930313233343536public class Solution &#123; public double findMedianSortedArrays(int[] nums1, int[] nums2) &#123; int len1 = nums1.length; int len2 = nums2.length; int size = len1 + len2; if(size % 2 == 1) return findKth(nums1, 0, len1, nums2, 0, len2, size / 2 + 1); else return (findKth(nums1, 0, len1, nums2, 0, len2, size / 2) + findKth(nums1, 0, len1, nums2, 0, len2, size / 2 + 1)) /2; &#125; public double findKth(int[] nums1, int start1, int len1, int[] nums2, int start2, int len2, int k) &#123; if(len1 - start1 &gt; len2 -start2) // 传进来的时候统一让短的数组为nums1 return findKth(nums2, start2, len2, nums1, start1, len1, k); if(len1 - start1 == 0) // 表示nums1已经全部加入前K个了，第k个为nums2[k - 1]; return nums2[k - 1]; if(k == 1) return Math.min(nums1[start1], nums2[start2]); // k==1表示已经找到第k-1小的数，下一个数为两个数组start开始的最小值 int p1 = start1 + Math.min(len1 - start1, k / 2); // p1和p2记录当前需要比较的那个位 int p2 = start2 + k - p1 + start1; if(nums1[p1 - 1] &lt; nums2[p2 - 1]) return findKth(nums1, p1, len1, nums2, start2, len2, k - p1 + start1); else if(nums1[p1 - 1] &gt; nums2[p2 -1]) return findKth(nums1, start1, len1, nums2, p2, len2, k - p2 + start2); else return nums1[p1 - 1]; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -542,9 +553,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode03无重复字符的最长子串]]></title>
-    <url>%2F%2F2019%2F04%2F08%2FLeetCode03%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[2 LeetCode03无重复字符的最长子串注意先想到的解决思路是先遍历整个字符串，然后对遍历到的每个字符后的字符做处理（检查是否有重复元素），我们通过建立一个空的字符串，如果检查的字符在这个空的字符串中没有的话，我们将他加入这个空字符串中，并且记录这个空字符串的长度。解法 123456789101112131415161718192021222324252627class Solution &#123; public int lengthOfLongestSubstring(String s) &#123; int resultLength=0; int n = s.length(); for(int i=0;i&lt;n;i++) for(int j=i+1;j&lt;=n;j++) if(judgeresult(s,i,j)) resultLength = Math.max(resultLength,j-i);//取length最长 return resultLength; &#125; public boolean judgeresult(String s,int i,int j) &#123; Set&lt;Character&gt; set=new HashSet&lt;&gt;(); for(int k=i;k&lt;j;k++) &#123; char charStr=s.charAt(k); if(set.contains(charStr)) &#123; return false; &#125; else set.add(charStr); &#125; return true; &#125;&#125; 此方法超时 字符串String类中有一个charAt方法来获取字符串中的字符 String s = &quot;nihaoHHH换行&quot;; s.charAt(1); HashMap 123456789101112131415161718class Solution &#123; public static int lengthOfLongestSubstring(String s) &#123; if(s.length()==0) return 0; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int max = 0; for(int i=0,j=0;i&lt;s.length();i++)&#123; if(map.containsKey(s.charAt(i)))&#123; j = Math.max(j,map.get(s.charAt(i))+1); &#125; map.put(s.charAt(i),i); max = Math.max(max,i-j+1); &#125; return max; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode066加一]]></title>
+    <url>%2F%2F2019%2F04%2F08%2FLeetCode066%E5%8A%A0%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[LeetCode067加一给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。 你可以假设除了整数 0 之外，这个整数不会以零开头。 示例 1: 输入: [1,2,3] 输出: [1,2,4] 解释: 输入数组表示数字 123。 示例 2: 输入: [4,3,2,1] 输出: [4,3,2,2] 解释: 输入数组表示数字 4321。 代码 class Solution { public int[] plusOne(int[] digits) { int n=digits.length-1,i; digits[n]+=1; while(n&gt;0) { if(digits[n]&lt;10)break; digits[n]-=10; digits[n-1]+=1; n--; } if(digits[0]&gt;=10) { digits[0]-=10; int[] ans=new int[digits.length+1]; ans[0] =1; System.arraycopy(digits,0,ans,1,digits.length); return ans; } else return digits; } }]]></content>
       <categories>
         <category>Java</category>
       </categories>
