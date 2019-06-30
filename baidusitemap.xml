@@ -3,8 +3,28 @@
 
     
   <url>
+    <loc>http://zhangcv.github.io/2019/06/28/2019-06-28/</loc>
+    <lastmod>2019-06-30T12:20:58.564Z</lastmod>
+    <data>
+        <display>
+        <title>Android实训</title>
+        <pubTime>2019-06-28T13:30:30.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://zhangcv.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zhangcv.github.io/2019/06/21/2019-06-21/</loc>
-    <lastmod>2019-06-24T12:08:22.585Z</lastmod>
+    <lastmod>2019-06-30T11:30:52.464Z</lastmod>
     <data>
         <display>
         <title>SpringAOP编码式事务</title>

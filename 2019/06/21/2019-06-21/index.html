@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="asda">
+  <meta name="description" content="数据库连接池： JDK dataSource接口 1）c3p0 数据库连接池 并发 2）DBCP database connection pool ：apache开发的，数据连接池的实现，教学。 3）Druid Ali：开源的数据库连接池。  2.搭建Spring 事务框架  1）创建数据库连接池 c3p0中的ComboPooledDataSource &amp;lt;bean id=&amp;quot;dat">
 <meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringAOP编码式事务">
 <meta property="og:url" content="http://zhangcv.github.io/2019/06/21/2019-06-21/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="asda">
+<meta property="og:description" content="数据库连接池： JDK dataSource接口 1）c3p0 数据库连接池 并发 2）DBCP database connection pool ：apache开发的，数据连接池的实现，教学。 3）Druid Ali：开源的数据库连接池。  2.搭建Spring 事务框架  1）创建数据库连接池 c3p0中的ComboPooledDataSource &amp;lt;bean id=&amp;quot;dat">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-24T12:08:22.585Z">
+<meta property="og:updated_time" content="2019-06-30T11:30:52.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringAOP编码式事务">
-<meta name="twitter:description" content="asda">
+<meta name="twitter:description" content="数据库连接池： JDK dataSource接口 1）c3p0 数据库连接池 并发 2）DBCP database connection pool ：apache开发的，数据连接池的实现，教学。 3）Druid Ali：开源的数据库连接池。  2.搭建Spring 事务框架  1）创建数据库连接池 c3p0中的ComboPooledDataSource &amp;lt;bean id=&amp;quot;dat">
 
 
 
@@ -455,7 +455,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-24 20:08:22" itemprop="dateModified" datetime="2019-06-24T20:08:22+08:00">2019-06-24</time>
+                <time title="Modified: 2019-06-30 19:30:52" itemprop="dateModified" datetime="2019-06-30T19:30:52+08:00">2019-06-30</time>
               
             
           </span>
@@ -507,7 +507,37 @@
       
 
       
-        <p>asda</p>
+        <ol>
+<li>数据库连接池： JDK dataSource接口<br> 1）c3p0 数据库连接池 并发<br> 2）DBCP database connection pool ：apache开发的，数据连接池的实现，教学。<br> 3）Druid Ali：开源的数据库连接池。</li>
+</ol>
+<p>2.搭建Spring 事务框架 </p>
+<p>1）创建数据库连接池 c3p0中的ComboPooledDataSource</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+    &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc.Driver&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;jdbcUtil&quot; value=&quot;jdbd:mysql://localhost:3306/neusoft&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;password&quot; value=&quot;123456&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+initialPoolSize 连接池的最大个数
+loginTimeout 超时时间
+maxPoolSize 最大多少个连接
+</code></pre><p>2）创建JDBCTemplate</p>
+<p>3）创建事务管理DataSourceTransactionManager</p>
+<ol start="3">
+<li><p>Spring中的事务<br>1）编码式事务（手动） JDBCConnection<br>2）声明式事务（自动）：配置文件 注解的方式</p>
+</li>
+<li><p>在三层体系中，事务通常定义在Service层，不要定义在dao层</p>
+</li>
+</ol>
+<p>编码式事务：<br>applicationContext.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">	xmlns:mvc=<span class="string">"http://www.springframework.org/schema/mvc"</span></span><br><span class="line">	xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">	xmlns:dwr=<span class="string">"http://www.directwebremoting.org/schema/spring-dwr"</span></span><br><span class="line">	xmlns:aop=<span class="string">"http://www.springframework.org/schema/aop"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/context </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/context/spring-context-3.2.xsd </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/tx </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/aop </span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--  开启注解，这个包下所有的注解，让注解生效 --&gt;</span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"com.neusoft"</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 1.数据库连接池c3p0  --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"driverClass"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span>&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=<span class="string">"jdbcUrl"</span> value=<span class="string">"jdbc:mysql://localhost:3306/newdbss"</span>&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=<span class="string">"user"</span> value=<span class="string">"root"</span>&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=<span class="string">"password"</span> value=<span class="string">"123456"</span>&gt;&lt;/property&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	&lt;!-- 2.创建JDBCTemplate --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"jdbcTemplate"</span> class=<span class="string">"org.springframework.jdbc.core.JdbcTemplate"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"dataSource"</span> ref=<span class="string">"dataSource"</span>&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 3.Spring来进行事务管理，事务是针对于数据库的 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"dataSourceTransactionManager"</span> class=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"dataSource"</span> ref=<span class="string">"dataSource"</span>&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意jdbcUrl</p>
+<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/newdbss"></property>
+
+<p>UserService的代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public void add()</span><br><span class="line">&#123;</span><br><span class="line">	TransactionStatus transactionStatus =null;</span><br><span class="line">	try &#123;</span><br><span class="line">		//事务的开始</span><br><span class="line">		transactionStatus = transactionManager.begin();</span><br><span class="line">		userDao.addUser(new User(<span class="string">"zhangsan-"</span>+System.currentTimeMillis(),<span class="string">"123456"</span>));</span><br><span class="line">		//int i=1/0;</span><br><span class="line">		userDao.addUser(new User(<span class="string">"zhangsan-"</span>+System.currentTimeMillis(),<span class="string">"123456"</span>));</span><br><span class="line">		//事务的提交</span><br><span class="line">		transactionManager.commit(transactionStatus);</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">		//事务的回滚</span><br><span class="line">		transactionManager.rollback(transactionStatus);</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加了事务后： 如果在两条数据之间 int i=1/0;<br>                报错 两条数据都插入不进去。<br>没有事务：     会添加进一条。</p>
+<p>编码式事务中，增删查改每一个都需要添加try catch 这三条事务的语句，在Spring中有声明式事务，通过注解的形式解决。</p>
 
       
     </div>
@@ -553,6 +583,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/28/2019-06-28/" rel="prev" title="Android实训">
+                Android实训 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -614,7 +648,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
