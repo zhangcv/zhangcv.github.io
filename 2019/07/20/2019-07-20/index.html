@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.安装XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。 在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。虚拟机里安装XP和Oracle数据库，不用的时候直接删了。 我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试) 2. 配置解锁了scott用户，密码为123456，后面的or">
+<meta name="keywords" content="Oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle数据库">
+<meta property="og:url" content="http://zhangcv.github.io/2019/07/20/2019-07-20/index.html">
+<meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
+<meta property="og:description" content="1.安装XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。 在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。虚拟机里安装XP和Oracle数据库，不用的时候直接删了。 我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试) 2. 配置解锁了scott用户，密码为123456，后面的or">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-27T11:48:25.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle数据库">
+<meta name="twitter:description" content="1.安装XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。 在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。虚拟机里安装XP和Oracle数据库，不用的时候直接删了。 我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试) 2. 配置解锁了scott用户，密码为123456，后面的or">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://zhangcv.github.io/2019/07/20/2019-07-20/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Oracle数据库 | Zhangcv's Personal Website</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhangcv's Personal Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+<script>
+    
+    window.onload = function(){
+        var path = 'https://zhangcv.github.io/'; //这里要改成你博客的地址
+        var localhostItem = String(window.location).split(path)[1];
+        var LiNode = document.querySelectorAll('#menu > li > a')
+        
+        for(var i = 0; i< LiNode.length;i++){
+            var item = String(LiNode[i].href).split(path)[1];
+            if(item == localhostItem && item != undefined){
+                LiNode[i].setAttribute('style','border-bottom:1px solid black');
+            }
+        }
+    };
+
+</script></div>
+	  <a href="https://github.com/zhangcv" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/07/20/2019-07-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content="Jack's Ideas & Blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhangcv's Personal Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Oracle数据库
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-20 21:30:30" itemprop="dateCreated datePublished" datetime="2019-07-20T21:30:30+08:00">2019-07-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-27 19:48:25" itemprop="dateModified" datetime="2019-07-27T19:48:25+08:00">2019-07-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。</p>
+<p>在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。<br>虚拟机里安装XP和Oracle数据库，不用的时候直接删了。</p>
+<p>我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试)</p>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h3><p>解锁了scott用户，密码为123456，后面的orcl为实例名<br>sqlplus <a href="mailto:system/orcl@192.168.106.128" target="_blank" rel="noopener">system/orcl@192.168.106.128</a>:1521/orcl</p>
+<p>1)tools-&gt;preferences-&gt;connection中sqlplus路径 不能有中文或者空格<br>2)确认服务器上的tnsnames.ora和linstener中的host为虚拟机ip地址<br>默认为 主机名，可以改为192.168.106.128 对应的Ip地址<br>3)C:\oracle\product\10.2.0\db_1\NETWORK\ADMIN里<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ORCL =</span><br><span class="line">  (DESCRIPTION =</span><br><span class="line">    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.106.128)(PORT = 1521))</span><br><span class="line">    (CONNECT_DATA =</span><br><span class="line">      (SERVER = DEDICATED)</span><br><span class="line">      (SERVICE_NAME = orcl)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">EXTPROC_CONNECTION_DATA =</span><br><span class="line">  (DESCRIPTION =</span><br><span class="line">    (ADDRESS_LIST =</span><br><span class="line">      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))</span><br><span class="line">    )</span><br><span class="line">    (CONNECT_DATA =</span><br><span class="line">      (SID = PLSExtProc)</span><br><span class="line">      (PRESENTATION = RO)</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure></p>
+<p>系统变量添加TNS_ADMIN 为tnsames.ora文件目录<br>4) 中文乱码问题 Oracle数据库<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询<span class="keyword">select</span> userenv(<span class="string">'language'</span>) <span class="keyword">from</span> dual;<span class="comment">--AMERICAN_AMERICA.ZHS16GBK</span></span><br></pre></td></tr></table></figure></p>
+<p>设置一个环境变量NLS_LANG = AMERICAN_AMERICA.ZHS16GBK<br>重新启动PLSQL<br>输入scott，123456，会提示Connect字眼<br>在XP系统中的服务里 安装Oracle数据库会增加几个服务<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">OracleDBConsoleorcl </span>--可以不启动,用于管理<span class="keyword">Oracle的企业管理器的服务.</span></span><br><span class="line"><span class="keyword">OracleJobSchedulerORCL </span>--通常不启动,用于定期操作任务的服务</span><br><span class="line"><span class="keyword">OracleOraDb10g_home1iSQL*Plus </span>--可以不启动,isqlplus服务,用网页执行sql,<span class="number">11</span>g已经取消这个功能</span><br><span class="line"><span class="keyword">OracleOraDb10g_home1TNSListener </span>--必须启动,这是临听,用于远程客户端连接你的<span class="keyword">Oracle</span></span><br><span class="line"><span class="keyword">OracleServiceORCL </span>--必须启动,这是<span class="keyword">Oracle数据库的服务</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="–-基本查询"><a href="#–-基本查询" class="headerlink" title="–===========基本查询"></a>–===========基本查询</h3><p>–1.查询出所有emp中的信息，并用中文进行字段重命名<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> empno <span class="keyword">as</span> <span class="string">"员工编号"</span>,ename <span class="string">"员工姓名"</span>,job <span class="string">"职位"</span>,mgr <span class="string">"领导编号"</span>,</span><br><span class="line">                           hiredate <span class="string">"入职日期"</span>,sal <span class="string">"工资"</span>,comm <span class="string">"奖金"</span>,</span><br><span class="line">                           deptno <span class="string">"部门编号"</span> <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>–2.查询emp表中员工的job信息，并去除重复信息<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span>(job) <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>–3.查询emp表中员工的全年的工资总和(sal总和)<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ename,<span class="number">12</span>*sal <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>–4.查询emp表中员工的全年收入总和(sal+comm的总和)<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ename,<span class="number">12</span>*sal+nvl(comm,<span class="number">0</span>) <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>–5.查询emp表中员工编号，姓名<br>–输出格式如下：编号:xxx，姓名：xxx<br>—-Concat拼接方式<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Concat</span>(<span class="keyword">Concat</span>(<span class="string">'1编号: '</span>,empno),<span class="keyword">Concat</span>(<span class="string">'，姓名：'</span>,ename))<span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>—-Oracle的||方式<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="string">'2编号:'</span><span class="params">||</span>empno<span class="params">||</span><span class="string">'，姓名：'</span><span class="params">||</span>ename from emp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="–-条件查询"><a href="#–-条件查询" class="headerlink" title="–===========条件查询"></a>–===========条件查询</h3><p>–1.查询工资大于1500的员工<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt; <span class="number">1500</span>;</span><br></pre></td></tr></table></figure></p>
+<p>–2.查询工资大于1500并且有奖金的雇员<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt; <span class="number">1500</span> <span class="keyword">and</span> comm <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>–3.查询工资大于1500或者有奖金的雇员<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt; <span class="number">1500</span> <span class="keyword">or</span> comm <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>–4.查询工资大于1500并且没有奖金的雇员<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt; <span class="number">1500</span> <span class="keyword">and</span> comm <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>–5.查询员工姓名为smith的员工<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> ename = <span class="string">'SMITH'</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="–-范围查询"><a href="#–-范围查询" class="headerlink" title="–===========范围查询"></a>–===========范围查询</h3><p>–1.查询工资大于1500但小于3000的全部雇员<br>—-&gt;=,&lt;=方式<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal &gt;=<span class="number">1500</span> <span class="keyword">and</span> sal &lt;= <span class="number">3000</span>;</span><br></pre></td></tr></table></figure></p>
+<p>—-between and方式<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> sal <span class="keyword">between</span> <span class="number">1500</span> <span class="keyword">and</span> <span class="number">3000</span>;</span><br></pre></td></tr></table></figure></p>
+<p>–2.查询1981-1-1到1981-12-31号入职的雇员（between and）<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">×  <span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> to_char(hiredate,<span class="string">'yyyy-MM-dd'</span>) <span class="keyword">between</span> <span class="string">'1981-1-1'</span> <span class="keyword">and</span> <span class="string">'1981-12-31'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> hiredate <span class="keyword">between</span> <span class="keyword">to_date</span>(<span class="string">'1981-1-1'</span>,<span class="string">'yyyy-MM-dd'</span>) <span class="keyword">and</span> <span class="keyword">to_date</span>(<span class="string">'1981-12-31'</span>,<span class="string">'yyyy-MM-dd'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>–3.查询员工编号是7369,7654,7566的员工<br>—-OR方式<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> emp where <span class="attribute">empno</span>=7369 <span class="keyword">or</span> <span class="attribute">empno</span>=7654 <span class="keyword">or</span> <span class="attribute">empno</span>=7566</span><br></pre></td></tr></table></figure></p>
+<p>—-IN方式<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> empno <span class="keyword">in</span>(<span class="number">7369</span>,<span class="number">7654</span>,<span class="number">7566</span>)</span><br></pre></td></tr></table></figure></p>
+<p>–4.查询雇员姓名是’SMITH’,’ALLEN’,’WARD’的雇员信息<br>—-IN方式<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> ename <span class="keyword">in</span>(<span class="string">'SMITH'</span>,<span class="string">'ALLEN'</span>,<span class="string">'WARD'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="–-模糊查询like"><a href="#–-模糊查询like" class="headerlink" title="–===========模糊查询like"></a>–===========模糊查询like</h3><p>–1.查询所有雇员姓名中第二个字符有‘M’的雇员<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> ename <span class="keyword">like</span> <span class="string">'_M%'</span></span><br></pre></td></tr></table></figure></p>
+<p>–2.查询名字中带有‘M’的雇员<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> ename <span class="keyword">like</span> <span class="string">'%M%'</span></span><br></pre></td></tr></table></figure></p>
+<p>–3.查询雇员编号不是7369的雇员信息<br>—-&lt;&gt;方式<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> emp <span class="keyword">where</span> empno &lt;&gt; <span class="number">7369</span></span><br></pre></td></tr></table></figure></p>
+<p>—-!=方式<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> empno ！= <span class="number">7369</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="–-排序-order-by"><a href="#–-排序-order-by" class="headerlink" title="–===========排序 order by"></a>–===========排序 order by</h3><p>–1.查询雇员的工资进行降序排序   （升序asc，默认为升序asc）<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ename,sal <span class="keyword">from</span> emp <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span></span><br><span class="line"><span class="symbol">``</span><span class="symbol">`								</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">--2.查询雇员的奖金并做降序排序（关于nulls first/nulls last） 默认为nulls first</span></span><br></pre></td></tr></table></figure></p>
+<p>select ename,comm from emp order by comm desc nulls last;<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--3.查询雇员的工资做降序排列并且其中奖金部分是升序排序</span></span><br></pre></td></tr></table></figure></p>
+<p>select ename,sal,comm from emp order by sal desc ,comm asc;<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### --===========单行函数</span></span><br><span class="line">```bash</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">伪表，虚表：dual  没有任何的实际意义，只是为了补全Oracle查询语法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">--字符函数</span></span><br><span class="line"><span class="comment">--1.将'smith'转换成大写--关键字:upper</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">upper</span>(<span class="string">'smith'</span>) <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--2.将'SMITH'转换成小写--关键字:lower</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">lower</span>(<span class="string">'SMITH'</span>) <span class="keyword">from</span> dual;</span><br><span class="line">将emp中所有员工姓名全转为小写</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">lower</span>(ename) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">--3.将'smith'首字母大写--关键字:initcap</span></span><br><span class="line"></span><br><span class="line">将emp中所有员工姓名第一个首字母大写</span><br><span class="line"><span class="keyword">select</span> initcap(ename) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">--4.将'helloworld'截取字符串成'hello'--关键字substr</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">substr</span>(<span class="string">'helloworld'</span>,<span class="number">0</span>,<span class="number">5</span>) <span class="keyword">from</span> dual;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">substr</span>(<span class="string">'helloworld'</span>,<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">from</span> dual;   0,1 都是截得hello，ellow 是substr('helloworld',2,5)</span><br><span class="line"><span class="comment">--5.获取'hello'的字符串长度--关键字length</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">length</span>(<span class="string">'hello'</span>) <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--6.将'hello'中的l用x进行替换--关键字replace</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">replace</span>(<span class="string">'hello'</span>,<span class="string">'l'</span>,<span class="string">'x'</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure></p>
+<h3 id="–-数值函数"><a href="#–-数值函数" class="headerlink" title="–===========数值函数"></a>–===========数值函数</h3><p>–1.将15.66进行四舍五入（从-2到2）–关键字round<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select round(15.66,-2) from dual; --0</span><br><span class="line">select round(15.66,-1) from dual; --20</span><br><span class="line">select round(15.66,0) from dual;  --16</span><br><span class="line">select round(15.66,1) from dual;  --15.7</span><br><span class="line">select round(15.66,2) from dual;  --15.66</span><br></pre></td></tr></table></figure></p>
+<p>–2.将15.66进行截断（从-2到2）–关键字trunc<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select trunc(15.66,-2) from dual; --0</span><br><span class="line">select trunc(15.66,-1) from dual; --10</span><br><span class="line">select trunc(15.66,0) from dual;  --15</span><br><span class="line">select trunc(15.66,1) from dual;  --15.6</span><br><span class="line">select trunc(15.66,2) from dual;  --15.66</span><br><span class="line">--3.对15/3进行求余数--关键字mod</span><br><span class="line">select mod(15,3) from dual;</span><br></pre></td></tr></table></figure></p>
+<h3 id="–-日期函数"><a href="#–-日期函数" class="headerlink" title="–===========日期函数"></a>–===========日期函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--1.查询系统时间--关键字sysdate</span><br><span class="line">select sysdate from dual;</span><br><span class="line">--2.查询雇员进入公司的周数 (sysdate-hiredate) 天数</span><br><span class="line">select ename,(sysdate-hiredate)/7 from emp</span><br><span class="line"></span><br><span class="line">--3.查询雇员进入公司的月数--关键字months_between</span><br><span class="line">select ename,months_between(sysdate,hiredate) from emp;</span><br><span class="line">--4.求出三个月后的日期--关键字add_months</span><br><span class="line">select emp,hiredate,add_months(hiredate,3) from emp;</span><br></pre></td></tr></table></figure>
+<h3 id="–-转换函数"><a href="#–-转换函数" class="headerlink" title="–===========转换函数"></a>–===========转换函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--1.将系统日期显示为yyyy-mm-dd hh:mi:ss(去掉补零和24小时显示时间)--关键字to_char</span><br><span class="line">select tochar(sysdate,<span class="string">'yyyy-mm-dd hh:mi:ss'</span>) from dual;</span><br><span class="line">24小时制</span><br><span class="line">select tochar(sysdate,<span class="string">'yyyy-mm-dd hh24:mi:ss'</span>) from dual;</span><br><span class="line">去掉其中的0</span><br><span class="line">select tochar(sysdate,<span class="string">'yyyyfm-mm-dd hh24:mi:ss'</span>) from dual;</span><br><span class="line"></span><br><span class="line">----显示成年月日</span><br><span class="line">select tochar(sysdate,<span class="string">'yyyy'</span>)||<span class="string">'年'</span>||to_char(sysdate,<span class="string">'MM'</span>)||<span class="string">'月'</span>||to_char(sysdate,<span class="string">'dd'</span>)||<span class="string">'日'</span> from dual;</span><br><span class="line">--2.将字符串<span class="string">'1981-1-1'</span>转换成日期类型--关键字to_date</span><br><span class="line">select to_date(<span class="string">'1981-1-1'</span>,<span class="string">'yyyy-MM--dd'</span>) from dual;</span><br><span class="line"></span><br><span class="line">select to_number(<span class="string">'99'</span>) from dual;</span><br><span class="line">select to_char(99) from dual;</span><br></pre></td></tr></table></figure>
+<h3 id="–-通用函数"><a href="#–-通用函数" class="headerlink" title="–===========通用函数"></a>–===========通用函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--1.空值的处理函数 ,没有用0代替</span><br><span class="line">select nvl(comm,0) from emp;</span><br><span class="line">--2.nvl2(判断值,空返回值,非空返回值) </span><br><span class="line"></span><br><span class="line">select nv12(null,<span class="string">'1'</span>,<span class="string">'2'</span>) from dual; --空返回<span class="string">'2'</span>，非空返回<span class="string">'1'</span></span><br></pre></td></tr></table></figure>
+<h3 id="–-条件表达式"><a href="#–-条件表达式" class="headerlink" title="–===========条件表达式"></a>–===========条件表达式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--1.查询员工的job内容并转成中文显示</span><br><span class="line">----decode方式</span><br><span class="line">select ename,decode(job,<span class="string">'CLERK'</span>,<span class="string">'柜员'</span>,<span class="string">'SALEMAN'</span>,<span class="string">'销售'</span>,<span class="string">'MANAGER'</span>,<span class="string">'管理'</span>,<span class="string">'其他'</span>) from emp;</span><br><span class="line">最后不写<span class="string">'其他'</span> 会变为空</span><br><span class="line">----<span class="keyword">case</span> when <span class="keyword">then</span> end方式</span><br><span class="line">select ename,<span class="keyword">case</span> job when <span class="string">'CLERK'</span> <span class="keyword">then</span> <span class="string">'柜员'</span></span><br><span class="line">					  when <span class="string">'SALEMAN'</span> <span class="keyword">then</span> <span class="string">'销售'</span></span><br><span class="line">					  when <span class="string">'MANAGER'</span> <span class="keyword">then</span> <span class="string">'管理'</span></span><br><span class="line">			 <span class="keyword">else</span></span><br><span class="line">				<span class="string">'其他'</span></span><br><span class="line">				end from emp;</span><br></pre></td></tr></table></figure>
+<h3 id="–-多行函数"><a href="#–-多行函数" class="headerlink" title="–===========多行函数"></a>–===========多行函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--1.查询所有员工记录数--关键字count</span><br><span class="line">select count(*) from emp;</span><br><span class="line"></span><br><span class="line">--2.查询佣金的总数--（如何查询某个字段的总数量）</span><br><span class="line">select sum(comm) from emp;</span><br><span class="line">--3.查询最低工资--关键字min</span><br><span class="line">select min(sal) from emp;</span><br><span class="line">--4.查询最高工资--关键字max</span><br><span class="line">select max(sal) from emp;</span><br><span class="line">--5.查询平均工资--关键字avg</span><br><span class="line">select avg(sal) from emp;</span><br><span class="line">--6.查询20号部门的员工工资总和</span><br><span class="line">select sum(sal) from emp <span class="built_in">where</span> deptno = 20;</span><br></pre></td></tr></table></figure>
+<h3 id="–-分组函数"><a href="#–-分组函数" class="headerlink" title="–===========分组函数"></a>–===========分组函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--1.查询部门编号及人数--分组查询关键字group by</span><br><span class="line">select deptno,count(*) from emp group by deptno;</span><br><span class="line">--2.查询每个部门编号及平均工资</span><br><span class="line">select deptno,avg(sal) from emp group by deptno;</span><br><span class="line">--3.查询部门名称，部门编号，平均工资</span><br><span class="line">select dname,emp.deptno,avg(sal) from dept,emp where dept.deptno = emp.deptno group by dname,emp.deptno;</span><br><span class="line">--4.查询出部门人数大于5人的部门</span><br><span class="line">select deptno,count(*) from emp group by deptno having count(*) &gt; 5;</span><br><span class="line">--5.查询部门编号，部门名称，平均工资且平均工资大于2000</span><br><span class="line">select emp.deptno,dname,avg(sal) from emp,dept where emp.deptno = dept.deptno group by emp.deptno,dname having avg(sal) &gt; 2000;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/19/2019-07-19/" rel="next" title="SpringMVC常用注解(三)">
+                <i class="fa fa-chevron-left"></i> SpringMVC常用注解(三)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Jack">
+            
+              <p class="site-author-name" itemprop="name">Jack</p>
+              <div class="site-description motion-element" itemprop="description">Jack's Ideas & Blogs</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置"><span class="nav-number">2.</span> <span class="nav-text">2. 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-基本查询"><span class="nav-number">3.</span> <span class="nav-text">–===========基本查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-条件查询"><span class="nav-number">4.</span> <span class="nav-text">–===========条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-范围查询"><span class="nav-number">5.</span> <span class="nav-text">–===========范围查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-模糊查询like"><span class="nav-number">6.</span> <span class="nav-text">–===========模糊查询like</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-排序-order-by"><span class="nav-number">7.</span> <span class="nav-text">–===========排序 order by</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-数值函数"><span class="nav-number">8.</span> <span class="nav-text">–===========数值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-日期函数"><span class="nav-number">9.</span> <span class="nav-text">–===========日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-转换函数"><span class="nav-number">10.</span> <span class="nav-text">–===========转换函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-通用函数"><span class="nav-number">11.</span> <span class="nav-text">–===========通用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-条件表达式"><span class="nav-number">12.</span> <span class="nav-text">–===========条件表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-多行函数"><span class="nav-number">13.</span> <span class="nav-text">–===========多行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–-分组函数"><span class="nav-number">14.</span> <span class="nav-text">–===========分组函数</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack</span>
+
+  
+
+  
+</div>
+"
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+"
+
+<br>
+<!--站点统计-->
+<!--<a href=”httpsa://new.cnzz.com/v1/login.php?siteid=127688378”><img src=”httpsa://web.umeng.com/static/img/main/icon.gif” alt=”cnzz_icon“></a><script type=”text/javascript“>var cnzz_s_tag = document.createElement(‘script’); cnzz_s_tag.type = ‘text/javascript’; cnzz_s_tag.async = true; cnzz_s_tag.charset = ‘utf-8’; cnzz_s_tag.src = ‘httpsa://w.cnzz.com/c.php?id=127688378&async=1’; var root_s = document.getElementsByTagName(‘script’)[0]; root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>-->
+
+<!-- cnzz stats -->
+<script type="text/javascript">var cnzz_s_tag = document.createElement('script');cnzz_s_tag.type = 'text/javascript';cnzz_s_tag.async = true;cnzz_s_tag.charset = 'utf-8';cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1276883782&async=1';var root_s = document.getElementsByTagName('script')[0];root_s.parentNode.insertBefore(cnzz_s_tag, root_s);</script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+	
+    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+
+<br>
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.0.1"></script>
+
+  <script src="/js/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- canvas-nest-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
+

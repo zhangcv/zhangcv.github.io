@@ -108,7 +108,7 @@
   <meta name="description" content="Status Report Message /SpringMVC1/WEB-INF/user.jsp Description The origin server did not find a current representation for the target resource or is not willing to disclose that one exists. 后来找了相关文档原">
 <meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC">
+<meta property="og:title" content="SpringMVC常用注解(一)">
 <meta property="og:url" content="http://zhangcv.github.io/2019/07/15/2019-07-15/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
 <meta property="og:description" content="Status Report Message /SpringMVC1/WEB-INF/user.jsp Description The origin server did not find a current representation for the target resource or is not willing to disclose that one exists. 后来找了相关文档原">
@@ -119,9 +119,15 @@
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/4.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/5组件实现类.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/6springMVC注解.jpg">
-<meta property="og:updated_time" content="2019-07-25T06:56:22.706Z">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/7.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/8controller编写.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/9RequestMapping.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/9RequestMapping2.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/9RequestMapping3.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/9RequestMapping4.jpg">
+<meta property="og:updated_time" content="2019-07-26T01:52:22.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringMVC">
+<meta name="twitter:title" content="SpringMVC常用注解(一)">
 <meta name="twitter:description" content="Status Report Message /SpringMVC1/WEB-INF/user.jsp Description The origin server did not find a current representation for the target resource or is not willing to disclose that one exists. 后来找了相关文档原">
 <meta name="twitter:image" content="http://zhangcv.github.io/2019/07/15/2019-07-15/1默认配置文件.jpg">
 
@@ -141,7 +147,7 @@
   };
 </script>
 
-  <title>SpringMVC | Zhangcv's Personal Website</title>
+  <title>SpringMVC常用注解(一) | Zhangcv's Personal Website</title>
   
 
 
@@ -419,7 +425,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringMVC
+          <h1 class="post-title" itemprop="name headline">SpringMVC常用注解(一)
 
               
             
@@ -462,7 +468,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-25 14:56:22" itemprop="dateModified" datetime="2019-07-25T14:56:22+08:00">2019-07-25</time>
+                <time title="Modified: 2019-07-26 09:52:22" itemprop="dateModified" datetime="2019-07-26T09:52:22+08:00">2019-07-26</time>
               
             
           </span>
@@ -514,7 +520,7 @@
       
 
       
-        <p><img src="/2019/07/15/2019-07-15/1默认配置文件.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/2SpringMVC流程.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/3概述.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/4.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/5组件实现类.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/6springMVC注解.jpg" alt="无"></p>
+        <p><img src="/2019/07/15/2019-07-15/1默认配置文件.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/2SpringMVC流程.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/3概述.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/4.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/5组件实现类.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/6springMVC注解.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/7.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/8controller编写.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/9RequestMapping.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/9RequestMapping2.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/9RequestMapping3.jpg" alt="无"><br><img src="/2019/07/15/2019-07-15/9RequestMapping4.jpg" alt="无"></p>
 <p>Status Report</p>
 <p>Message /SpringMVC1/WEB-INF/user.jsp</p>
 <p>Description The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.</p>
@@ -530,7 +536,7 @@
 <p><a href="mvc:annotation-driven/" target="_blank" rel="noopener">mvc:annotation-driven/</a>代替两个<br>&lt;!– <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean></p>
 <pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;&lt;/bean&gt; --&gt;
 </code></pre><ol start="10">
-<li>SpringMVC常用的注解<br>1) @controller 当前Bean 为一个业务处理器类。<br>2) @RequestMapping注解 为控制器可以指定处理哪些URL请求<br>修饰方法<br>-@RequestMapping除了可以使用请求<br>URL映射请求外，还可以使用请求方法、请求参数及请求头映射请求<br>-@RequestMapping的value 、method、params及heads分别表示请求URL、请求方法、请求参数及请求头的映射条件，他们之间是与的关系，联合使用多个条件可以让请求映射更加准确化。</li>
+<li>SpringMVC常用的注解<br>1) @controller 当前Bean 为一个业务处理器类。<br>2) @RequestMapping注解 为控制器可以指定处理哪些URL请求<br>修饰方法<br>-@RequestMapping除了可以使用请求<br>URL映射请求外，还可以使用请求方法、请求参数及请求头映射请求<br>-@RequestMapping的value 、method、params及heads分别表示请求URL、请求方法、请求参数及请求头的映射条件，他们之间是与的关系，联合使用多个条件可以让请求映射更加准确化。<br>3) @RequestParam<br>4) @RequestHeaders</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(<span class="string">"/user"</span>)</span><br><span class="line">public class springMVCController &#123; 	// /user/testRequestMapping</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(<span class="string">"/testRequestMapping"</span>)</span><br><span class="line">	public String <span class="function"><span class="title">testRequestMapping</span></span>() &#123;</span><br><span class="line">		System.out.println(<span class="string">"testRequestMapping"</span>);</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">注释@RequestMapping(<span class="string">"/user"</span>)</span><br><span class="line">/testRequestMapping</span><br><span class="line">不注释</span><br><span class="line">user/testRequestMapping</span><br></pre></td></tr></table></figure>
 <p>简单配置<br><br>Dao、Service<br>@Repository、@Service<br>web.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xmlns=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span></span><br><span class="line">	id=<span class="string">"WebApp_ID"</span> version=<span class="string">"3.1"</span>&gt;</span><br><span class="line">	&lt;display-name&gt;mvc&lt;/display-name&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;servlet&gt;</span><br><span class="line">		&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">		&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">			&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">			&lt;!-- &lt;param-value&gt;classpath:com/neusoft/resource/springmvc-servlet.xml&lt;/param-value&gt; --&gt;</span><br><span class="line">			&lt;param-value&gt;/WEB-INF/springmvc-servlet.xml&lt;/param-value&gt;</span><br><span class="line">		&lt;/init-param&gt;</span><br><span class="line">	&lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">	&lt;servlet-mapping&gt;</span><br><span class="line">		&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">		&lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">	&lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;welcome-file-list&gt;</span><br><span class="line">		&lt;welcome-file&gt;register.jsp&lt;/welcome-file&gt;</span><br><span class="line">	&lt;/welcome-file-list&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure></p>
@@ -647,7 +653,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -684,7 +690,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -719,7 +727,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
