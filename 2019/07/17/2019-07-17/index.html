@@ -118,7 +118,7 @@
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/17/2019-07-17/3.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/17/2019-07-17/4.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/17/2019-07-17/5.jpg">
-<meta property="og:updated_time" content="2019-07-29T04:50:47.426Z">
+<meta property="og:updated_time" content="2019-07-30T02:34:05.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树的删除结点、顺序存储二叉树、线索化二叉树">
 <meta name="twitter:description" content="完成删除结点的操作规定：1)如果删除的结点是叶子结点，则删除该节点2)如果删除的结点是非叶子结点，则删除该子树 思路1、因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除的结点2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将this.left=null;并且就返回(结束递归删除)  如果当前结点的右子结点不为空，并且">
@@ -461,7 +461,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-29 12:50:47" itemprop="dateModified" datetime="2019-07-29T12:50:47+08:00">2019-07-29</time>
+                <time title="Modified: 2019-07-30 10:34:05" itemprop="dateModified" datetime="2019-07-30T10:34:05+08:00">2019-07-30</time>
               
             
           </span>
@@ -513,8 +513,8 @@
       
 
       
-        <p>完成删除结点的操作<br>规定：<br>1)如果删除的结点是叶子结点，则删除该节点<br>2)如果删除的结点是非叶子结点，则删除该子树</p>
-<p>思路<br>1、因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除的结点<br>2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将<br>this.left=null;并且就返回(结束递归删除)</p>
+        <h3 id="完成删除结点的操作"><a href="#完成删除结点的操作" class="headerlink" title="完成删除结点的操作"></a>完成删除结点的操作</h3><p>规定：<br>1)如果删除的结点是叶子结点，则删除该节点<br>2)如果删除的结点是非叶子结点，则删除该子树</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>1、因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除的结点<br>2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将<br>this.left=null;并且就返回(结束递归删除)</p>
 <ol start="3">
 <li>如果当前结点的右子结点不为空，并且右子结点就是要删除的结点，就将<br>this.right=null;并且就返回(结束递归删除)</li>
 <li>如果第二步，第三步没有删除结点，那么我们就需要向左子树进行递归删除<br>5.<br>如果第4步也没有删除结点，则应对对右子树进行递归删除。</li>
@@ -523,408 +523,18 @@
 </ol>
 <p>HeroNode<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public void delNode(int no ) &#123;</span><br><span class="line">		</span><br><span class="line">		//2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将this.left=null;并且就返回(结束递归删除)</span><br><span class="line">		<span class="keyword">if</span> (this.left != null &amp;&amp; this.left.no == no) &#123;</span><br><span class="line">			this.left = null;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//3.如果当前结点的右子结点不为空，并且右子节点就是需要删除结点，就将this.right=null;并且就返回(结束递归删除)</span><br><span class="line">		<span class="keyword">if</span> (this.right != null &amp;&amp; this.right.no == no) &#123;</span><br><span class="line">			this.right = null;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//4.需要向左子树递归删除</span><br><span class="line">		<span class="keyword">if</span>(this.left!=null) &#123;</span><br><span class="line">			this.left.delNode(no);</span><br><span class="line">		&#125;</span><br><span class="line">		//5.需要向右子树递归删除</span><br><span class="line">		<span class="keyword">if</span>(this.right!=null) &#123;</span><br><span class="line">			this.right.delNode(no);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2019/07/17/2019-07-17/1.jpg" alt="无"></p>
-<p>顺序存储二叉树的特点<br>1) 顺序二叉树通常只考虑完全二叉树<br>2) 第n个元素的左子结点为2 <em> n + 1<br>3) 第n个元素的右子结点为2 </em> n + 2<br>4) 第n个元素的父节点为(n - 1) / 25<br>5) n:表示二叉树的第几个元素(从0开始编号)</p>
+<h3 id="顺序存储二叉树的特点"><a href="#顺序存储二叉树的特点" class="headerlink" title="顺序存储二叉树的特点"></a>顺序存储二叉树的特点</h3><p>1) 顺序二叉树通常只考虑完全二叉树<br>2) 第n个元素的左子结点为2 <em> n + 1<br>3) 第n个元素的右子结点为2 </em> n + 2<br>4) 第n个元素的父节点为(n - 1) / 25<br>5) n:表示二叉树的第几个元素(从0开始编号)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">public class ArrayBinaryTreeDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int arr[] = &#123; 1, 2, 3, 4, 5, 6, 7 &#125;;</span><br><span class="line">		ArrBinaryTree arrBinaryTree = new ArrBinaryTree(arr);</span><br><span class="line">//		arrBinaryTree.preOrder();  //1 2 4 5 3 6 7</span><br><span class="line">//		arrBinaryTree.infixOrder();//4 2 5 1 6 3 7</span><br><span class="line">		arrBinaryTree.postOrder(); //4 5 2 6 7 3 1</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编写一个ArrayBinaryTree，实现顺序存储二叉树遍历</span><br><span class="line">class ArrBinaryTree &#123;</span><br><span class="line">	private int arr[];// 存储数据结点的数组</span><br><span class="line"></span><br><span class="line">	public ArrBinaryTree(int arr[]) &#123;</span><br><span class="line">		this.arr = arr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * </span><br><span class="line">	 * @param index</span><br><span class="line">	 *            数组的下标</span><br><span class="line">	 */</span><br><span class="line">	//重载preOrder</span><br><span class="line">	public void <span class="function"><span class="title">preOrder</span></span>() &#123;</span><br><span class="line">		this.preOrder(0);</span><br><span class="line">	&#125;</span><br><span class="line">	public void preOrder(int index) &#123;</span><br><span class="line">		// 如果数组为空，或者arr.length=0</span><br><span class="line">		<span class="keyword">if</span> (arr == null || arr.length == 0) &#123;</span><br><span class="line">			System.out.println(<span class="string">"数组为空，不能按照二叉树的前序遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		//输出当前这个元素</span><br><span class="line">		System.out.println(arr[index]);</span><br><span class="line">		// 向左递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 1) &lt; arr.length) &#123;</span><br><span class="line">			preOrder(2 * index + 1);</span><br><span class="line">		&#125;</span><br><span class="line">		// 向右递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 2) &lt; arr.length) &#123;</span><br><span class="line">			preOrder(2 * index + 2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public void <span class="function"><span class="title">infixOrder</span></span>() &#123;</span><br><span class="line">		this.infixOrder(0);</span><br><span class="line">	&#125;</span><br><span class="line">	public void infixOrder(int index) &#123;</span><br><span class="line">		// 如果数组为空，或者arr.length=0</span><br><span class="line">		<span class="keyword">if</span> (arr == null || arr.length == 0) &#123;</span><br><span class="line">			System.out.println(<span class="string">"数组为空，不能按照二叉树的中序遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 向左递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 1) &lt; arr.length) &#123;</span><br><span class="line">			infixOrder(2 * index + 1);</span><br><span class="line">		&#125;</span><br><span class="line">		// 输出当前这个元素</span><br><span class="line">		System.out.println(arr[index]);</span><br><span class="line">		// 向右递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 2) &lt; arr.length) &#123;</span><br><span class="line">			infixOrder(2 * index + 2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public void <span class="function"><span class="title">postOrder</span></span>() &#123;</span><br><span class="line">		this.postOrder(0);</span><br><span class="line">	&#125;</span><br><span class="line">	public void postOrder(int index) &#123;</span><br><span class="line">		// 如果数组为空，或者arr.length=0</span><br><span class="line">		<span class="keyword">if</span> (arr == null || arr.length == 0) &#123;</span><br><span class="line">			System.out.println(<span class="string">"数组为空，不能按照二叉树的后序遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 向左递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 1) &lt; arr.length) &#123;</span><br><span class="line">			postOrder(2 * index + 1);</span><br><span class="line">		&#125;</span><br><span class="line">		// 向右递归</span><br><span class="line">		<span class="keyword">if</span> ((index * 2 + 2) &lt; arr.length) &#123;</span><br><span class="line">			postOrder(2 * index + 2);</span><br><span class="line">		&#125;</span><br><span class="line">		// 输出当前这个元素</span><br><span class="line">		System.out.println(arr[index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>线索化二叉树<br><img src="/2019/07/17/2019-07-17/2.jpg" alt="无"></p>
-<p>问题分析：<br>1)当我们对上面的二叉树进行中序遍历是，数列为 8 3 10 1 14 6<br>2) 但是6,8,10,14,这几个结点的左右指针，并没有完全利用<br>3) 如果我们希望充分利用每个节点的左右指针，让各个节点可以指向自己的前后节点<br>解决方法 线索二叉树<br><img src="/2019/07/17/2019-07-17/3.jpg" alt="无"><br><img src="/2019/07/17/2019-07-17/4.jpg" alt="无"></p>
-<p>中序遍历的结果为 8,3,10,1,14,6<br>说明：当线索化二叉树后，Node节点的属性left和right，有如下情况：<br>1) left指向的是左子树，也可能是前驱节点，比如①节点的left指向左子树，而⑩节点的left指向的就是前驱节点。<br>2) right指向的是右子树，也可能是指向后继节点，比如①节点的right指向右子树，而⑩节点的right指向的就是后继节点</p>
-<pre><code class="bash">public class ThreadBinaryTreeDemo {
-    public static void main(String[] args) {
-        //中序线索二叉树
-        HeroNode root = new HeroNode(1, <span class="string">"tom"</span>);
-        HeroNode node2 =new HeroNode(3, <span class="string">"jack"</span>);
-        HeroNode node3 =new HeroNode(6, <span class="string">"simth"</span>);
-        HeroNode node4 =new HeroNode(8, <span class="string">"marry"</span>);
-        HeroNode node5 =new HeroNode(10, <span class="string">"king"</span>);
-        HeroNode node6 =new HeroNode(14, <span class="string">"dim"</span>);
-        //二叉树，后面我们要递归创建，现在简单处理使用手动创建
-        root.setLeft(node2);
-        root.setRight(node3);
-        node2.setLeft(node4);
-        node2.setRight(node5);
+<h3 id="线索化二叉树"><a href="#线索化二叉树" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h3><p><img src="/2019/07/17/2019-07-17/2.jpg" alt="无"></p>
+<h4 id="问题分析："><a href="#问题分析：" class="headerlink" title="问题分析："></a>问题分析：</h4><p>1)当我们对上面的二叉树进行中序遍历是，数列为 8 3 10 1 14 6<br>2) 但是6,8,10,14,这几个结点的左右指针，并没有完全利用<br>3) 如果我们希望充分利用每个节点的左右指针，让各个节点可以指向自己的前后节点</p>
+<h4 id="解决方法-线索二叉树"><a href="#解决方法-线索二叉树" class="headerlink" title="解决方法 线索二叉树"></a>解决方法 线索二叉树</h4><p><img src="/2019/07/17/2019-07-17/3.jpg" alt="无"><br><img src="/2019/07/17/2019-07-17/4.jpg" alt="无"></p>
+<p>中序遍历的结果为 8,3,10,1,14,6</p>
+<p>说明：当线索化二叉树后，Node节点的属性left和right，有如下情况：<br>1) left指向的是左子树，也可能是前驱节点，比如①节点的left指向左子树，而⑩节点的left指向的就是前驱节点。<br>2) right指向的是右子树，也可能是指向后继节点，比如①节点的right指向右子树，而⑩节点的right指向的就是后继节点</p>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadBinaryTreeDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		//中序线索二叉树</span><br><span class="line">		HeroNode root = new HeroNode(1, <span class="string">"tom"</span>);</span><br><span class="line">		HeroNode node2 =new HeroNode(3, <span class="string">"jack"</span>);</span><br><span class="line">		HeroNode node3 =new HeroNode(6, <span class="string">"simth"</span>);</span><br><span class="line">		HeroNode node4 =new HeroNode(8, <span class="string">"marry"</span>);</span><br><span class="line">		HeroNode node5 =new HeroNode(10, <span class="string">"king"</span>);</span><br><span class="line">		HeroNode node6 =new HeroNode(14, <span class="string">"dim"</span>);</span><br><span class="line">		//二叉树，后面我们要递归创建，现在简单处理使用手动创建</span><br><span class="line">		root.setLeft(node2);</span><br><span class="line">		root.setRight(node3);</span><br><span class="line">		node2.setLeft(node4);</span><br><span class="line">		node2.setRight(node5);</span><br><span class="line">		</span><br><span class="line">		node3.setLeft(node6);</span><br><span class="line">		//测试线索化</span><br><span class="line">		ThreadBinaryTree threadBinaryTree = new ThreadBinaryTree();</span><br><span class="line">		threadBinaryTree.setRoot(root);</span><br><span class="line">		threadBinaryTree.threadNodes();</span><br><span class="line">		</span><br><span class="line">		// 测试：以10号节点测试</span><br><span class="line">		HeroNode leftnode = node5.getLeft();</span><br><span class="line">		HeroNode rightnode = node5.getRight();</span><br><span class="line">		System.out.println(<span class="string">"10号节点前驱结点 "</span>+leftnode);</span><br><span class="line">		System.out.println(<span class="string">"10号节点后继结点 "</span>+rightnode);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//实现线索化功能的二叉树 ThreadBinaryTree</span><br><span class="line">class ThreadBinaryTree &#123;</span><br><span class="line">	private HeroNode root;</span><br><span class="line">	</span><br><span class="line">	//为了实现线索化，需要创建指向当前结点的前驱节点的指针</span><br><span class="line">	//当递归进行线索化时，pre 总是保留前一个结点</span><br><span class="line">	private HeroNode pre=null;</span><br><span class="line"></span><br><span class="line">	public void setRoot(HeroNode root) &#123;</span><br><span class="line">		this.root = root;</span><br><span class="line">	&#125;</span><br><span class="line">	//重载threadNodes</span><br><span class="line">	public void <span class="function"><span class="title">threadNodes</span></span>() &#123;</span><br><span class="line">		this.threadNodes(root);</span><br><span class="line">	&#125;</span><br><span class="line">	//编写对二叉树进行中序线索化的方法</span><br><span class="line">	/**</span><br><span class="line">	 * </span><br><span class="line">	 * @param heroNode 当前需要线索化的结点</span><br><span class="line">	 */</span><br><span class="line">	public void threadNodes(HeroNode node) &#123;</span><br><span class="line">		<span class="keyword">if</span> (node == null) &#123;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//1.线索化左子树</span><br><span class="line">		threadNodes(node.getLeft());</span><br><span class="line">		//2.线索化当前结点[有难度]</span><br><span class="line">		</span><br><span class="line">		//处理当前结点的前驱节点</span><br><span class="line">		//以8为例，8.left=null,8.lefttype=1</span><br><span class="line">		<span class="keyword">if</span> (node.getLeft() == null) &#123;</span><br><span class="line">			// 让当前结点的左子针指向前驱节点</span><br><span class="line">			node.setLeft(pre);</span><br><span class="line">			// 修改当前节点的左子针类型</span><br><span class="line">			node.setLefttype(1);</span><br><span class="line">		&#125;</span><br><span class="line">		//处理后继节点</span><br><span class="line">		<span class="keyword">if</span> (pre != null &amp;&amp; pre.getRight() == null) &#123;</span><br><span class="line">			// 让前驱节点的右指针指向当前结点</span><br><span class="line">			pre.setRight(node);</span><br><span class="line">			pre.setRighttype(1);</span><br><span class="line">		&#125;</span><br><span class="line">		// ！！！没处理完一个节点后，让当前结点是下一个结点的前驱结点</span><br><span class="line">		pre = node;</span><br><span class="line">		// 3.线索化右子树</span><br><span class="line">		threadNodes(node.getRight());</span><br><span class="line">	&#125;</span><br><span class="line">	//删除结点</span><br><span class="line">	public void delNode(int no) &#123;</span><br><span class="line">		<span class="keyword">if</span>(root!=null) &#123;</span><br><span class="line">			//如果只有一个结点这里判断root是不是要删除的结点</span><br><span class="line">			<span class="keyword">if</span>(root.getNo()==no) &#123;</span><br><span class="line">				root=null;</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				root.delNode(no);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"空树，不能删除"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	// 前序遍历测试</span><br><span class="line">	public void <span class="function"><span class="title">preOrder</span></span>() &#123;</span><br><span class="line">		<span class="keyword">if</span> (this.root != null) &#123;</span><br><span class="line">			this.root.preOrder();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 中序遍历测试</span><br><span class="line">	public void <span class="function"><span class="title">infixOrder</span></span>() &#123;</span><br><span class="line">		<span class="keyword">if</span> (this.root != null) &#123;</span><br><span class="line">			this.root.infixOrder();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 后序遍历测试</span><br><span class="line">	public void <span class="function"><span class="title">postOrder</span></span>() &#123;</span><br><span class="line">		<span class="keyword">if</span> (this.root != null) &#123;</span><br><span class="line">			this.root.postOrder();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 前序遍历</span><br><span class="line">	public HeroNode preOrderSerach(int no) &#123;</span><br><span class="line">		<span class="keyword">if</span> (root != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> root.preOrderSearch(no);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">return</span> null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 中序遍历</span><br><span class="line">	public HeroNode infixOrderSearch(int no) &#123;</span><br><span class="line">		<span class="keyword">if</span> (root != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> root.infixOrderSearch(no);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">return</span> null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 后序遍历</span><br><span class="line">	public HeroNode postOrderSearch(int no) &#123;</span><br><span class="line">		<span class="keyword">if</span> (root != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> root.postOrderSearch(no);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">return</span> null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class HeroNode &#123;</span><br><span class="line">	private int no;</span><br><span class="line">	private String name;</span><br><span class="line">	private HeroNode left;// 默认为空</span><br><span class="line">	private HeroNode right;//默认为空</span><br><span class="line">	</span><br><span class="line">	//说明</span><br><span class="line">	//1.如果lefttype==0表示指向左子树，lefttype==1表示指向前驱节点</span><br><span class="line">	//2.如果righttype==0表示指向右子树，righttype==1表示指向后继节点</span><br><span class="line">	private int lefttype;</span><br><span class="line">	private int righttype;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getLefttype</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> lefttype;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setLefttype(int lefttype) &#123;</span><br><span class="line">		this.lefttype = lefttype;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getRighttype</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> righttype;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setRighttype(int righttype) &#123;</span><br><span class="line">		this.righttype = righttype;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public HeroNode(int no, String name) &#123;</span><br><span class="line">		super();</span><br><span class="line">		this.no = no;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getNo</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> no;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setNo(int no) &#123;</span><br><span class="line">		this.no = no;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getName</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public HeroNode <span class="function"><span class="title">getLeft</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> left;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setLeft(HeroNode left) &#123;</span><br><span class="line">		this.left = left;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public HeroNode <span class="function"><span class="title">getRight</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> right;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setRight(HeroNode right) &#123;</span><br><span class="line">		this.right = right;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"HeroNode [no="</span> + no + <span class="string">", name="</span> + name + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 1)如果删除的结点是叶子结点，则删除该节点</span><br><span class="line">	 * 2)如果删除的结点是非叶子结点，则删除该子树</span><br><span class="line">	 * @param no</span><br><span class="line">	 */</span><br><span class="line">	public void delNode(int no ) &#123;</span><br><span class="line">		/**</span><br><span class="line">		 * 思路</span><br><span class="line">		 * 1、因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除的结点</span><br><span class="line">		 * 2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将</span><br><span class="line">		 * this.left=null;并且就返回(结束递归删除)</span><br><span class="line">		 * 3. 如果当前结点的右子结点不为空，并且右子结点就是要删除的结点，就将</span><br><span class="line">		 * this.right=null;并且就返回(结束递归删除)</span><br><span class="line">		 * 4. 如果第二步，第三步没有删除结点，那么我们就需要向左子树进行递归删除</span><br><span class="line">		 * 5.如果第4步也没有删除结点，则应对对右子树进行递归删除。</span><br><span class="line">		 * 6. 考虑如果树是空树 root，如果只有一个root结点，则将二叉树置空</span><br><span class="line">		 */</span><br><span class="line">		//2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将this.left=null;并且就返回(结束递归删除)</span><br><span class="line">		<span class="keyword">if</span> (this.left != null &amp;&amp; this.left.no == no) &#123;</span><br><span class="line">			this.left = null;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//3.如果当前结点的右子结点不为空，并且右子节点就是需要删除结点，就将this.right=null;并且就返回(结束递归删除)</span><br><span class="line">		<span class="keyword">if</span> (this.right != null &amp;&amp; this.right.no == no) &#123;</span><br><span class="line">			this.right = null;</span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//4.需要向左子树递归删除</span><br><span class="line">		<span class="keyword">if</span>(this.left!=null) &#123;</span><br><span class="line">			this.left.delNode(no);</span><br><span class="line">		&#125;</span><br><span class="line">		//5.需要向右子树递归删除</span><br><span class="line">		<span class="keyword">if</span>(this.right!=null) &#123;</span><br><span class="line">			this.right.delNode(no);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	// 前序遍历</span><br><span class="line">	public void <span class="function"><span class="title">preOrder</span></span>() &#123;</span><br><span class="line">		System.out.println(this);// 先输出父节点</span><br><span class="line">		// 递归向左子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			this.left.preOrder();</span><br><span class="line">		&#125;</span><br><span class="line">		// 递归向右子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			this.right.preOrder();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 中序遍历</span><br><span class="line">	public void <span class="function"><span class="title">infixOrder</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">		// 递归向左子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			this.left.infixOrder();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(this);// 输出父节点</span><br><span class="line">		// 递归向右子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			this.right.infixOrder();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 后序遍历</span><br><span class="line">	public void <span class="function"><span class="title">postOrder</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">		// 递归向左子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			this.left.postOrder();</span><br><span class="line">		&#125;</span><br><span class="line">		// 递归向右子树前序遍历</span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			this.right.postOrder();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(this);// 输出父节点</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 前序遍历查找</span><br><span class="line">	public HeroNode preOrderSearch(int no) &#123;</span><br><span class="line">		<span class="keyword">if</span> (this.no == no) &#123;</span><br><span class="line">			<span class="built_in">return</span> this;</span><br><span class="line">		&#125;</span><br><span class="line">		// 1.则判断当前结点的左子结点是否为空，如果不为空，递归前序查找</span><br><span class="line">		// 2.如果做地柜前序查找，找到结点，则返回</span><br><span class="line">		HeroNode resNode = null;</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			resNode = this.left.preOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (resNode != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> resNode;</span><br><span class="line">		&#125;</span><br><span class="line">		// 1.左递归前序查找，找到结点，则返回，否继续判断</span><br><span class="line">		// 2.当前的结点的右子结点是否为空，如果不为空，则继续向右递归前序查找</span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			resNode = this.right.preOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> resNode;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 中序遍历查找</span><br><span class="line">	public HeroNode infixOrderSearch(int no) &#123;</span><br><span class="line"></span><br><span class="line">		// 1.则判断当前结点的左子结点是否为空，如果不为空，递归中序查找</span><br><span class="line">		HeroNode resNode = null;</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			resNode = this.left.infixOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (resNode != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> resNode;</span><br><span class="line">		&#125;</span><br><span class="line">		// 2.如果做地柜前序查找，找到结点，则返回</span><br><span class="line">//		System.out.println(<span class="string">"进入中序查找"</span>);</span><br><span class="line">		<span class="keyword">if</span> (this.no == no) &#123;</span><br><span class="line">			<span class="built_in">return</span> this;</span><br><span class="line">		&#125;</span><br><span class="line">		// 否则向右递归中序查找</span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			resNode = this.right.infixOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> resNode;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 后序遍历查找</span><br><span class="line">	public HeroNode postOrderSearch(int no) &#123;</span><br><span class="line"></span><br><span class="line">		// 1.则判断当前结点的左子结点是否为空，如果不为空，递归后序查找</span><br><span class="line"></span><br><span class="line">		HeroNode resNode = null;</span><br><span class="line">		<span class="keyword">if</span> (this.left != null) &#123;</span><br><span class="line">			resNode = this.left.postOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (resNode != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> resNode;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (this.right != null) &#123;</span><br><span class="line">			resNode = this.right.postOrderSearch(no);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (resNode != null) &#123;</span><br><span class="line">			<span class="built_in">return</span> resNode;</span><br><span class="line">		&#125;</span><br><span class="line">		// 如果左右子树都不是，比较根节点</span><br><span class="line">		System.out.println(<span class="string">"进入后序遍历查找"</span>);</span><br><span class="line">		<span class="keyword">if</span> (this.no == no) &#123;</span><br><span class="line">			<span class="built_in">return</span> this;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> resNode;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<p>HeroNode [no=8, name=H]<br>HeroNode [no=4, name=D]<br>HeroNode [no=9, name=I]<br>HeroNode [no=2, name=B]<br>HeroNode [no=5, name=E]<br>HeroNode [no=1, name=A]<br>HeroNode [no=6, name=F]<br>HeroNode [no=3, name=C]<br>HeroNode [no=7, name=G]<br>F节点前驱结点 HeroNode [no=1, name=A]<br>F节点后继结点 HeroNode [no=3, name=C]<br>HeroNode [no=8, name=H]<br>HeroNode [no=4, name=D]<br>HeroNode [no=9, name=I]<br>HeroNode [no=2, name=B]<br>HeroNode [no=5, name=E]<br>HeroNode [no=1, name=A]<br>HeroNode [no=6, name=F]<br>HeroNode [no=3, name=C]<br>HeroNode [no=7, name=G]</p>
+<h3 id="遍历线索二叉树"><a href="#遍历线索二叉树" class="headerlink" title="遍历线索二叉树"></a>遍历线索二叉树</h3><p>如图<br><img src="/2019/07/17/2019-07-17/5.jpg" alt="无"><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">//为了实现线索化，需要创建指向当前结点的前驱节点的指针</span><br><span class="line">//当递归进行线索化时，pre 总是保留前一个结点</span><br><span class="line">private HeroNode pre=null;</span><br><span class="line"></span><br><span class="line">//遍历线索化二叉树的方法</span><br><span class="line">public void threadList() &#123;</span><br><span class="line">	// 定义一个变量，存储当前遍历的结点，从root开始</span><br><span class="line">	HeroNode node = root;</span><br><span class="line">	while (node != null) &#123;</span><br><span class="line">		// 循环找到lefttype==1的结点，第一个找到就是8结点</span><br><span class="line">		// 后面随着遍历而变化，因为lefttype==1，说明该结点是按照线索化</span><br><span class="line">		// 处理后的结点</span><br><span class="line">		while (node.getLefttype() == 0) &#123;</span><br><span class="line">			node = node.getLeft();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 打印当前结点</span><br><span class="line">		<span class="attribute">System.out.println(node);</span></span><br><span class="line">		// 如果当前结点的右指针指向的是后继结点，就一直输出</span><br><span class="line">		while (node.getRighttype() == 1) &#123;</span><br><span class="line">			// 获取当前结点的后继结点</span><br><span class="line">			node = node.getRight();</span><br><span class="line">			<span class="attribute">System.out.println(node);</span></span><br><span class="line">		&#125;</span><br><span class="line">		// 替换这个遍历的结点</span><br><span class="line">		node = node.getRight();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-        node3.setLeft(node6);
-        //测试线索化
-        ThreadBinaryTree threadBinaryTree = new ThreadBinaryTree();
-        threadBinaryTree.setRoot(root);
-        threadBinaryTree.threadNodes();
-
-        // 测试：以10号节点测试
-        HeroNode leftnode = node5.getLeft();
-        HeroNode rightnode = node5.getRight();
-        System.out.println(<span class="string">"10号节点前驱结点 "</span>+leftnode);
-        System.out.println(<span class="string">"10号节点后继结点 "</span>+rightnode);
-    }
-}
-//实现线索化功能的二叉树 ThreadBinaryTree
-class ThreadBinaryTree {
-    private HeroNode root;
-
-    //为了实现线索化，需要创建指向当前结点的前驱节点的指针
-    //当递归进行线索化时，pre 总是保留前一个结点
-    private HeroNode pre=null;
-
-    public void setRoot(HeroNode root) {
-        this.root = root;
-    }
-    //重载threadNodes
-    public void <span class="function"><span class="title">threadNodes</span></span>() {
-        this.threadNodes(root);
-    }
-    //编写对二叉树进行中序线索化的方法
-    /**
-     * 
-     * @param heroNode 当前需要线索化的结点
-     */
-    public void threadNodes(HeroNode node) {
-        <span class="keyword">if</span> (node == null) {
-            <span class="built_in">return</span>;
-        }
-        //1.线索化左子树
-        threadNodes(node.getLeft());
-        //2.线索化当前结点[有难度]
-
-        //处理当前结点的前驱节点
-        //以8为例，8.left=null,8.lefttype=1
-        <span class="keyword">if</span> (node.getLeft() == null) {
-            // 让当前结点的左子针指向前驱节点
-            node.setLeft(pre);
-            // 修改当前节点的左子针类型
-            node.setLefttype(1);
-        }
-        //处理后继节点
-        <span class="keyword">if</span> (pre != null &amp;&amp; pre.getRight() == null) {
-            // 让前驱节点的右指针指向当前结点
-            pre.setRight(node);
-            pre.setRighttype(1);
-        }
-        // ！！！没处理完一个节点后，让当前结点是下一个结点的前驱结点
-        pre = node;
-        // 3.线索化右子树
-        threadNodes(node.getRight());
-    }
-    //删除结点
-    public void delNode(int no) {
-        <span class="keyword">if</span>(root!=null) {
-            //如果只有一个结点这里判断root是不是要删除的结点
-            <span class="keyword">if</span>(root.getNo()==no) {
-                root=null;
-            }<span class="keyword">else</span> {
-                root.delNode(no);
-            }
-        }<span class="keyword">else</span> {
-            System.out.println(<span class="string">"空树，不能删除"</span>);
-        }
-    }
-    // 前序遍历测试
-    public void <span class="function"><span class="title">preOrder</span></span>() {
-        <span class="keyword">if</span> (this.root != null) {
-            this.root.preOrder();
-        } <span class="keyword">else</span> {
-            System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);
-        }
-    }
-
-    // 中序遍历测试
-    public void <span class="function"><span class="title">infixOrder</span></span>() {
-        <span class="keyword">if</span> (this.root != null) {
-            this.root.infixOrder();
-        } <span class="keyword">else</span> {
-            System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);
-        }
-    }
-
-    // 后序遍历测试
-    public void <span class="function"><span class="title">postOrder</span></span>() {
-        <span class="keyword">if</span> (this.root != null) {
-            this.root.postOrder();
-        } <span class="keyword">else</span> {
-            System.out.println(<span class="string">"二叉树为空，无法遍历"</span>);
-        }
-    }
-
-    // 前序遍历
-    public HeroNode preOrderSerach(int no) {
-        <span class="keyword">if</span> (root != null) {
-            <span class="built_in">return</span> root.preOrderSearch(no);
-        } <span class="keyword">else</span> {
-            <span class="built_in">return</span> null;
-        }
-    }
-
-    // 中序遍历
-    public HeroNode infixOrderSearch(int no) {
-        <span class="keyword">if</span> (root != null) {
-            <span class="built_in">return</span> root.infixOrderSearch(no);
-        } <span class="keyword">else</span> {
-            <span class="built_in">return</span> null;
-        }
-    }
-
-    // 后序遍历
-    public HeroNode postOrderSearch(int no) {
-        <span class="keyword">if</span> (root != null) {
-            <span class="built_in">return</span> root.postOrderSearch(no);
-        } <span class="keyword">else</span> {
-            <span class="built_in">return</span> null;
-        }
-    }
-}
-
-class HeroNode {
-    private int no;
-    private String name;
-    private HeroNode left;// 默认为空
-    private HeroNode right;//默认为空
-
-    //说明
-    //1.如果lefttype==0表示指向左子树，lefttype==1表示指向前驱节点
-    //2.如果righttype==0表示指向右子树，righttype==1表示指向后继节点
-    private int lefttype;
-    private int righttype;
-
-
-    public int <span class="function"><span class="title">getLefttype</span></span>() {
-        <span class="built_in">return</span> lefttype;
-    }
-
-    public void setLefttype(int lefttype) {
-        this.lefttype = lefttype;
-    }
-
-    public int <span class="function"><span class="title">getRighttype</span></span>() {
-        <span class="built_in">return</span> righttype;
-    }
-
-    public void setRighttype(int righttype) {
-        this.righttype = righttype;
-    }
-
-    public HeroNode(int no, String name) {
-        super();
-        this.no = no;
-        this.name = name;
-    }
-
-    public int <span class="function"><span class="title">getNo</span></span>() {
-        <span class="built_in">return</span> no;
-    }
-
-    public void setNo(int no) {
-        this.no = no;
-    }
-
-    public String <span class="function"><span class="title">getName</span></span>() {
-        <span class="built_in">return</span> name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public HeroNode <span class="function"><span class="title">getLeft</span></span>() {
-        <span class="built_in">return</span> left;
-    }
-
-    public void setLeft(HeroNode left) {
-        this.left = left;
-    }
-
-    public HeroNode <span class="function"><span class="title">getRight</span></span>() {
-        <span class="built_in">return</span> right;
-    }
-
-    public void setRight(HeroNode right) {
-        this.right = right;
-    }
-
-    @Override
-    public String <span class="function"><span class="title">toString</span></span>() {
-        <span class="built_in">return</span> <span class="string">"HeroNode [no="</span> + no + <span class="string">", name="</span> + name + <span class="string">"]"</span>;
-    }
-
-    /**
-     * 1)如果删除的结点是叶子结点，则删除该节点
-     * 2)如果删除的结点是非叶子结点，则删除该子树
-     * @param no
-     */
-    public void delNode(int no ) {
-        /**
-         * 思路
-         * 1、因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除的结点
-         * 2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将
-         * this.left=null;并且就返回(结束递归删除)
-         * 3. 如果当前结点的右子结点不为空，并且右子结点就是要删除的结点，就将
-         * this.right=null;并且就返回(结束递归删除)
-         * 4. 如果第二步，第三步没有删除结点，那么我们就需要向左子树进行递归删除
-         * 5.如果第4步也没有删除结点，则应对对右子树进行递归删除。
-         * 6. 考虑如果树是空树 root，如果只有一个root结点，则将二叉树置空
-         */
-        //2.如果当前结点的左子结点不为空，并且左子节点就是需要删除结点，就将this.left=null;并且就返回(结束递归删除)
-        <span class="keyword">if</span> (this.left != null &amp;&amp; this.left.no == no) {
-            this.left = null;
-            <span class="built_in">return</span>;
-        }
-        //3.如果当前结点的右子结点不为空，并且右子节点就是需要删除结点，就将this.right=null;并且就返回(结束递归删除)
-        <span class="keyword">if</span> (this.right != null &amp;&amp; this.right.no == no) {
-            this.right = null;
-            <span class="built_in">return</span>;
-        }
-        //4.需要向左子树递归删除
-        <span class="keyword">if</span>(this.left!=null) {
-            this.left.delNode(no);
-        }
-        //5.需要向右子树递归删除
-        <span class="keyword">if</span>(this.right!=null) {
-            this.right.delNode(no);
-        }
-    }
-    // 前序遍历
-    public void <span class="function"><span class="title">preOrder</span></span>() {
-        System.out.println(this);// 先输出父节点
-        // 递归向左子树前序遍历
-        <span class="keyword">if</span> (this.left != null) {
-            this.left.preOrder();
-        }
-        // 递归向右子树前序遍历
-        <span class="keyword">if</span> (this.right != null) {
-            this.right.preOrder();
-        }
-    }
-
-    // 中序遍历
-    public void <span class="function"><span class="title">infixOrder</span></span>() {
-
-        // 递归向左子树前序遍历
-        <span class="keyword">if</span> (this.left != null) {
-            this.left.infixOrder();
-        }
-        System.out.println(this);// 输出父节点
-        // 递归向右子树前序遍历
-        <span class="keyword">if</span> (this.right != null) {
-            this.right.infixOrder();
-        }
-    }
-
-    // 后序遍历
-    public void <span class="function"><span class="title">postOrder</span></span>() {
-
-        // 递归向左子树前序遍历
-        <span class="keyword">if</span> (this.left != null) {
-            this.left.postOrder();
-        }
-        // 递归向右子树前序遍历
-        <span class="keyword">if</span> (this.right != null) {
-            this.right.postOrder();
-        }
-        System.out.println(this);// 输出父节点
-    }
-
-    // 前序遍历查找
-    public HeroNode preOrderSearch(int no) {
-        <span class="keyword">if</span> (this.no == no) {
-            <span class="built_in">return</span> this;
-        }
-        // 1.则判断当前结点的左子结点是否为空，如果不为空，递归前序查找
-        // 2.如果做地柜前序查找，找到结点，则返回
-        HeroNode resNode = null;
-        <span class="keyword">if</span> (this.left != null) {
-            resNode = this.left.preOrderSearch(no);
-        }
-        <span class="keyword">if</span> (resNode != null) {
-            <span class="built_in">return</span> resNode;
-        }
-        // 1.左递归前序查找，找到结点，则返回，否继续判断
-        // 2.当前的结点的右子结点是否为空，如果不为空，则继续向右递归前序查找
-        <span class="keyword">if</span> (this.right != null) {
-            resNode = this.right.preOrderSearch(no);
-        }
-        <span class="built_in">return</span> resNode;
-    }
-
-    // 中序遍历查找
-    public HeroNode infixOrderSearch(int no) {
-
-        // 1.则判断当前结点的左子结点是否为空，如果不为空，递归中序查找
-        HeroNode resNode = null;
-        <span class="keyword">if</span> (this.left != null) {
-            resNode = this.left.infixOrderSearch(no);
-        }
-        <span class="keyword">if</span> (resNode != null) {
-            <span class="built_in">return</span> resNode;
-        }
-        // 2.如果做地柜前序查找，找到结点，则返回
-//        System.out.println(<span class="string">"进入中序查找"</span>);
-        <span class="keyword">if</span> (this.no == no) {
-            <span class="built_in">return</span> this;
-        }
-        // 否则向右递归中序查找
-        <span class="keyword">if</span> (this.right != null) {
-            resNode = this.right.infixOrderSearch(no);
-        }
-        <span class="built_in">return</span> resNode;
-    }
-
-    // 后序遍历查找
-    public HeroNode postOrderSearch(int no) {
-
-        // 1.则判断当前结点的左子结点是否为空，如果不为空，递归后序查找
-
-        HeroNode resNode = null;
-        <span class="keyword">if</span> (this.left != null) {
-            resNode = this.left.postOrderSearch(no);
-        }
-        <span class="keyword">if</span> (resNode != null) {
-            <span class="built_in">return</span> resNode;
-        }
-
-        <span class="keyword">if</span> (this.right != null) {
-            resNode = this.right.postOrderSearch(no);
-        }
-
-        <span class="keyword">if</span> (resNode != null) {
-            <span class="built_in">return</span> resNode;
-        }
-        // 如果左右子树都不是，比较根节点
-        System.out.println(<span class="string">"进入后序遍历查找"</span>);
-        <span class="keyword">if</span> (this.no == no) {
-            <span class="built_in">return</span> this;
-        }
-        <span class="built_in">return</span> resNode;
-    }
-
-}
-</code></pre>
-<h3 id="遍历线索二叉树"><a href="#遍历线索二叉树" class="headerlink" title="遍历线索二叉树"></a>遍历线索二叉树</h3><p><img src="/2019/07/17/2019-07-17/5.jpg" alt="无"></p>
-<pre><code>//为了实现线索化，需要创建指向当前结点的前驱节点的指针
-//当递归进行线索化时，pre 总是保留前一个结点
-private HeroNode pre=null;
-
-//遍历线索化二叉树的方法
-public void threadList() {
-    // 定义一个变量，存储当前遍历的结点，从root开始
-    HeroNode node = root;
-    while (node != null) {
-        // 循环找到lefttype==1的结点，第一个找到就是8结点
-        // 后面随着遍历而变化，因为lefttype==1，说明该结点是按照线索化
-        // 处理后的结点
-        while (node.getLefttype() == 0) {
-            node = node.getLeft();
-        }
-
-        // 打印当前结点
-        System.out.println(node);
-        // 如果当前结点的右指针指向的是后继结点，就一直输出
-        while (node.getRighttype() == 1) {
-            // 获取当前结点的后继结点
-            node = node.getRight();
-            System.out.println(node);
-        }
-        // 替换这个遍历的结点
-        node = node.getRight();
-    }
-}
-</code></pre>
       
     </div>
 
@@ -1043,7 +653,7 @@ public void threadList() {
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1183,7 +793,7 @@ public void threadList() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历线索二叉树"><span class="nav-number">1.</span> <span class="nav-text">遍历线索二叉树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#完成删除结点的操作"><span class="nav-number">1.</span> <span class="nav-text">完成删除结点的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序存储二叉树的特点"><span class="nav-number">2.</span> <span class="nav-text">顺序存储二叉树的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线索化二叉树"><span class="nav-number">3.</span> <span class="nav-text">线索化二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题分析："><span class="nav-number">3.1.</span> <span class="nav-text">问题分析：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-线索二叉树"><span class="nav-number">3.2.</span> <span class="nav-text">解决方法 线索二叉树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历线索二叉树"><span class="nav-number">5.</span> <span class="nav-text">遍历线索二叉树</span></a></li></ol></div>
             
 
           </div>
