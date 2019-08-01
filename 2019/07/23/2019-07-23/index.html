@@ -105,18 +105,21 @@
 
 
 
-  <meta name="description" content="Jack&apos;s Ideas &amp; Blogs">
+  <meta name="description" content="拦截器情景：登录成功后可以访问用户首页(main.jsp),一般情况下用户如果没有登录，是不允许直接访问的。实际上，除了注册和登录页面，其他信息访问都应该控制在用户登录完成之后；登录成功后，将用户信息存放到session里面，其他信息访问通过spring的拦截器统一处理，session获取不到用户信息，跳转到登录页面无需拦截的地址可通过配置白名单控制。 拦截器的作用springMVC的处理器拦截器">
 <meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC拦截器及国际化、异常处理">
 <meta property="og:url" content="http://zhangcv.github.io/2019/07/23/2019-07-23/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta property="og:description" content="拦截器情景：登录成功后可以访问用户首页(main.jsp),一般情况下用户如果没有登录，是不允许直接访问的。实际上，除了注册和登录页面，其他信息访问都应该控制在用户登录完成之后；登录成功后，将用户信息存放到session里面，其他信息访问通过spring的拦截器统一处理，session获取不到用户信息，跳转到登录页面无需拦截的地址可通过配置白名单控制。 拦截器的作用springMVC的处理器拦截器">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-29T04:52:01.943Z">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/23/2019-07-23/1.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/23/2019-07-23/2.jpg">
+<meta property="og:updated_time" content="2019-08-01T11:06:18.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC拦截器及国际化、异常处理">
-<meta name="twitter:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta name="twitter:description" content="拦截器情景：登录成功后可以访问用户首页(main.jsp),一般情况下用户如果没有登录，是不允许直接访问的。实际上，除了注册和登录页面，其他信息访问都应该控制在用户登录完成之后；登录成功后，将用户信息存放到session里面，其他信息访问通过spring的拦截器统一处理，session获取不到用户信息，跳转到登录页面无需拦截的地址可通过配置白名单控制。 拦截器的作用springMVC的处理器拦截器">
+<meta name="twitter:image" content="http://zhangcv.github.io/2019/07/23/2019-07-23/1.jpg">
 
 
 
@@ -455,7 +458,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-29 12:52:01" itemprop="dateModified" datetime="2019-07-29T12:52:01+08:00">2019-07-29</time>
+                <time title="Modified: 2019-08-01 19:06:18" itemprop="dateModified" datetime="2019-08-01T19:06:18+08:00">2019-08-01</time>
               
             
           </span>
@@ -507,7 +510,15 @@
       
 
       
-        
+        <h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>情景：登录成功后可以访问用户首页(main.jsp),一般情况下用户如果没有登录，是不允许直接访问的。<br>实际上，除了注册和登录页面，其他信息访问都应该控制在用户登录完成之后；登录成功后，将用户信息存放到session里面，其他信息访问通过spring的拦截器统一处理，session获取不到用户信息，跳转到登录页面无需拦截的地址可通过配置白名单控制。</p>
+<h3 id="拦截器的作用"><a href="#拦截器的作用" class="headerlink" title="拦截器的作用"></a>拦截器的作用</h3><p>springMVC的处理器拦截器类似于Servlet 开发中的过滤器Filter，用于对处理器进行预处理和后处理。<br>SpringMVC中的Intercepter拦截器也是相当重要和相当有用的，他的主要作用是拦截用户的请求并进行相应的处理。比如通过它来进行权限验证，或者是来判断用户是否登录，或者是像12306那样 判断当前时间是否为购票时间。<br>拦截器是对调用的Controller起作用，它提供了一种机制可以使开发者可以定义在一个请求执行的前后的代码，也可以在一个请求执行前组织其执行。比如，访问一个URL，可以先定义一个拦截器判断用户有没有权限，有权限才让访问。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	@RequestMapping(value = <span class="string">"testMap"</span>, method = RequestMethod.GET)</span><br><span class="line">	public String testMap(ModelMap map) &#123;</span><br><span class="line">		System.out.println(<span class="string">"testMap invoked"</span>);</span><br><span class="line">		map.put(<span class="string">"names"</span>, Arrays.asList(<span class="string">"TOM"</span>,<span class="string">"Jary"</span>,<span class="string">"zhangsan"</span>));</span><br><span class="line">		map.put(<span class="string">"string"</span>, <span class="string">"helloworld"</span>);</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">===========================	</span><br><span class="line">	public class FirstInterceptor implements HandlerInterceptor &#123;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 渲染视图之后，释放资源</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/*</span><br><span class="line">	 * </span><br><span class="line">	 * 目标方法执行完毕以后，render视图之前 修改modelAndView</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,</span><br><span class="line">			ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line">		System.out.println(<span class="string">"111postHandle invoked"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 在目标方法执行之前调用</span><br><span class="line">	 * 返回值 <span class="literal">false</span>  不会去调用目标方法或者后续的拦截器</span><br><span class="line">	 * 返回值<span class="literal">true</span>   调用后续的拦截器或者方法</span><br><span class="line">	 */</span><br><span class="line">	@Override</span><br><span class="line">	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</span><br><span class="line">			throws Exception &#123;</span><br><span class="line">		System.out.println(<span class="string">"111preHandle invoked"</span>);</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">===============================================</span><br><span class="line">	&lt;!-- 拦截器的配置 --&gt;</span><br><span class="line">	&lt;mvc:interceptors&gt;</span><br><span class="line">		&lt;bean id=<span class="string">"i1"</span> class=<span class="string">"com.neusoft.interceptor.FirstInterceptor"</span>&gt;&lt;/bean&gt;</span><br><span class="line">		&lt;mvc:interceptor&gt;</span><br><span class="line">			&lt;mvc:mapping path=<span class="string">"/**"</span> /&gt;</span><br><span class="line">			&lt;mvc:exclude-mapping path=<span class="string">"/static/lib/helloworld.js"</span> /&gt;</span><br><span class="line">			&lt;bean id=<span class="string">"i2"</span> class=<span class="string">"com.neusoft.interceptor.SecondInterceptor"</span>&gt;&lt;/bean&gt;</span><br><span class="line">		&lt;/mvc:interceptor&gt;</span><br><span class="line">	&lt;/mvc:interceptors&gt;</span><br><span class="line">================================================</span><br><span class="line">访问<span class="built_in">test</span>/testMap</span><br><span class="line">helloworld [TOM, Jary, zhangsan] </span><br><span class="line"></span><br><span class="line">console：</span><br><span class="line">111preHandle invoked</span><br><span class="line">111preHandle invoked</span><br><span class="line">testMap invoked</span><br><span class="line">222postHandle invoked</span><br><span class="line">111postHandle invoked</span><br><span class="line">111preHandle invoked</span><br><span class="line">111postHandle invoked</span><br></pre></td></tr></table></figure>
+<h3 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h3><p>国际化 i18n 封装在jdk，本身自带的jdk包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(<span class="string">"testi18n"</span>)</span><br><span class="line">	public String testI18n(Locale locale) &#123;</span><br><span class="line">		String val = resourceBundleMessageSource.getMessage(<span class="string">"hello"</span>, null, locale.US);</span><br><span class="line">		System.out.println(val);</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"i18n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">=============================================</span><br><span class="line">console (把hello转为)</span><br><span class="line">hi</span><br><span class="line">返回i18n-英语对应的网页，这是i18n英语</span><br></pre></td></tr></table></figure></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>对自定义异常的处理 i/0<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">	@Autowired</span><br><span class="line">	private ResourceBundleMessageSource resourceBundleMessageSource;</span><br><span class="line">	</span><br><span class="line">	@ExceptionHandler(&#123;ArithmeticException.class&#125;)</span><br><span class="line">	public ModelAndView handlerArithmeticException(Exception e) &#123;</span><br><span class="line">		ModelAndView mav = new ModelAndView(<span class="string">"error"</span>);</span><br><span class="line">		mav.addObject(<span class="string">"exception"</span>,e);</span><br><span class="line">		<span class="built_in">return</span> mav;</span><br><span class="line">	&#125;</span><br><span class="line">	@RequestMapping(<span class="string">"testException"</span>)</span><br><span class="line">	public String testException(@RequestParam(<span class="string">"param"</span>)Integer id)&#123;</span><br><span class="line">		System.out.println(<span class="string">"result"</span>+(10/id));</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"redirect:/WEB-INF/success"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">===========================================================</span><br><span class="line">跳转到error界面</span><br><span class="line">错误： /by zero</span><br><span class="line"></span><br><span class="line">可以单独拿出来，把它放到SpringMVCExceptionHandler，</span><br><span class="line">注解@ControllerAdvice 可以实现，总的异常处理。</span><br><span class="line">如果springMVCController类中有先执行其中的处理异常的方法，再执行总的。</span><br><span class="line"></span><br><span class="line">@ControllerAdvice</span><br><span class="line">public class SpringMVCExceptionHandler &#123;</span><br><span class="line">	</span><br><span class="line">	@ExceptionHandler(&#123; ArithmeticException.class, ClassNotFoundException.class &#125;)</span><br><span class="line">	public ModelAndView handlerArithmeticException(Exception e) &#123;</span><br><span class="line">		ModelAndView mav = new ModelAndView(<span class="string">"error"</span>);</span><br><span class="line">		mav.addObject(<span class="string">"exception"</span>, e);</span><br><span class="line">		<span class="built_in">return</span> mav;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><p><img src="/2019/07/23/2019-07-23/1.jpg" alt="无"><br><img src="/2019/07/23/2019-07-23/2.jpg" alt="无"></p>
+<p>访问/static/lib/helloworld.js文件 报错</p>
+<p>到最后解决方法为<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;script type="text/javascript" src="../static/lib/helloworld.js"&gt;&lt;/script&gt; --&gt;</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -553,6 +564,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/07/23/2019-07-23-02/" rel="prev" title="赫夫曼树">
+                赫夫曼树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -595,8 +610,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -613,7 +637,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -742,6 +766,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器"><span class="nav-number">1.</span> <span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器的作用"><span class="nav-number">2.</span> <span class="nav-text">拦截器的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#国际化"><span class="nav-number">3.</span> <span class="nav-text">国际化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">4.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出现的问题"><span class="nav-number">5.</span> <span class="nav-text">出现的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
