@@ -124,7 +124,7 @@
 <meta property="og:description" content="二叉排序树BST： binary Sort(Serach) Tree 对于二叉排序树的任何一个非叶子结点，要求左子结点的值比当前结点的值小，右子结点的值比当前结点的值大。  二叉树的创建和遍历12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/24/2019-07-24-02/1.jpg">
-<meta property="og:updated_time" content="2019-08-02T08:30:14.667Z">
+<meta property="og:updated_time" content="2019-08-02T14:57:51.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉排序树-BST">
 <meta name="twitter:description" content="二叉排序树BST： binary Sort(Serach) Tree 对于二叉排序树的任何一个非叶子结点，要求左子结点的值比当前结点的值小，右子结点的值比当前结点的值大。  二叉树的创建和遍历12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
@@ -524,7 +524,7 @@
     parent.left = target.left;
 5-2) targetNode的子结点是右子结点
     parent.left = target.right;
---><br>5.1 如果 targetNode 是 parent 的左子结点<br> parent.left = targetNode.left<br>5.2 如果targetNode 是 parent 的右子结点<br>(6)如果targetNode有右子结点<br>6.1 如果targetNode 是 parent 的左子结点<br> parent.left = targetNode.right;<br>6.2 如果targetNode 是 parent 的右子结点<br> parent.right = targetNode.right;</p>
+--><br>5.1 如果 targetNode 是 parent 的左子结点<br> parent.left = targetNode.left<br>5.2 如果targetNode 是 parent 的右子结点<br>(6)如果targetNode有右子结点 _<br>6.1 如果targetNode 是 parent 的左子结点<br> parent.left = targetNode.right;<br>6.2 如果targetNode 是 parent 的右子结点<br> parent.right = targetNode.right;</p>
 <h5 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h5><p>思路<br>删除两颗子树的结点 {7,3,10}<br>1) 需求先去找到要删除的 结点 targetNode<br>2) 找到targetNode 的父节点 parent<br>3) 从 targetNode 的右子树 找到最小的结点<br>4) 用 一个临时变量 将最小的结点的值 保存 temp<br>5) 删 除该最小的结点<br>6) targetNode.value = temp</p>
 
       
