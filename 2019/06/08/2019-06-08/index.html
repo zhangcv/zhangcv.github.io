@@ -91,7 +91,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":true},
     back2top: true,
     back2top_sidebar: false,
     fancybox: false,
@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
 <meta property="og:description" content="JSON{username:’zhangsan’,password:123,age:12} 后端Servlet —前端JSP XML 解析 展示JSP Java .net系统 接口   XML与JSON跨平台 Person        Integer id; String name;  Date birthday;  List&amp;lt;Person&amp;gt; persons; {id:1,name:">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-17T09:58:04.537Z">
+<meta property="og:updated_time" content="2019-08-03T02:41:52.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Json">
 <meta name="twitter:description" content="JSON{username:’zhangsan’,password:123,age:12} 后端Servlet —前端JSP XML 解析 展示JSP Java .net系统 接口   XML与JSON跨平台 Person        Integer id; String name;  Date birthday;  List&amp;lt;Person&amp;gt; persons; {id:1,name:">
@@ -525,24 +525,7 @@ List&lt;Person&gt; persons;
 <p>[“zhangsan”,”lisi”,1,true,1.2,{id:2,name=”lisi”,birthday:2018-1-1},{id:2,name=”zhangsan”,birthday:2018-1-1}]</p>
 <p>/<em>函数式编程<br>documentById(“button按钮的Id”)<br>data:给服务器传的参数
 </em>/</p>
-<script type="text/javascript">
-    $( function(){
-        $("#button").click(function()
-                {
-                $.ajax({
-                    type:"POST",
-                    url:"/gsonServlet",
-                    dataType:"html",
-                    success:function(returndata)
-                    {
-                        alert(returndata);
-                    }
-                    });
-            });
-
-        });
-</script>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	$( <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		$(<span class="string">"#button"</span>).click(<span class="keyword">function</span>()</span><br><span class="line">				&#123;</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					<span class="built_in">type</span>:<span class="string">"POST"</span>,</span><br><span class="line">					url:<span class="string">"/gsonServlet"</span>,</span><br><span class="line">					dataType:<span class="string">"html"</span>,</span><br><span class="line">					success:<span class="keyword">function</span>(returndata)</span><br><span class="line">					&#123;</span><br><span class="line">						alert(returndata);</span><br><span class="line">					&#125;</span><br><span class="line">					&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">		&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>用到的jar 包<br>gson-2.3.1.jar<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">以Gson为例</span><br><span class="line"></span><br><span class="line">package com.neusoft;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import com.google.gson.Gson;</span><br><span class="line">import com.neusoft.Person;</span><br><span class="line"></span><br><span class="line">public class GsonTest &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		// json 格式 String</span><br><span class="line">		// 如何将person 对象转换为String</span><br><span class="line"></span><br><span class="line">		Person person = new Person();</span><br><span class="line"></span><br><span class="line">		((Person) person).setId(1);</span><br><span class="line"></span><br><span class="line">		person.setUsername(<span class="string">"zhangsan"</span>);</span><br><span class="line"></span><br><span class="line">		person.setPassword(<span class="string">"123456"</span>);</span><br><span class="line"></span><br><span class="line">		person.setAge(18);</span><br><span class="line"></span><br><span class="line">		List&lt;Person&gt; persons = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		persons.add(new Person(<span class="string">"lisi"</span>, <span class="string">"123456"</span>, 12));</span><br><span class="line">		persons.add(new Person(<span class="string">"wangwu"</span>, <span class="string">"123456"</span>, 13));</span><br><span class="line">		persons.add(new Person(<span class="string">"zhaoliu"</span>, <span class="string">"123456"</span>, 14));</span><br><span class="line"></span><br><span class="line">		person.setPersons(persons);</span><br><span class="line">		Gson gson = new Gson();</span><br><span class="line"></span><br><span class="line">		String str = gson.toJson(person);</span><br><span class="line"></span><br><span class="line">		System.out.println(str);</span><br><span class="line">		System.out.println(<span class="string">"******************************"</span>);</span><br><span class="line">		// Person 转换JSON String字符串</span><br><span class="line">		/*</span><br><span class="line">		 * String str=gson.toJson(person);</span><br><span class="line">		 * </span><br><span class="line">		 * System.out.println(str);</span><br><span class="line">		 */</span><br><span class="line"></span><br><span class="line">		String str1 = <span class="string">"&#123;\"id\":1,\"username\":\"lisi\",\"password\":\"456456\",\"age\":18&#125;"</span>;</span><br><span class="line"></span><br><span class="line">		Person person1 = gson.fromJson(str1, Person.class);</span><br><span class="line"></span><br><span class="line">		System.out.println(person1.getUsername());</span><br><span class="line">		System.out.println(person1.getPassword());</span><br><span class="line">		System.out.println(person1.getAge());</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>输出为<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"id"</span>:<span class="number">1</span>,<span class="string">"username"</span>:<span class="string">"zhangsan"</span>,<span class="string">"password"</span>:<span class="string">"123456"</span>,<span class="string">"age"</span>:<span class="number">18</span>,<span class="string">"persons"</span>:[&#123;<span class="string">"username"</span>:<span class="string">"lisi"</span>,<span class="string">"password"</span>:<span class="string">"123456"</span>,<span class="string">"age"</span>:<span class="number">12</span>&#125;,&#123;<span class="string">"username"</span>:<span class="string">"wangwu"</span>,<span class="string">"password"</span>:<span class="string">"123456"</span>,<span class="string">"age"</span>:<span class="number">13</span>&#125;,&#123;<span class="string">"username"</span>:<span class="string">"zhaoliu"</span>,<span class="string">"password"</span>:<span class="string">"123456"</span>,<span class="string">"age"</span>:<span class="number">14</span>&#125;]&#125;</span><br><span class="line"><span class="comment">******************************</span></span><br><span class="line">lisi</span><br><span class="line"><span class="number">456456</span></span><br><span class="line"><span class="number">18</span></span><br></pre></td></tr></table></figure></p>
 
@@ -790,6 +773,8 @@ List&lt;Person&gt; persons;
 
     </div>
   </aside>
+  
+    <div id="sidebar-dimmer"></div>
   
 
 
