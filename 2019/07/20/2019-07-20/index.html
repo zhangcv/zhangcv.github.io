@@ -124,7 +124,7 @@
 <meta property="og:description" content="day011.安装XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。 在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。虚拟机里安装XP和Oracle数据库，不用的时候直接删了。 我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试) 2. 配置解锁了scott用户，密码为123456，">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zhangcv.github.io/2019/07/20/2019-07-20/1.jpg">
-<meta property="og:updated_time" content="2019-08-03T09:05:51.458Z">
+<meta property="og:updated_time" content="2019-08-06T12:15:10.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle数据库">
 <meta name="twitter:description" content="day011.安装XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。 在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。虚拟机里安装XP和Oracle数据库，不用的时候直接删了。 我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试) 2. 配置解锁了scott用户，密码为123456，">
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">82</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">84</span></a>
 
   </li>
         
@@ -554,7 +554,8 @@
 <h3 id="分组函数"><a href="#分组函数" class="headerlink" title="========分组函数"></a>========分组函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--1.查询部门编号及人数--分组查询关键字group by</span><br><span class="line">select deptno,count(*) from emp group by deptno;</span><br><span class="line">--2.查询每个部门编号及平均工资</span><br><span class="line">select deptno,avg(sal) from emp group by deptno;</span><br><span class="line">--3.查询部门名称，部门编号，平均工资</span><br><span class="line">select dname,emp.deptno,avg(sal) from dept,emp <span class="built_in">where</span> dept.deptno = emp.deptno group by dname,emp.deptno;</span><br><span class="line">--4.查询出部门人数大于5人的部门</span><br><span class="line">select deptno,count(*) from emp group by deptno having count(*) &gt; 5;</span><br><span class="line">--5.查询部门编号，部门名称，平均工资且平均工资大于2000</span><br><span class="line">select emp.deptno,dname,avg(sal) from emp,dept <span class="built_in">where</span> emp.deptno = dept.deptno group by emp.deptno,dname having avg(sal) &gt; 2000;</span><br></pre></td></tr></table></figure>
 <h1 id="day02"><a href="#day02" class="headerlink" title="day02"></a>day02</h1><p>第二天</p>
 <p>-======================================多表关联查询<br>–查询员工编号,员工姓名,员工部门编号,员工部门名称,员工部门地址,中文显示员工工资等级,及领导编号,领导姓名,领导部门编号,领导部门名称,中文显示领导工资等级<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select e1.empno,e1.ename,e1.deptno,d1.dname,d1.loc,decode(s1.grade,1,<span class="string">'一级'</span>,2,<span class="string">'二级'</span>,3,<span class="string">'三级'</span>,4,<span class="string">'四级'</span>,5,<span class="string">'五级'</span>)<span class="string">"salLevel"</span>,e1.mgr,e2.ename,e2.deptno,d2.dname,decode(s2.grade,1,<span class="string">'一级'</span>,2,<span class="string">'二级'</span>,3,<span class="string">'三级'</span>,4,<span class="string">'四级'</span>,5,<span class="string">'五级'</span>)<span class="string">"salLevel"</span></span><br><span class="line">from emp e1,dept d1,salgrade s1,emp e2,dept d2,salgrade s2 </span><br><span class="line"><span class="built_in">where</span> e1.deptno = d1.deptno and e1.sal between s1.losal and s1.hisal </span><br><span class="line">and e1.mgr=e2.empno and e2.deptno=d2.deptno and e2.sal between s2.losal and s2.hisal;</span><br></pre></td></tr></table></figure></p>
-<p>–画图<br><img src="/2019/07/20/2019-07-20/1.jpg" alt="六表查询"><br>select <em> from salgrade;<br>select </em> from emp;<br>select * from dept;<br>–1.查询员工编号,员工姓名,领导编号,领导姓名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp <span class="built_in">where</span> sal &gt; (select sal from emp <span class="built_in">where</span> empno = 7654);</span><br></pre></td></tr></table></figure></p>
+<p>–画图</p>
+<p>select <em> from salgrade;<br>select </em> from emp;<br>select * from dept;<br>–1.查询员工编号,员工姓名,领导编号,领导姓名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp <span class="built_in">where</span> sal &gt; (select sal from emp <span class="built_in">where</span> empno = 7654);</span><br></pre></td></tr></table></figure></p>
 <p>–2.查询员工编号,员工姓名,员工部门编号,员工部门名称,员工部门地址,领导编号,领导姓名,领导部门编号,领导部门名称</p>
 <p>–3.查询员工编号,员工姓名,员工部门编号,员工部门名称,员工部门地址,员工工资等级,领导编号,领导姓名,领导部门编号,领导部门名称,领导工资等级</p>
 <p>–4.查询员工编号,员工姓名,员工部门编号,员工部门名称,员工部门地址,中文显示员工工资等级,领导编号,领导姓名,领导部门编号,领导部门名称,中文显示领导工资等级<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select e1.empno,e1.ename,e1.deptno,d1.dname,d1.loc,</span><br><span class="line">decode(s1.grade,1,&apos;一级&apos;,2,&apos;二级&apos;,3,&apos;三级&apos;,4,&apos;四级&apos;,5,&apos;五级&apos;)&quot;salLevel&quot;,</span><br><span class="line">e2.empno,e2.ename,e2.deptno,d2.dname,d2.loc,</span><br><span class="line">decode(s2.grade,1,&apos;一级&apos;,2,&apos;二级&apos;,3,&apos;三级&apos;,4,&apos;四级&apos;,5,&apos;五级&apos;)&quot;salLevel&quot; </span><br><span class="line">from emp e1,emp e2, dept d1,dept d2, salgrade s1 ,salgrade s2 </span><br><span class="line">where e1.mgr = e2.empno and e1.sal between s1.losal and s1.hisal </span><br><span class="line">and e1.deptno = d1.deptno and e2.sal between s2.losal and s2.hisal</span><br><span class="line">and e2.deptno =d2.deptno</span><br></pre></td></tr></table></figure></p>
@@ -571,9 +572,69 @@
 <p>–3.求工资大约1200和job是SALESMAN的差集(minus)<br>第一个集合中有，第二个集合中没有的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from emp <span class="built_in">where</span> sal &gt; 1200</span><br><span class="line">minus</span><br><span class="line">select * from emp <span class="built_in">where</span> job = <span class="string">'SALESMAN'</span></span><br></pre></td></tr></table></figure></p>
 <p>–==========================exists / not exists<br>/*<br>select … where exists(查询语句)<br>exists：当查询结果不为null，返回true<br>  当查询结果为null，返回false</p>
 <p>*/<br>–1.查询出有员工的部门<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from dep0t <span class="built_in">where</span> exists(select * from emp <span class="built_in">where</span> dept.deptno = emp.deptno);</span><br><span class="line"></span><br><span class="line">select * from dep0t <span class="built_in">where</span> not exists(select * from emp <span class="built_in">where</span> dept.deptno = emp.deptno);</span><br><span class="line"></span><br><span class="line">select * from emp <span class="built_in">where</span> exists (select * from dept);</span><br></pre></td></tr></table></figure></p>
-<p>扩展 不是老板的员工</p>
+<p>扩展 不是老板的员工<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp e1 <span class="built_in">where</span> not exists(select * from emp e2 <span class="built_in">where</span> e1.empno=e2.mgr);</span><br></pre></td></tr></table></figure></p>
 <p>MySQL解析SQL语言时的执行顺序：<br>1)     SELECT<br>2)     DISTINCT &lt;select_list&gt;<br>3)     FROM &lt;left_table&gt;<br>4)     &lt;join_type&gt; JOIN &lt;right_table&gt;<br>5)     ON &lt;join_condition&gt;<br>6)     WHERE &lt;where_condition&gt;<br>7)     GROUP BY &lt;group_by_list&gt;<br>8)     HAVING &lt;having_condition&gt;<br>9)     ORDER BY &lt;order_by_condition&gt;<br>10)    LIMIT &lt;limit_number&gt;</p>
-<h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><p>一句话输出9*9<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">select r1 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r1 * r1 A,  </span><br><span class="line">       decode(r2, <span class="string">''</span>, <span class="string">''</span>, r2 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r2 * r1) b,  </span><br><span class="line">       decode(r3, <span class="string">''</span>, <span class="string">''</span>, r3 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r3 * r1) C,  </span><br><span class="line">       decode(r4, <span class="string">''</span>, <span class="string">''</span>, r4 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r4 * r1) D,  </span><br><span class="line">       decode(r5, <span class="string">''</span>, <span class="string">''</span>, r5 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r5 * r1) E,  </span><br><span class="line">       decode(r6, <span class="string">''</span>, <span class="string">''</span>, r6 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r6 * r1) F,  </span><br><span class="line">       decode(r7, <span class="string">''</span>, <span class="string">''</span>, r7 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r7 * r1) G,  </span><br><span class="line">       decode(r8, <span class="string">''</span>, <span class="string">''</span>, r8 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r8 * r1) H,  </span><br><span class="line">       decode(r9, <span class="string">''</span>, <span class="string">''</span>, r9 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r9 * r1) I  </span><br><span class="line">from   (select level r1,  </span><br><span class="line">               lag(level, 1) over(order by level) r2,  </span><br><span class="line">               lag(level, 2) over(order by level) r3,  </span><br><span class="line">               lag(level, 3) over(order by level) r4,  </span><br><span class="line">               lag(level, 4) over(order by level) r5,  </span><br><span class="line">               lag(level, 5) over(order by level) r6,  </span><br><span class="line">               lag(level, 6) over(order by level) r7,  </span><br><span class="line">               lag(level, 7) over(order by level) r8,  </span><br><span class="line">               lag(level, 8) over(order by level) r9  </span><br><span class="line">        from   dual  </span><br><span class="line">        connect by level &lt; 10)</span><br></pre></td></tr></table></figure></p>
+<h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><p><img src="/2019/07/20/2019-07-20/1.jpg" alt="无"></p>
+<p>create 都可以 drop删<br>READ UNCOMMITTED(读未提交数据)  允许事务读取未被其他事务提交的变更 脏读 不可重复读和幻读的问题都会出现<br>READ COMMITTED(读已提交数据) 只允许事务读取已经被其他事务提交的变更，可以避免脏读，但不可重复度和幻读问题仍然可能出现<br>REPEATABLE READ(可重复读) 确保事务可以多次从一个字段中读取相同的值，在这个事务持续期间，禁止其他事务对这个字段进行更新，可以避免脏读和不可重复读，但幻读的问题仍然存在。<br>SERIALIZABLE(串行化) 确保事务可以从一个表中读取相同的行，在这个事务持续期间，禁止其他事务对该表执行插入，更新和删除操作，所有并发问题可以避免，但性能十分低下。</p>
+<p>Oracle支持的 3种事务隔离级别：<br>READ COMMITE SERIALIZABLE READ ONLY, Default: read only</p>
+<p>–===========DDL(Data Definition Language)语句管理表<br>/<em><br>create tablespace 表空间名称<br>datafile 数据文件路径<br>size 100m<br>autoextend on<br>next 10m;
+</em>/</p>
+<p>–1.创建itcast001表空间</p>
+<p>–2.创建itcastuser用户</p>
+<p>–3.为itcastuser用户赋予dba权限</p>
+<p>–删除表空间并将物理文件一并删除<br>DROP TABLESPACE heima58 INCLUDING CONTENTS AND DATAFILES;<br>drop user heima58 cascade</p>
+<p>–===========================Oracle数据类型<br>/<em><br>Oracel数据类型<br>字符类型<br>      char:固定长度类型<br>      varchar2:可变长度类型，可保存1333多个汉字<br>数值类型<br>      number(3):999<br>      number(3,2):9.99<br>日期类型<br>      date:mysql中日月年,oracle中精确到时分秒,相当于MySQL中的datetime<br>      timestamp:精确到秒的后9位<br>大数据类型<br>      long:大数据字符类型,2G<br>      Clob:存放字符类型,4G<br>      Blob:存放二进制类型,4G
+</em>/</p>
+<p>–===========================创建表<br>–4.创建person表，字段为pid，pname</p>
+<p>–==============================Oracle表中的增删改查<br>/<em><br>Oracle中的事务需要手动commit提交
+</em>/<br>–1.为person表新增一条数据</p>
+<p>–2.修改person表中的一条数据</p>
+<p>–3.删除person表中的一条数据</p>
+<p>–==============================修改表列的属性<br>–1.给person表增加sex性别列，类型为number(1)</p>
+<p>–2.修改person表列sex类型为char(1)</p>
+<p>–3.修改person表sex列为gender</p>
+<p>–4.删除person表的gender列</p>
+<p>–5.删除person表中所有数据</p>
+<p>–6.摧毁person表（truncate table 表名）<br>/<em><br> 直接摧毁表结构后重构表，比delete要很快，但是没法按照条件删除
+</em>/</p>
+<p>–=========================================约束<br>–1.创建person表，pid为主键，pname，gender(主键约束primary key)<br>–primary key方式</p>
+<p>–constraint 主键名 primary key(字段),方式</p>
+<p>–2.创建person表，pname非空，gender(非空约束not null)</p>
+<p>–3.创建person表，pid，pname是唯一，gender(唯一约束unique)</p>
+<p>–4.创建person表，pid，pname，gender—检查约束check(列名 in (值))</p>
+<p>–=========================================外键约束<br>/<em><br>constraint fk_order_orderid foreign key(外键) references 对应的表(对应的主键)
+</em>/ </p>
+<p>–1.创建orders表,字段为order_id(主键),total_price</p>
+<p>–2.创建order_detail表,字段为detail_id(主键),order_id(外键),item_name</p>
+<p>–3.为orders表和order_detail表插入数据</p>
+<p>–4.删除orders表和order_detail表中的数据</p>
+<p>–==========================Oracle事务（了解）<br>–1.设置savepoint 回滚点，再次修改数据后用rollback to 回滚点，回滚数据</p>
+<p>–==========================视图<br>/*<br>视图：就是一张虚拟表，本身不存放数据，数据来源于原始表<br>创建 create [or replace] view 视图名 as sql查询语句；</p>
+<p>*/<br>–1.创建视图</p>
+<p>–2.查询视图</p>
+<p>–3.修改视图中7369的名字为’smith’</p>
+<p>–4.删除视图</p>
+<p>–5.创建只读视图（关键字 with read only）</p>
+<p>–==========================序列<br>/<em><br>序列：类似于MySql的自动增长<br>create sequence seq_test<br>start with 5<br>increment by 2<br>maxvalue  20<br>cycle<br>cache 5          
+</em>/</p>
+<p>–1.创建序列</p>
+<p>–2.如何查询序列（currval,nextval）</p>
+<p>–3.删除序列</p>
+<p>–4.为person表插入数据，用序列为id赋值</p>
+<p>–==========================索引<br>/<em><br>目的是提高检索速度<br>语法：create index 索引名称 on 表名(列名);<br>原则：大数据表才创建索引，<br>      为经常用到的列创建索引，<br>      索引的层数不要超过4层，也就是on 表名(列名1,列名2)这里的列名不要超过4个
+</em>/</p>
+<p>/*</p>
+<p>–创建索引</p>
+<p>–删除索引</p>
+<p>–创建500万条的数据<br>create sequence seq_person;</p>
+<p>begin<br>   for i in 1..5000000 loop<br>    insert into person values(seq_person.nextval,’测试数据’||i);<br>   end loop;<br>   commit;<br>end;</p>
+<p>select <em> from t_test where tname =’测试数据4789889’  1.797s
+</em>/</p>
+<p>–====================================同义词（了解）<br>/*<br>为表创建别名<br>同义词和视图的区别：不需要dba权限就可以创建同义词<br>视图可以隐藏列，同义词不可以去掉列只是整张表的复制</p>
+<p>创建<br>create public synonym 同义词名 for 目标表名<br>删除<br>drop public synonym 同义词名<br>*/ </p>
+<p>–====================================导入导出<br>/<em><br>PLSqlDeveloper的导入导出方式参照Oracle导入导出.docx<br>全库导出:exp system/orcl full=y file=expdat.dmp<br>全库导入:imp system/orcl full=y file=expdat.dmp<br>按用户导出: exp scott/tiger file=expdat.dmp<br>按用户导入: imp scott/tiger file=expdat.dmp full=y
+</em>/</p>
+<p>一句话输出9*9<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">select r1 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r1 * r1 A,  </span><br><span class="line">       decode(r2, <span class="string">''</span>, <span class="string">''</span>, r2 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r2 * r1) b,  </span><br><span class="line">       decode(r3, <span class="string">''</span>, <span class="string">''</span>, r3 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r3 * r1) C,  </span><br><span class="line">       decode(r4, <span class="string">''</span>, <span class="string">''</span>, r4 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r4 * r1) D,  </span><br><span class="line">       decode(r5, <span class="string">''</span>, <span class="string">''</span>, r5 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r5 * r1) E,  </span><br><span class="line">       decode(r6, <span class="string">''</span>, <span class="string">''</span>, r6 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r6 * r1) F,  </span><br><span class="line">       decode(r7, <span class="string">''</span>, <span class="string">''</span>, r7 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r7 * r1) G,  </span><br><span class="line">       decode(r8, <span class="string">''</span>, <span class="string">''</span>, r8 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r8 * r1) H,  </span><br><span class="line">       decode(r9, <span class="string">''</span>, <span class="string">''</span>, r9 || <span class="string">'*'</span> || r1 || <span class="string">'='</span> || r9 * r1) I  </span><br><span class="line">from   (select level r1,  </span><br><span class="line">               lag(level, 1) over(order by level) r2,  </span><br><span class="line">               lag(level, 2) over(order by level) r3,  </span><br><span class="line">               lag(level, 3) over(order by level) r4,  </span><br><span class="line">               lag(level, 4) over(order by level) r5,  </span><br><span class="line">               lag(level, 5) over(order by level) r6,  </span><br><span class="line">               lag(level, 6) over(order by level) r7,  </span><br><span class="line">               lag(level, 7) over(order by level) r8,  </span><br><span class="line">               lag(level, 8) over(order by level) r9  </span><br><span class="line">        from   dual  </span><br><span class="line">        connect by level &lt; 10)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -693,7 +754,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
