@@ -115,18 +115,23 @@
 
 
 
-  <meta name="description" content="Jack&apos;s Ideas &amp; Blogs">
-<meta name="keywords" content="springMVC">
+  <meta name="description" content="Mybatis1、ORM(Object relational Mapping) 对象关系映射 Mybatis3 (ibatis 3.0之前) hibernate2、JDBC-DButils(工具) - JdbcTemplete 框架： 大的宏观的解决方案3、 Hibernate(全自动的映射框架) 目的： 就是让不懂SQL 的程序员 ，也能面向对象的思想操作数据库4、Mybatis(半自动的映射框">
+<meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springMVC">
+<meta property="og:title" content="Mybatis">
 <meta property="og:url" content="http://zhangcv.github.io/2019/07/27/2019-07-27/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta property="og:description" content="Mybatis1、ORM(Object relational Mapping) 对象关系映射 Mybatis3 (ibatis 3.0之前) hibernate2、JDBC-DButils(工具) - JdbcTemplete 框架： 大的宏观的解决方案3、 Hibernate(全自动的映射框架) 目的： 就是让不懂SQL 的程序员 ，也能面向对象的思想操作数据库4、Mybatis(半自动的映射框">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-09T01:08:43.120Z">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/27/2019-07-27/1.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/27/2019-07-27/2.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/27/2019-07-27/3.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/07/27/2019-07-27/4.jpg">
+<meta property="og:updated_time" content="2019-08-15T06:11:43.576Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springMVC">
-<meta name="twitter:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta name="twitter:title" content="Mybatis">
+<meta name="twitter:description" content="Mybatis1、ORM(Object relational Mapping) 对象关系映射 Mybatis3 (ibatis 3.0之前) hibernate2、JDBC-DButils(工具) - JdbcTemplete 框架： 大的宏观的解决方案3、 Hibernate(全自动的映射框架) 目的： 就是让不懂SQL 的程序员 ，也能面向对象的思想操作数据库4、Mybatis(半自动的映射框">
+<meta name="twitter:image" content="http://zhangcv.github.io/2019/07/27/2019-07-27/1.jpg">
 
 
 
@@ -144,7 +149,7 @@
   };
 </script>
 
-  <title>springMVC | Zhangcv's Personal Website</title>
+  <title>Mybatis | Zhangcv's Personal Website</title>
   
 
 
@@ -432,7 +437,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">springMVC
+          <h1 class="post-title" itemprop="name headline">Mybatis
 
               
             
@@ -476,7 +481,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springMVC/" itemprop="url" rel="index"><span itemprop="name">springMVC</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
 
                 
                 
@@ -511,7 +516,23 @@
       
 
       
-        
+        <h3 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h3><p>1、ORM(Object relational Mapping) 对象关系映射 Mybatis3 (ibatis 3.0之前) hibernate<br>2、JDBC-DButils(工具) - JdbcTemplete 框架： 大的宏观的解决方案<br>3、 Hibernate(全自动的映射框架) 目的： 就是让不懂SQL 的程序员 ，也能面向对象的思想操作数据库<br>4、Mybatis(半自动的映射框架) 优点： 灵活性好，因为SQL语句是我们手动编写的。<br>1)创建Connection 2)编写SQL语句 3)预编译 4)执行 5)resultSet  save select<br>5、 Mybatis 将java代码和 SQL语句分离。<br>6、<br>7、Mybatis 学好SQL语句<br>8、操作数据库 API  1)SqlSessionFactory 2)SqlSession</p>
+<p>9、 mybatis 中有两大配置文件 1)主配置文件 2)映射文件</p>
+<p>10、 对于Mybatis来说，我们的映射文件就是一个Dao层实现。</p>
+<p>pack test;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MybatisTest &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">		</span><br><span class="line">		InputStream is = Resources.getResourceAsStream(<span class="string">"mybatis-config.xml"</span>);</span><br><span class="line">		//代表的是一个SqlSession工厂 = 数据库</span><br><span class="line">		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);</span><br><span class="line">		</span><br><span class="line">		SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">		</span><br><span class="line">		User user = sqlSession.selectOne(<span class="string">"org.mybatis.example.UserMapper.selectUser"</span>, 5);</span><br><span class="line">		</span><br><span class="line">		System.out.println(user);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>UserMapper.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace=<span class="string">"org.mybatis.example.UserMapper"</span>&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;select id=<span class="string">"selectUser"</span> resultType=<span class="string">"com.neusoft.mybatis.entity.User"</span>&gt;</span><br><span class="line">		select * from t_user <span class="built_in">where</span> id = <span class="comment">#&#123;id&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure></p>
+<p>mybatis-config.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;environments default=<span class="string">"development"</span>&gt;</span><br><span class="line">		&lt;environment id=<span class="string">"development"</span>&gt;</span><br><span class="line">			&lt;transactionManager <span class="built_in">type</span>=<span class="string">"JDBC"</span> /&gt;</span><br><span class="line">			&lt;dataSource <span class="built_in">type</span>=<span class="string">"POOLED"</span>&gt;</span><br><span class="line">				&lt;property name=<span class="string">"driver"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span><br><span class="line">				&lt;property name=<span class="string">"url"</span></span><br><span class="line">					value=<span class="string">"jdbc:mysql://localhost:3306/neusoft"</span> /&gt;</span><br><span class="line">				&lt;property name=<span class="string">"username"</span> value=<span class="string">"root"</span> /&gt;</span><br><span class="line">				&lt;property name=<span class="string">"password"</span> value=<span class="string">"123456"</span> /&gt;</span><br><span class="line">			&lt;/dataSource&gt;</span><br><span class="line">		&lt;/environment&gt;</span><br><span class="line">	&lt;/environments&gt;</span><br><span class="line">	&lt;mappers&gt;</span><br><span class="line">		&lt;mapper resource=<span class="string">"com/neusoft/mybatis/mapping/UserMapper.xml"</span> /&gt;</span><br><span class="line">	&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Setting<br><img src="/2019/07/27/2019-07-27/1.jpg" alt="wu"><br><img src="/2019/07/27/2019-07-27/2.jpg" alt="wu"><br><img src="/2019/07/27/2019-07-27/3.jpg" alt="wu"></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">1</span>.不应该这样，应该面向接口</span><br><span class="line">//		<span class="keyword">User</span> <span class="title">user</span> = sqlSession.selectOne(<span class="string">"org.mybatis.example.UserMapper.selectUser"</span>, <span class="string">"user"</span>);</span><br><span class="line"></span><br><span class="line">//<span class="number">2</span>.改为</span><br><span class="line">		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">		<span class="keyword">User</span> <span class="title">user</span> = userMapper.selectUser(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">//		System.out.println(userMapper.getClass().getName()); //com.sun.proxy.$Proxy2 动态代理</span><br><span class="line">第一种方式，改为<span class="string">"helloworld"</span>  不报错，但返回值为空，不存在这个User</span><br><span class="line">第二种方式，<span class="number">1</span>)不是基于文字的，更安全，<span class="number">2</span>)IDE代码补全，利用它操作映射的SQL语句，<span class="number">3</span>)不需要强制类型转换，UserMapper接口保持简洁，返回值类型安全(参数类型安全)</span><br></pre></td></tr></table></figure>
+<p>起别名<br><!-- 给某个具体的类起别名 --><br>        <!-- <typeAlias type="com.neusoft.mybatis.entity.User" alias="User"/> --><br>        <!-- 给某个包下的 起别名，默认的是类名的小写 Usermapper.xml中User user一样 --><br>        <package name="com.neusoft.mybatis.entity"></package></p>
+<p>不同包下 有相同的类名 User 怎么解决？<br>使用注解@Alias(“user1”)</p>
+<p>typeHandlers 类型处理器<br><img src="/2019/07/27/2019-07-27/4.jpg" alt="wu"><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 目的就是在mybatis中支持多数据库 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">databaseIdProvider</span> <span class="attr">type</span>=<span class="string">"DB_VENDOR"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"Mysql"</span> <span class="attr">value</span>=<span class="string">"mysql"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"SQL Server"</span> <span class="attr">value</span>=<span class="string">"sqlserver"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"DB2"</span> <span class="attr">value</span>=<span class="string">"db2"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"Oracle"</span> <span class="attr">value</span>=<span class="string">"oracle"</span>/&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">databaseIdProvider</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>databasemetadata.getproductname 获取的就是name<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"selectUser"</span> resultType=<span class="string">"User"</span> databaseId=<span class="string">"oracle"</span>&gt;</span><br><span class="line">		select * from t_user <span class="built_in">where</span> id = <span class="comment">#&#123;id&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">	获取的就是 value</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">错误:</span><br><span class="line">MyBatis 可以根据不同的数据库厂商执行不同的语句，这种多厂商的支持是基于映射语句中的 databaseId 属性。 MyBatis 会加载不带 databaseId 属性和带有匹配当前数据库 databaseId 属性的所有语句。 如果同时找到带有 databaseId 和不带 databaseId 的相同语句，则后者会被舍弃。 为支持多厂商特性只要像下面这样在 mybatis-config.xml 文件中加入 databaseIdProvider 即可.</span><br><span class="line"></span><br><span class="line">        我们经常会直接复制那段代码</span><br><span class="line"></span><br><span class="line">&lt;databaseIdProvider type=<span class="string">"DB_VENDOR"</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"SQL Server"</span> value=<span class="string">"sqlserver"</span>/&gt;</span><br><span class="line">  &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"DB2"</span> value=<span class="string">"db2"</span>/&gt;        </span><br><span class="line">  &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"Oracle"</span> value=<span class="string">"oracle"</span> /&gt;</span><br><span class="line">&lt;/databaseIdProvider&gt;</span><br><span class="line">没有mysql</span><br><span class="line">手动添加时 <span class="built_in">name</span>写成了Mysql ！！！！！</span><br><span class="line"></span><br><span class="line">注意na <span class="keyword">me</span>属性值是MySQL,这个y一定要小写</span><br><span class="line">&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"MySQL"</span> value=<span class="string">"mysql"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>映射文件，把对象映射关系型数据库的一条数据，从主配置文件通过mappers<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;!-- &lt;mapper resource=<span class="string">"com/neusoft/mybatis/mapping/UserMapper.xml"</span> /&gt; --&gt;</span><br><span class="line">	&lt;package name=<span class="string">"com.neusoft.mybatis.dao.UserMapper"</span>&gt;&lt;/package&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure></p>
+<p>mybatis中 1、parameterType这样的输入参数的属性，通常情况下我们是可以省略的<br>2、 事务默认是手动提交的，（在ORM框架下，大部分需要手动提交）<br>sqlSession的openSession方法中，是autoCommit<br>通过一句话<br>sqlSession.commit();更新<br>3、 如何返回 插入数据中生成的主键值<br>通过useGeneratedKeys=”true” keyProperty=”id”生成的主键,再赋给user.id<br>4、Mybatis对于参数的处理问题上<br>  1)传递单个参数： mybatis会将这个参数不会做特殊的处理<br>  2)多参数传递： 如果不按照参数mybatis 的参数处理的规则，会报一个错误<br><figure class="highlight plain"><figcaption><span>Parameter '0' not found. Available parameters are [arg1, arg0, param1, param2]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  3.4.2版本之前org.apache.ibatis.binding.BindingException: Parameter &apos;arg0&apos; not found. Available parameters are [0, 1, param1, param2]</span><br><span class="line"></span><br><span class="line">mybatis将多个参数封装成一个Map： key默认的值 0,1,2,3,4 param1,param2,param3,param4  #&#123;&#125;</span><br><span class="line">=================================================================</span><br><span class="line">&lt;!-- select * from t_user where user_name = #&#123;param1&#125; and password = #&#123;param2&#125; --&gt;</span><br><span class="line">可以在dao接口中，加入注解@Param(&quot;~&quot;)</span><br><span class="line">public User selectUserByUsernameAndPassword(@Param(&quot;username&quot;)String username,@Param(&quot;password&quot;)String password);</span><br><span class="line">用下面代替</span><br><span class="line">select * from t_user where user_name = #&#123;username&#125; and password = #&#123;password&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  3)传递多参数@param 进行命名参数XML中可以使用@param命名的value的值作为Key<br>  4)多个参数传递可以封装为Map: XML map key<br>  5) 传递但参数，参数是Collection(List/Set)封装为Map map key:collection或者list，如果传递的是一个数组： array</p>
+
       
     </div>
 
@@ -534,7 +555,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/springMVC/" rel="tag"># springMVC</a>
+            <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
           
         </div>
       
@@ -599,8 +620,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -750,6 +780,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis"><span class="nav-number">1.</span> <span class="nav-text">Mybatis</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
