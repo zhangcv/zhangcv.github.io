@@ -22,7 +22,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 
@@ -97,16 +106,7 @@
     }
   };
 </script>
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
+
 
 
   
@@ -645,9 +645,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/04/20/LeetCode10. 正则表达式匹配/" itemprop="url">
+          <a class="post-title-link" href="/2019/04/20/LeetCode09. 回文数/" itemprop="url">
             
-              <span itemprop="name">LeetCode10. 正则表达式匹配</span>
+              <span itemprop="name">LEETCode9. 回文数</span>
             
           </a>
         
@@ -671,9 +671,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/04/20/LeetCode09. 回文数/" itemprop="url">
+          <a class="post-title-link" href="/2019/04/20/LeetCode10. 正则表达式匹配/" itemprop="url">
             
-              <span itemprop="name">LEETCode9. 回文数</span>
+              <span itemprop="name">LeetCode10. 正则表达式匹配</span>
             
           </a>
         

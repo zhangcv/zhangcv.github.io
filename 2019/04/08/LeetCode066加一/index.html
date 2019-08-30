@@ -22,7 +22,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 
@@ -97,16 +106,7 @@
     }
   };
 </script>
-<script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
+
 
 
   
@@ -579,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/08/LeetCode67. 二进制求和-Java实现/" rel="next" title="LeetCode 67二进制字符串求和（用二进制表示）。">
-                <i class="fa fa-chevron-left"></i> LeetCode 67二进制字符串求和（用二进制表示）。
+              <a href="/2019/04/08/LeetCode03无重复字符的最长子串/" rel="next" title="LeetCode03无重复字符的最长子串">
+                <i class="fa fa-chevron-left"></i> LeetCode03无重复字符的最长子串
               </a>
             
           </div>
@@ -589,8 +589,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/09/LeetCode15.三数之和/" rel="prev" title="LeetCode15.3sum">
-                LeetCode15.3sum <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/08/LeetCode02 两数相加/" rel="prev" title="LeetCode 03两数相加">
+                LeetCode 03两数相加 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
