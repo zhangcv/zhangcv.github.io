@@ -26,7 +26,6 @@
 
 
 
-  <script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -35,7 +34,7 @@
             }
         }
     })();
-</script>
+
   
   
     
@@ -83,6 +82,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script id="hexo.configurations">
@@ -521,7 +530,7 @@
 
 </div></div>
 <h3 id="4-HttpUtil-java"><a href="#4-HttpUtil-java" class="headerlink" title="4.HttpUtil.java"></a>4.HttpUtil.java</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"><span class="keyword">import</span> java.io.<span class="keyword">BufferedReader</span>;</span><br><span class="line"><span class="keyword">import</span> java.io.DataOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * http 工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> class HttpUtil &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> post(<span class="keyword">String</span> requestUrl, <span class="keyword">String</span> accessToken, <span class="keyword">String</span> params)</span><br><span class="line">            <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">String</span> contentType = <span class="string">"application/x-www-form-urlencoded"</span>;</span><br><span class="line">        <span class="keyword">return</span> HttpUtil.post(requestUrl, accessToken, contentType, params);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> post(<span class="keyword">String</span> requestUrl, <span class="keyword">String</span> accessToken, <span class="keyword">String</span> contentType, <span class="keyword">String</span> params)</span><br><span class="line">            <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">String</span> encoding = <span class="string">"UTF-8"</span>;</span><br><span class="line">        <span class="keyword">if</span> (requestUrl.contains(<span class="string">"nlp"</span>)) &#123;</span><br><span class="line">            encoding = <span class="string">"GBK"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> HttpUtil.post(requestUrl, accessToken, contentType, params, encoding);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> post(<span class="keyword">String</span> requestUrl, <span class="keyword">String</span> accessToken, <span class="keyword">String</span> contentType, <span class="keyword">String</span> params, <span class="keyword">String</span> encoding)</span><br><span class="line">            <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">String</span> url = requestUrl + <span class="string">"?access_token="</span> + accessToken;</span><br><span class="line">        <span class="keyword">return</span> HttpUtil.postGeneralUrl(url, contentType, params, encoding);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> postGeneralUrl(<span class="keyword">String</span> generalUrl, <span class="keyword">String</span> contentType, <span class="keyword">String</span> params, <span class="keyword">String</span> encoding)</span><br><span class="line">            <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        URL url = <span class="keyword">new</span> URL(generalUrl);</span><br><span class="line">        <span class="comment">// 打开和URL之间的连接</span></span><br><span class="line">        HttpURLConnection connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">        connection.setRequestMethod(<span class="string">"POST"</span>);</span><br><span class="line">        <span class="comment">// 设置通用的请求属性</span></span><br><span class="line">        connection.setRequestProperty(<span class="string">"Content-Type"</span>, contentType);</span><br><span class="line">        connection.setRequestProperty(<span class="string">"Connection"</span>, <span class="string">"Keep-Alive"</span>);</span><br><span class="line">        connection.setUseCaches(<span class="keyword">false</span>);</span><br><span class="line">        connection.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">        connection.setDoInput(<span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 得到请求的输出流对象</span></span><br><span class="line">        DataOutputStream out = <span class="keyword">new</span> DataOutputStream(connection.getOutputStream());</span><br><span class="line">        out.write(params.getBytes(encoding));</span><br><span class="line">        out.flush();</span><br><span class="line">        out.close();</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 建立实际的连接</span></span><br><span class="line">        connection.connect();</span><br><span class="line">        <span class="comment">// 获取所有响应头字段</span></span><br><span class="line">        Map&lt;<span class="keyword">String</span>, List&lt;<span class="keyword">String</span>&gt;&gt; headers = connection.getHeaderFields();</span><br><span class="line">        <span class="comment">// 遍历所有的响应头字段</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">key</span> : headers.keySet()) &#123;</span><br><span class="line">            System.err.<span class="built_in">println</span>(<span class="built_in">key</span> + <span class="string">"---&gt;"</span> + headers.<span class="built_in">get</span>(<span class="built_in">key</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 定义 BufferedReader输入流来读取URL的响应</span></span><br><span class="line">        <span class="keyword">BufferedReader</span> in = <span class="keyword">null</span>;</span><br><span class="line">        in = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(</span><br><span class="line">                <span class="keyword">new</span> InputStreamReader(connection.getInputStream(), encoding));</span><br><span class="line">        <span class="keyword">String</span> result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">String</span> getLine;</span><br><span class="line">        <span class="keyword">while</span> ((getLine = in.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result += getLine;</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"result:"</span> + result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://github.com/zhangcv" target="_blank" rel="noopener">Gihub</a></p>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3poYW5nY3Y=" title="https://github.com/zhangcv">Gihub<i class="fa fa-external-link"></i></span></p>
 
       
     </div>
@@ -738,7 +747,7 @@
                   
                     
                   
-                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3poYW5nY3Y=" title="GitHub &rarr; https://github.com/zhangcv"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -749,7 +758,7 @@
                   
                     
                   
-                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS96aGFuZ2N2MjAxNw==" title="Twitter &rarr; https://twitter.com/zhangcv2017"><i class="fa fa-fw fa-twitter"></i>Twitter</span>
                 </span>
               
             </div>
@@ -814,7 +823,7 @@
 </div>
 "
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> v3.8.0</div>
 
 
 
@@ -822,7 +831,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">Theme – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.1</div>
 
 "
 
@@ -959,6 +968,8 @@ setInterval("createtime()",250);
   
 
   
+  <script src="/js/exturl.js?v=7.0.1"></script>
+
 
   
 

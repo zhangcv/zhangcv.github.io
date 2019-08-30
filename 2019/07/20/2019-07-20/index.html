@@ -26,7 +26,6 @@
 
 
 
-  <script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -35,7 +34,7 @@
             }
         }
     })();
-</script>
+
   
   
     
@@ -83,6 +82,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script id="hexo.configurations">
@@ -516,7 +525,7 @@
         <h1 id="day01"><a href="#day01" class="headerlink" title="day01"></a>day01</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>XP虚拟机安装的是Oracle 10g的版本，将压缩包上传到虚拟机，解压缩安装。</p>
 <p>在远程连接安装PL/SQL Develper，推荐使用windowsXP安装，windows7或10有卸载起来很麻烦。<br>虚拟机里安装XP和Oracle数据库，不用的时候直接删了。</p>
 <p>我设置的网卡是NAT模式，(没插网线，桥接不了,用WIFI做的测试)</p>
-<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><p>解锁了scott用户，密码为123456，后面的orcl为实例名<br>sqlplus <a href="mailto:system/orcl@192.168.106.128" target="_blank" rel="noopener">system/orcl@192.168.106.128</a>:1521/orcl</p>
+<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h2><p>解锁了scott用户，密码为123456，后面的orcl为实例名<br>sqlplus <span class="exturl" data-url="bWFpbHRvOnN5c3RlbS9vcmNsQDE5Mi4xNjguMTA2LjEyOA==" title="mailto:system/orcl@192.168.106.128">system/orcl@192.168.106.128<i class="fa fa-external-link"></i></span>:1521/orcl</p>
 <p>1)tools-&gt;preferences-&gt;connection中sqlplus路径 不能有中文或者空格<br>2)确认服务器上的tnsnames.ora和linstener中的host为虚拟机ip地址<br>默认为 主机名，可以改为192.168.106.128 对应的Ip地址<br>3)C:\oracle\product\10.2.0\db_1\NETWORK\ADMIN里<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ORCL =</span><br><span class="line">  (DESCRIPTION =</span><br><span class="line">    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.106.128)(PORT = 1521))</span><br><span class="line">    (CONNECT_DATA =</span><br><span class="line">      (SERVER = DEDICATED)</span><br><span class="line">      (SERVICE_NAME = orcl)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">EXTPROC_CONNECTION_DATA =</span><br><span class="line">  (DESCRIPTION =</span><br><span class="line">    (ADDRESS_LIST =</span><br><span class="line">      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))</span><br><span class="line">    )</span><br><span class="line">    (CONNECT_DATA =</span><br><span class="line">      (SID = PLSExtProc)</span><br><span class="line">      (PRESENTATION = RO)</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure></p>
 <p>系统变量添加TNS_ADMIN 为tnsames.ora文件目录<br>4) 中文乱码问题 Oracle数据库<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询<span class="keyword">select</span> userenv(<span class="string">'language'</span>) <span class="keyword">from</span> dual;<span class="comment">--AMERICAN_AMERICA.ZHS16GBK</span></span><br></pre></td></tr></table></figure></p>
 <p>设置一个环境变量NLS_LANG = AMERICAN_AMERICA.ZHS16GBK<br>重新启动PLSQL<br>输入scott，123456，会提示Connect字眼<br>在XP系统中的服务里 安装Oracle数据库会增加几个服务<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">OracleDBConsoleorcl </span>--可以不启动,用于管理<span class="keyword">Oracle的企业管理器的服务.</span></span><br><span class="line"><span class="keyword">OracleJobSchedulerORCL </span>--通常不启动,用于定期操作任务的服务</span><br><span class="line"><span class="keyword">OracleOraDb10g_home1iSQL*Plus </span>--可以不启动,isqlplus服务,用网页执行sql,<span class="number">11</span>g已经取消这个功能</span><br><span class="line"><span class="keyword">OracleOraDb10g_home1TNSListener </span>--必须启动,这是临听,用于远程客户端连接你的<span class="keyword">Oracle</span></span><br><span class="line"><span class="keyword">OracleServiceORCL </span>--必须启动,这是<span class="keyword">Oracle数据库的服务</span></span><br></pre></td></tr></table></figure></p>
@@ -895,7 +904,7 @@
                   
                     
                   
-                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3poYW5nY3Y=" title="GitHub &rarr; https://github.com/zhangcv"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -906,7 +915,7 @@
                   
                     
                   
-                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS96aGFuZ2N2MjAxNw==" title="Twitter &rarr; https://twitter.com/zhangcv2017"><i class="fa fa-fw fa-twitter"></i>Twitter</span>
                 </span>
               
             </div>
@@ -971,7 +980,7 @@
 </div>
 "
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> v3.8.0</div>
 
 
 
@@ -979,7 +988,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">Theme – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.1</div>
 
 "
 
@@ -1116,6 +1125,8 @@ setInterval("createtime()",250);
   
 
   
+  <script src="/js/exturl.js?v=7.0.1"></script>
+
 
   
 

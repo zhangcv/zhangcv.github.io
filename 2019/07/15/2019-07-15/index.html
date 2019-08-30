@@ -26,7 +26,6 @@
 
 
 
-  <script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -35,7 +34,7 @@
             }
         }
     })();
-</script>
+
   
   
     
@@ -83,6 +82,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script id="hexo.configurations">
@@ -537,7 +546,7 @@
 <p><param-name>contextConfigLocation</param-name></p>
 <p><param-value>classpath:com/neusoft/resource/springmvc-servlet.xml</param-value><br>2)<br>修改名字</p>
 <p><param-value>/WEB-INF/dispatcherservlet.xml</param-value></p>
-<p><a href="mvc:annotation-driven/" target="_blank" rel="noopener">mvc:annotation-driven/</a>代替两个<br>&lt;!– <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean></p>
+<p><span class="exturl" data-url="bXZjOmFubm90YXRpb24tZHJpdmVuLw==" title="mvc:annotation-driven/">mvc:annotation-driven/<i class="fa fa-external-link"></i></span>代替两个<br>&lt;!– <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean></p>
 <pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;&lt;/bean&gt; --&gt;
 </code></pre><ol start="10">
 <li>SpringMVC常用的注解<br>1) @controller 当前Bean 为一个业务处理器类。<br>2) @RequestMapping注解 为控制器可以指定处理哪些URL请求<br>修饰方法<br>-@RequestMapping除了可以使用请求<br>URL映射请求外，还可以使用请求方法、请求参数及请求头映射请求<br>-@RequestMapping的value 、method、params及heads分别表示请求URL、请求方法、请求参数及请求头的映射条件，他们之间是与的关系，联合使用多个条件可以让请求映射更加准确化。<br>3) @RequestParam<br>4) @RequestHeaders</li>
@@ -760,7 +769,7 @@
                   
                     
                   
-                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3poYW5nY3Y=" title="GitHub &rarr; https://github.com/zhangcv"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -771,7 +780,7 @@
                   
                     
                   
-                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS96aGFuZ2N2MjAxNw==" title="Twitter &rarr; https://twitter.com/zhangcv2017"><i class="fa fa-fw fa-twitter"></i>Twitter</span>
                 </span>
               
             </div>
@@ -819,7 +828,7 @@
 </div>
 "
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> v3.8.0</div>
 
 
 
@@ -827,7 +836,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">Theme – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.1</div>
 
 "
 
@@ -964,6 +973,8 @@ setInterval("createtime()",250);
   
 
   
+  <script src="/js/exturl.js?v=7.0.1"></script>
+
 
   
 

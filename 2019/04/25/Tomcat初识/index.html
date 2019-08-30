@@ -26,7 +26,6 @@
 
 
 
-  <script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -35,7 +34,7 @@
             }
         }
     })();
-</script>
+
   
   
     
@@ -83,6 +82,16 @@
 
 
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <script id="hexo.configurations">
@@ -510,7 +519,7 @@
       
 
       
-        <p><a href="http://localhost:8080/Learning8-TomacatTest" target="_blank" rel="noopener">http://localhost:8080/Learning8-TomacatTest</a></p>
+        <p><span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgwL0xlYXJuaW5nOC1Ub21hY2F0VGVzdA==" title="http://localhost:8080/Learning8-TomacatTest">http://localhost:8080/Learning8-TomacatTest<i class="fa fa-external-link"></i></span></p>
 <p>动态网站：能与用户进行交互、并根据用户输入的信息产生相应响应的网站。<br>动态网站一般由大量的动态网页、后台处理程序以及用于存储内容的数据库组成。</p>
 <p>tomcat（java Serlet）（servlet容器）、Resin、jetty、webolgic（Oracle） webSphere（ibm）、Jboss（应用级服务器）</p>
 <p>常见的JavaWeb服务器：<br>Tomcat（Apache）：当前应用最广的JavaWeb服务器；<br>JBoss（Redhat红帽）：支持JavaEE，应用比较广；<br>GlassFish（Orcale）：Oracle开发JavaWeb服务器，应用不是很广；<br>Resin（Caucho）：支持JavaEE，应用越来越广；<br>Weblogic（Orcale）：要钱的！支持JavaEE，适合大型项目；<br>Websphere（IBM）：要钱的！支持JavaEE，上适合大型项目；</p>
@@ -523,9 +532,9 @@
                connectionTimeout="20000"
                redirectPort="8443" />
 -->
-<p> 端口：web服务器在启动时，实际上是监听了本机上的一个端口，当有客户端向该端口发送请求时，web服务器就会处理请求。但是如果不是向其所监听的端口发送请求，web服务器不会做任何响应。例如：Tomcat启动监听了80端口，而访问的地址是<a href="http://localhost:8080，将不能正常访问。" target="_blank" rel="noopener">http://localhost:8080，将不能正常访问。</a><br> 80端口：80端口是http协议默认的端口号，也就是说如果在url中不指定端口号那默认会向80端口发送请求。<br> （一个端口是一个进程）</p>
+<p> 端口：web服务器在启动时，实际上是监听了本机上的一个端口，当有客户端向该端口发送请求时，web服务器就会处理请求。但是如果不是向其所监听的端口发送请求，web服务器不会做任何响应。例如：Tomcat启动监听了80端口，而访问的地址是<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgw77yM5bCG5LiN6IO95q2j5bi46K6/6Zeu44CC" title="http://localhost:8080，将不能正常访问。">http://localhost:8080，将不能正常访问。<i class="fa fa-external-link"></i></span><br> 80端口：80端口是http协议默认的端口号，也就是说如果在url中不指定端口号那默认会向80端口发送请求。<br> （一个端口是一个进程）</p>
 <h3 id="Tomcat目录结构"><a href="#Tomcat目录结构" class="headerlink" title="Tomcat目录结构"></a>Tomcat目录结构</h3><p> bin                 存放启动、停止服务器和其他脚本文件<br> conf                存放服务器的配置文件<br> lib                存放Tomcat服务器的jar包<br> logs                存放Tomcat服务器的日志文件<br> temp                存放Tomcat服务器的临时文件<br> webapps             WEB应用的部署目录<br> work                Tomcat工作目录</p>
-<p> bin：该目录下存放的是二进制可执行文件，如果是安装版，那么这个目录下会有两个exe文件：tomcat6.exe、tomcat6w.exe，前者是在控制台下启动Tomcat，后者是弹出GUI窗口启动Tomcat；如果是解压版，那么会有startup.bat和shutdown.bat文件，startup.bat用来启动Tomcat，但需要先配置JAVA_HOME环境变量才能启动，shutdawn.bat用来停止Tomcat；<br> conf：这是一个非常非常重要的目录，这个目录下有四个最为重要的文件：<br>    1.server.xml：配置整个服务器信息。例如修改端口号，添加虚拟主机等；下面会详细介绍这个文件；<br>    2.tomcatusers.xml：存储tomcat用户的文件，这里保存的是tomcat的用户名及密码，以及用户的角色信息。可以按着该文件中的注释信息添加tomcat用户，然后就可以在Tomcat主页中进入Tomcat Manager页面了；<br>    3.web.xml：部署描述符文件，这个文件中注册了很多MIME类型，即文档类型。这些MIME类型是客户端与服务器之间说明文档类型的，如用户请求一个html网页，那么服务器还会告诉客户端浏览器响应的文档是text/html类型的，这就是一个MIME类型。客户端浏览器通过这个MIME类型就知道如何处理它了。当然是在浏览器中显示这个html文件了。但如果服务器响应的是一个exe文件，那么浏览器就不可能显示它，而是应该弹出下载窗口才对。MIME就是用来说明文档的内容是什么类型的！<br>    4.context.xml：对所有应用的统一配置，通常我们不会去配置它。<br> lib：Tomcat的类库，里面是一大堆jar文件。如果需要添加Tomcat依赖的jar文件，可以把它放到这个目录中，当然也可以把应用依赖的jar文件放到这个目录中，这个目录中的jar所有项目都可以共享之，但这样你的应用放到其他Tomcat下时就不能再共享这个目录下的jar包了，所以建议只把Tomcat需要的jar包放到这个目录下；<br> logs：这个目录中都是日志文件，记录了Tomcat启动和关闭的信息，如果启动Tomcat时有错误，那么异常也会记录在日志文件中。<br> temp：存放Tomcat的临时文件，这个目录下的东西可以在停止Tomcat后删除！<br> webapps：存放web项目的目录，其中每个文件夹都是一个项目；如果这个目录下已经存在了目录，那么都是tomcat自带的。项目。其中ROOT是一个特殊的项目，在地址栏中没有给出项目目录时，对应的就是ROOT项目。<a href="http://localhost:8080/examples，进入示例项目。其中examples就是项目名，即文件夹的名字。" target="_blank" rel="noopener">http://localhost:8080/examples，进入示例项目。其中examples就是项目名，即文件夹的名字。</a><br> work：运行时生成的文件，最终运行的文件都在这里。通过webapps中的项目生成的！可以把这个目录下的内容删除，再次运行时会生再次生成work目录。当客户端用户访问一个JSP文件时，Tomcat会通过JSP生成Java文件，然后再编译Java文件生成class文件，生成的java和class文件都会存放到这个目录下。<br> LICENSE：许可证。<br> NOTICE：说明文件。</p>
+<p> bin：该目录下存放的是二进制可执行文件，如果是安装版，那么这个目录下会有两个exe文件：tomcat6.exe、tomcat6w.exe，前者是在控制台下启动Tomcat，后者是弹出GUI窗口启动Tomcat；如果是解压版，那么会有startup.bat和shutdown.bat文件，startup.bat用来启动Tomcat，但需要先配置JAVA_HOME环境变量才能启动，shutdawn.bat用来停止Tomcat；<br> conf：这是一个非常非常重要的目录，这个目录下有四个最为重要的文件：<br>    1.server.xml：配置整个服务器信息。例如修改端口号，添加虚拟主机等；下面会详细介绍这个文件；<br>    2.tomcatusers.xml：存储tomcat用户的文件，这里保存的是tomcat的用户名及密码，以及用户的角色信息。可以按着该文件中的注释信息添加tomcat用户，然后就可以在Tomcat主页中进入Tomcat Manager页面了；<br>    3.web.xml：部署描述符文件，这个文件中注册了很多MIME类型，即文档类型。这些MIME类型是客户端与服务器之间说明文档类型的，如用户请求一个html网页，那么服务器还会告诉客户端浏览器响应的文档是text/html类型的，这就是一个MIME类型。客户端浏览器通过这个MIME类型就知道如何处理它了。当然是在浏览器中显示这个html文件了。但如果服务器响应的是一个exe文件，那么浏览器就不可能显示它，而是应该弹出下载窗口才对。MIME就是用来说明文档的内容是什么类型的！<br>    4.context.xml：对所有应用的统一配置，通常我们不会去配置它。<br> lib：Tomcat的类库，里面是一大堆jar文件。如果需要添加Tomcat依赖的jar文件，可以把它放到这个目录中，当然也可以把应用依赖的jar文件放到这个目录中，这个目录中的jar所有项目都可以共享之，但这样你的应用放到其他Tomcat下时就不能再共享这个目录下的jar包了，所以建议只把Tomcat需要的jar包放到这个目录下；<br> logs：这个目录中都是日志文件，记录了Tomcat启动和关闭的信息，如果启动Tomcat时有错误，那么异常也会记录在日志文件中。<br> temp：存放Tomcat的临时文件，这个目录下的东西可以在停止Tomcat后删除！<br> webapps：存放web项目的目录，其中每个文件夹都是一个项目；如果这个目录下已经存在了目录，那么都是tomcat自带的。项目。其中ROOT是一个特殊的项目，在地址栏中没有给出项目目录时，对应的就是ROOT项目。<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgwL2V4YW1wbGVz77yM6L+b5YWl56S65L6L6aG555uu44CC5YW25LitZXhhbXBsZXPlsLHmmK/pobnnm67lkI3vvIzljbPmlofku7blpLnnmoTlkI3lrZfjgII=" title="http://localhost:8080/examples，进入示例项目。其中examples就是项目名，即文件夹的名字。">http://localhost:8080/examples，进入示例项目。其中examples就是项目名，即文件夹的名字。<i class="fa fa-external-link"></i></span><br> work：运行时生成的文件，最终运行的文件都在这里。通过webapps中的项目生成的！可以把这个目录下的内容删除，再次运行时会生再次生成work目录。当客户端用户访问一个JSP文件时，Tomcat会通过JSP生成Java文件，然后再编译Java文件生成class文件，生成的java和class文件都会存放到这个目录下。<br> LICENSE：许可证。<br> NOTICE：说明文件。</p>
 <p>完整的Web应用还需要在WEB-INF目录下创建：</p>
 <p> classes；<br> lib目录；<br>　　webapps</p>
 <p>　　|- hello</p>
@@ -534,7 +543,7 @@
 <p>　　　　　　|-web.xml</p>
 <p>　　　　　　|-classes</p>
 <p>　　　　　　|-lib</p>
-<p> hello：应用目录，hello就是应用的名称；<br> index.html：应用资源。应用下可以有多个资源，例如css、js、html、jsp等，也可以把资源放到文件夹中，例如：hello\html\index.html，这时访问URL为：<a href="http://localhost:8080/hello/html/index.html；" target="_blank" rel="noopener">http://localhost:8080/hello/html/index.html；</a><br> WEB-INF：这个目录名称必须是大写，这个目录下的东西是无法通过浏览器直接访问的，也就是说放到这里的东西是安全的；<br> web.xml：应用程序的部署描述符文件，可以在该文件中对应用进行配置，例如配置应用的首页：  　　<br>　　<welcome-file-list><br>    　　<welcome-file>index.html</welcome-file><br>  　</welcome-file-list><br> classes：存放class文件的目录；（二进制文件）<br> lib：存放jar包的目录；<br> 当我们使用Eclipse将项目部署到Tomcat的时，我们发现，在Tomcat下的webapps目录下并没有我们创建好的项目，但是当通过Eclipse启动服务器后，项目却真的可以访问到，这是为什么呢？</p>
+<p> hello：应用目录，hello就是应用的名称；<br> index.html：应用资源。应用下可以有多个资源，例如css、js、html、jsp等，也可以把资源放到文件夹中，例如：hello\html\index.html，这时访问URL为：<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgwL2hlbGxvL2h0bWwvaW5kZXguaHRtbO+8mw==" title="http://localhost:8080/hello/html/index.html；">http://localhost:8080/hello/html/index.html；<i class="fa fa-external-link"></i></span><br> WEB-INF：这个目录名称必须是大写，这个目录下的东西是无法通过浏览器直接访问的，也就是说放到这里的东西是安全的；<br> web.xml：应用程序的部署描述符文件，可以在该文件中对应用进行配置，例如配置应用的首页：  　　<br>　　<welcome-file-list><br>    　　<welcome-file>index.html</welcome-file><br>  　</welcome-file-list><br> classes：存放class文件的目录；（二进制文件）<br> lib：存放jar包的目录；<br> 当我们使用Eclipse将项目部署到Tomcat的时，我们发现，在Tomcat下的webapps目录下并没有我们创建好的项目，但是当通过Eclipse启动服务器后，项目却真的可以访问到，这是为什么呢？</p>
 <h1 id="实际上，Eclipse在使用Tomcat时，并没有将项目部署到Tomcat的目录下，而是在其工作空间中，创建了一个Tomcat的镜像，Eclipse启动的Tomcat是他自己配置的镜像。"><a href="#实际上，Eclipse在使用Tomcat时，并没有将项目部署到Tomcat的目录下，而是在其工作空间中，创建了一个Tomcat的镜像，Eclipse启动的Tomcat是他自己配置的镜像。" class="headerlink" title=" 实际上，Eclipse在使用Tomcat时，并没有将项目部署到Tomcat的目录下，而是在其工作空间中，创建了一个Tomcat的镜像，Eclipse启动的Tomcat是他自己配置的镜像。"></a> 实际上，Eclipse在使用Tomcat时，并没有将项目部署到Tomcat的目录下，而是在其工作空间中，创建了一个Tomcat的镜像，Eclipse启动的Tomcat是他自己配置的镜像。</h1><p> Eclipse镜像所在目录 Java工作空间目录下的.metadata.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps<br> wtpwebapps 各种部署的应用</p>
 <h1 id="部署第一个动态WEB时报错"><a href="#部署第一个动态WEB时报错" class="headerlink" title="部署第一个动态WEB时报错"></a>部署第一个动态WEB时报错</h1><!-- 配置servlet的映射路径 -->
 <p><servlet-mapping></servlet-mapping></p>
@@ -760,7 +769,7 @@
                   
                     
                   
-                  <a href="https://github.com/zhangcv" title="GitHub &rarr; https://github.com/zhangcv" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3poYW5nY3Y=" title="GitHub &rarr; https://github.com/zhangcv"><i class="fa fa-fw fa-github"></i>GitHub</span>
                 </span>
               
                 <span class="links-of-author-item">
@@ -771,7 +780,7 @@
                   
                     
                   
-                  <a href="https://twitter.com/zhangcv2017" title="Twitter &rarr; https://twitter.com/zhangcv2017" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS96aGFuZ2N2MjAxNw==" title="Twitter &rarr; https://twitter.com/zhangcv2017"><i class="fa fa-fw fa-twitter"></i>Twitter</span>
                 </span>
               
             </div>
@@ -836,7 +845,7 @@
 </div>
 "
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> v3.8.0</div>
 
 
 
@@ -844,7 +853,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">Theme – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.1</div>
 
 "
 
@@ -981,6 +990,8 @@ setInterval("createtime()",250);
   
 
   
+  <script src="/js/exturl.js?v=7.0.1"></script>
+
 
   
 
