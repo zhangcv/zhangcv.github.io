@@ -104,16 +104,20 @@
 
 
 
-  <meta name="description" content="Jack&apos;s Ideas &amp; Blogs">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhangcv&#39;s Personal Website">
-<meta property="og:url" content="http://zhangcv.github.io/archives/2019/03/index.html">
+  <meta name="description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于springboot的学习总结·三">
+<meta property="og:url" content="http://zhangcv.github.io/2019/08/07/2019-08-15/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta property="og:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://zhangcv.github.io/2019/08/07/2019-08-15/1.jpg">
+<meta property="og:updated_time" content="2019-09-16T08:46:21.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhangcv&#39;s Personal Website">
-<meta name="twitter:description" content="Jack&apos;s Ideas &amp; Blogs">
+<meta name="twitter:title" content="关于springboot的学习总结·三">
+<meta name="twitter:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
+<meta name="twitter:image" content="http://zhangcv.github.io/2019/08/07/2019-08-15/1.jpg">
 
 
 
@@ -121,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="http://zhangcv.github.io/archives/2019/03/">
+  <link rel="canonical" href="http://zhangcv.github.io/2019/08/07/2019-08-15/">
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title>Archive | Zhangcv's Personal Website</title>
+  <title>关于springboot的学习总结·三 | Zhangcv's Personal Website</title>
   
 
 
@@ -179,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,7 +278,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -324,28 +328,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -408,77 +390,203 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-          
-        Good! 88 posts in total. Keep on posting.
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/08/07/2019-08-15/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack">
+      <meta itemprop="description" content="Jack's Ideas & Blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhangcv's Personal Website">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/03/31/Java随笔-？：/" itemprop="url">
-            
-              <span itemprop="name">Java随笔 （？：）条件运算符</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">关于springboot的学习总结·三
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-31T23:30:30+08:00" content="2019-03-31">
-          03-31
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-07 21:31:30" itemprop="dateCreated datePublished" datetime="2019-08-07T21:31:30+08:00">2019-08-07</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>四、 缓存redis 解决页面并发问题<br>        //链接缓存</p>
+<pre><code>//查询缓存
+
+//如果缓存中没有，查询mysql
+
+//mysql查询结果存入redis
+</code></pre><p>redis 整合步骤<br>1 redis-spring 整合<br> 步骤：<br>      一、引入Service-util里的pom.xml jedis<br>      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)<br>      三、写一个spring整合redis 的配置类 将redis 的链接池创建到spring 容器中<br>      四、每个用工程引入 service-util后，单独配置自己的redis的配置文件<br>          Service-util的配置文件没有作用<br>2 设计一个数据存储策略<br>存储策略（设计key）<br> 数据对象名：数据对象id：对象属性<br> User:123:password<br> Sku:108:info</p>
+<p> 连接 redis-cli -h 47.94.149.85 -p 6379 -a 1234567<br>Redis 常见的问题</p>
+<p>一、can‘t get a connection from the pool 配置文件的问题<br>二、缓存在高并发和安全压力下的问题<br>缓存击穿<br>    是某一个热点Key在高并发访问的情况下，突然失效，导致大量的并发打进mysql数据库的请求<br>缓存穿透<br>    是利用redis 和 mysql 的机制(redis缓存一旦不存在，就访问mysql) 直接绕过缓存访问mysql ，而 制造的 db请求压力<br>    一般在代码中防止 该现象的发生<br>缓存雪崩<br>    缓存中的很多key失效，导致数据库负载过重宕机</p>
+<p>分布式锁 ：<br>        1,redis自带一个分布式锁，set ex nx<br>        2,redisson框架，一个redis 的带有juc的lock功能的客户端的实现(有jedis也能有juc的功能)</p>
+<p>nx 分布式锁<br>set sku:108:lock 1 px 10000 nx<br>        Key     Value  过期时间   分布式锁参数，只有不存在才能成功<br>10s后过期，用完<br>del sku:108:lock<br>错误自旋<br><img src="/2019/08/07/2019-08-15/1.jpg" alt="无"></p>
+<p>修正return 本方法<br>                    Lua脚本<br>Redis锁的两种意外情况<br>问题1： 如果在redis 中的锁已经过期了，然后锁过期的那个请求又执行完毕，回来删锁，删除了其他线程的锁，怎么办？<br>答： String lockToken = jedis.get(“sku:” + skuId + “:lock”);<br>                if(StringUtils.isNotBlank(lockToken)&amp;&amp;lockToken.equals(token)) {<br>                    jedis.del(“sku:” + skuId + “:lock”); //用token确认删除的是自己的sku的锁<br>                }<br>问题2 ： 如果碰巧在查询redis锁还没删除的时候，正在网络传输时，锁过期了，怎么办</p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/01/2019-08-01/" rel="next" title="关于springboot的学习总结">
+                <i class="fa fa-chevron-left"></i> 关于springboot的学习总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/2019-08-07/" rel="prev" title="关于springboot的学习总结·二">
+                关于springboot的学习总结·二 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -811,6 +919,8 @@ setInterval("createtime()",250);
 
 
   
+  
+
 
   
 
@@ -828,6 +938,8 @@ setInterval("createtime()",250);
 
   
 
+
+  
 
 
   
