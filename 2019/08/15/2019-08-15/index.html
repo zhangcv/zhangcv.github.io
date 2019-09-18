@@ -104,18 +104,23 @@
 
 
 
-  <meta name="description" content="描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1:输入: [“flower”,”flow”,”flight”]输出: “fl” 示例 2:输入: [“dog”,”racecar”,”car”]输出: “”解释: 输入不存在公共前缀。 12345678910111213141516171819202122232425262728293031323">
-<meta name="keywords" content="LeetCode">
+  <meta name="description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode14最长公共前缀">
-<meta property="og:url" content="http://zhangcv.github.io/2019/04/23/LeetCode14最长公共前缀/index.html">
+<meta property="og:title" content="关于springboot的学习总结·三">
+<meta property="og:url" content="http://zhangcv.github.io/2019/08/15/2019-08-15/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1:输入: [“flower”,”flow”,”flight”]输出: “fl” 示例 2:输入: [“dog”,”racecar”,”car”]输出: “”解释: 输入不存在公共前缀。 12345678910111213141516171819202122232425262728293031323">
+<meta property="og:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-23T15:48:08.664Z">
+<meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/1.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/2.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/3.jpg">
+<meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/4.jpg">
+<meta property="og:updated_time" content="2019-09-18T03:17:58.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode14最长公共前缀">
-<meta name="twitter:description" content="描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1:输入: [“flower”,”flow”,”flight”]输出: “fl” 示例 2:输入: [“dog”,”racecar”,”car”]输出: “”解释: 输入不存在公共前缀。 12345678910111213141516171819202122232425262728293031323">
+<meta name="twitter:title" content="关于springboot的学习总结·三">
+<meta name="twitter:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
+<meta name="twitter:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/1.jpg">
 
 
 
@@ -123,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://zhangcv.github.io/2019/04/23/LeetCode14最长公共前缀/">
+  <link rel="canonical" href="http://zhangcv.github.io/2019/08/15/2019-08-15/">
 
 
 
@@ -133,7 +138,7 @@
   };
 </script>
 
-  <title>LeetCode14最长公共前缀 | Zhangcv's Personal Website</title>
+  <title>关于springboot的学习总结·三 | Zhangcv's Personal Website</title>
   
 
 
@@ -404,7 +409,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/04/23/LeetCode14最长公共前缀/">
+    <link itemprop="mainEntityOfPage" href="http://zhangcv.github.io/2019/08/15/2019-08-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jack">
@@ -421,7 +426,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode14最长公共前缀
+          <h1 class="post-title" itemprop="name headline">关于springboot的学习总结·三
 
               
             
@@ -447,7 +452,7 @@
                 
               
 
-              <time title="Created: 2019-04-23 21:30:30" itemprop="dateCreated datePublished" datetime="2019-04-23T21:30:30+08:00">2019-04-23</time>
+              <time title="Created: 2019-08-15 21:31:30" itemprop="dateCreated datePublished" datetime="2019-08-15T21:31:30+08:00">2019-08-15</time>
             
 
             
@@ -465,7 +470,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
 
                 
                 
@@ -500,14 +505,38 @@
       
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
-<p>如果不存在公共前缀，返回空字符串 “”。</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h3><p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”</p>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h3><p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">String</span> longestCommonPrefix(<span class="keyword">String</span>[] strs) &#123;</span><br><span class="line">        <span class="comment">//if(strs==null) return null;</span></span><br><span class="line">        <span class="built_in">int</span> N=strs.length;</span><br><span class="line">        <span class="built_in">int</span> maxlen=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> maxflag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i&lt;N;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(strs[i].length()&gt;maxlen)</span><br><span class="line">            &#123;</span><br><span class="line">                maxlen=strs[i].length();</span><br><span class="line">                maxflag=i;</span><br><span class="line">            &#125;  </span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Character&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>;i&lt;maxlen;i++)</span><br><span class="line">        &#123;</span><br><span class="line">         list.<span class="built_in">add</span>(strs[maxflag].charAt(i));   </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">int</span> num=<span class="number">0</span>; <span class="comment">//第num个元素</span></span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">min</span> =maxlen; <span class="comment">//子字符串截取尾指针</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i =<span class="number">0</span>;i&lt;strs.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">String</span> <span class="built_in">str</span> = strs[i];</span><br><span class="line">            <span class="built_in">int</span> n = <span class="built_in">str</span>.length();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="built_in">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">str</span>.charAt(j)==list.<span class="built_in">get</span>(j))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(j==n<span class="number">-1</span> &amp;&amp; n&lt; <span class="built_in">min</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="built_in">min</span> = n;</span><br><span class="line">                        num=i;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span>(j&gt;<span class="number">0</span> &amp;&amp; j&lt;<span class="built_in">min</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="built_in">min</span> = j;</span><br><span class="line">                        num=i;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//System.out.println(num);</span></span><br><span class="line">        <span class="comment">//System.out.println(min);</span></span><br><span class="line">        <span class="keyword">if</span>(strs.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">String</span> string = strs[num];</span><br><span class="line">            <span class="comment">//return string.substring(0,min);</span></span><br><span class="line">            <span class="keyword">return</span> string.length()==<span class="number">0</span>?<span class="string">""</span>:string.substring(<span class="number">0</span>,<span class="built_in">min</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>方法二：<br>暴力法</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">     <span class="keyword">if</span> (strs.<span class="built_in">length</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">if</span> (strs.<span class="built_in">length</span>&gt;<span class="number">1</span>) &#123;</span><br><span class="line">            int len = strs[<span class="number">0</span>].<span class="built_in">length</span>();</span><br><span class="line">            <span class="keyword">for</span> (int <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; len; <span class="built_in">i</span>++) &#123;</span><br><span class="line">                char curr = strs[<span class="number">0</span>].charAt(<span class="built_in">i</span>);</span><br><span class="line">                <span class="keyword">for</span> (int <span class="built_in">j</span> = <span class="number">1</span>; <span class="built_in">j</span> &lt; strs.<span class="built_in">length</span>; <span class="built_in">j</span>++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[<span class="built_in">j</span>].<span class="built_in">length</span>()&lt;=<span class="built_in">i</span> ||strs[<span class="built_in">j</span>].charAt(<span class="built_in">i</span>) != curr) &#123;</span><br><span class="line">                        <span class="keyword">return</span> sb.toString();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (strs[<span class="built_in">j</span>].charAt(<span class="built_in">i</span>) == curr &amp;&amp; <span class="built_in">j</span> == strs.<span class="built_in">length</span> - <span class="number">1</span>) &#123;</span><br><span class="line">                        sb.append(curr);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>四、 缓存redis 解决页面并发问题<br>        //链接缓存</p>
+<pre><code>//查询缓存
 
+//如果缓存中没有，查询mysql
+
+//mysql查询结果存入redis
+</code></pre><p>redis 整合步骤<br>1 redis-spring 整合<br> 步骤：<br>      一、引入Service-util里的pom.xml jedis<br>      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)<br>      三、写一个spring整合redis 的配置类 将redis 的链接池创建到spring 容器中<br>      四、每个用工程引入 service-util后，单独配置自己的redis的配置文件<br>          Service-util的配置文件没有作用<br>2 设计一个数据存储策略<br>存储策略（设计key）<br> 数据对象名：数据对象id：对象属性<br> User:123:password<br> Sku:108:info</p>
+<p> 连接 redis-cli -h 47.94.149.85 -p 6379 -a 1234567<br>Redis 常见的问题</p>
+<p>一、can‘t get a connection from the pool 配置文件的问题<br>二、缓存在高并发和安全压力下的问题<br>缓存击穿<br>    是某一个热点Key在高并发访问的情况下，突然失效，导致大量的并发打进mysql数据库的请求<br>缓存穿透<br>    是利用redis 和 mysql 的机制(redis缓存一旦不存在，就访问mysql) 直接绕过缓存访问mysql ，而 制造的 db请求压力<br>    一般在代码中防止 该现象的发生<br>缓存雪崩<br>    缓存中的很多key失效，导致数据库负载过重宕机</p>
+<p>分布式锁 ：<br>        1,redis自带一个分布式锁，set ex nx<br>        2,redisson框架，一个redis 的带有juc的lock功能的客户端的实现(有jedis也能有juc的功能)</p>
+<p>nx 分布式锁<br>set sku:108:lock 1 px 10000 nx<br>        Key     Value  过期时间   分布式锁参数，只有不存在才能成功<br>10s后过期，用完<br>del sku:108:lock<br>错误自旋<br><img src="/2019/08/15/2019-08-15/1.jpg" alt="无"></p>
+<p>修正return 本方法<br>                    Lua脚本<br>Redis锁的两种意外情况<br>问题1： 如果在redis 中的锁已经过期了，然后锁过期的那个请求又执行完毕，回来删锁，删除了其他线程的锁，怎么办？<br>答： String lockToken = jedis.get(“sku:” + skuId + “:lock”);<br>                if(StringUtils.isNotBlank(lockToken)&amp;&amp;lockToken.equals(token)) {<br>                    jedis.del(“sku:” + skuId + “:lock”); //用token确认删除的是自己的sku的锁<br>                }<br>问题2 ： 如果碰巧在查询redis锁还没删除的时候，正在网络传输时，锁过期了，怎么办</p>
+<p>JUC的实现<br><img src="/2019/08/15/2019-08-15/2.jpg" alt="无"><br>设计成<br><img src="/2019/08/15/2019-08-15/3.jpg" alt="无"></p>
+<p>nginx 负载均衡的配置<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">           <span class="comment">#root   html;</span></span><br><span class="line">		<span class="attribute">proxy_pass</span> http://redisTest;</span><br><span class="line">           <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">       &#125;</span><br><span class="line">	</span><br><span class="line">		<span class="attribute">upstream</span> redisTest &#123;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8180</span> weight=<span class="number">3</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8181</span> weight=<span class="number">3</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8182</span> weight=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Apache24 压力测试的命令</p>
+<p>在次之前修改apache 服务的配置文件(服务器的根目录)<br>Define SRVROOT “D:\tools\Apache24”</p>
+<p>端口查询命令<br>ab 压测命令  c 并发数  n请求多少次  请求地址<br><img src="/2019/08/15/2019-08-15/4.jpg" alt="无"></p>
+<p> List<user> selectByExampleWithClass(UserExample example);</user></p>
+<pre><code>User selectByPrimaryKeyWithClass(Integer id);
+
+public void setBirthday(String str) {
+    SimpleDateFormat sdf =  new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+    Date birthday;
+
+    try {
+        birthday = sdf.parse(str);
+        this.birthday=birthday;
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
       
     </div>
 
@@ -530,7 +559,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
           
         </div>
       
@@ -543,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/LeetCode12整数转罗马数字/" rel="next" title="LeetCode12整数转罗马数字">
-                <i class="fa fa-chevron-left"></i> LeetCode12整数转罗马数字
+              <a href="/2019/08/07/2019-08-07/" rel="next" title="关于springboot的学习总结·二">
+                <i class="fa fa-chevron-left"></i> 关于springboot的学习总结·二
               </a>
             
           </div>
@@ -552,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/LeetCode16最接近的三数之和/" rel="prev" title="LeetCode16最接近的三数之和">
-                LeetCode16最接近的三数之和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,17 +624,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -759,23 +775,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-1"><span class="nav-number">1.1.</span> <span class="nav-text">示例 1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-2"><span class="nav-number">1.2.</span> <span class="nav-text">示例 2:</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
