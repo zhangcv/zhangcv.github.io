@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/2.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/3.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/4.jpg">
-<meta property="og:updated_time" content="2019-09-23T10:23:43.092Z">
+<meta property="og:updated_time" content="2019-09-23T10:36:53.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于springboot的学习总结·三">
 <meta name="twitter:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
@@ -255,7 +255,7 @@
       
     
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags<span class="badge">11</span></a>
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags<span class="badge">12</span></a>
 
   </li>
         
@@ -274,7 +274,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories<span class="badge">12</span></a>
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories<span class="badge">13</span></a>
 
   </li>
         
@@ -293,7 +293,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">89</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">90</span></a>
 
   </li>
         
@@ -513,11 +513,11 @@
 //mysql查询结果存入redis
 </code></pre><p>redis 整合步骤<br>1 redis-spring 整合<br> 步骤：<br>      一、引入Service-util里的pom.xml jedis<br>      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)<br>      三、写一个spring整合redis 的配置类 将redis 的链接池创建到spring 容器中<br>      四、每个用工程引入 service-util后，单独配置自己的redis的配置文件<br>          Service-util的配置文件没有作用<br>2 设计一个数据存储策略<br>存储策略（设计key）<br> 数据对象名：数据对象id：对象属性<br> User:123:password<br> Sku:108:info</p>
 <p> 连接 redis-cli -h host -p port -a password<br>Redis 常见的问题</p>
-<p>一、can‘t get a connection from the pool 配置文件的问题<br>二、缓存在高并发和安全压力下的问题<br>缓存击穿<br>    是某一个热点Key在高并发访问的情况下，突然失效，导致大量的并发打进mysql数据库的请求<br>缓存穿透<br>    是利用redis 和 mysql 的机制(redis缓存一旦不存在，就访问mysql) 直接绕过缓存访问mysql ，而 制造的 db请求压力<br>    一般在代码中防止 该现象的发生<br>缓存雪崩<br>    缓存中的很多key失效，导致数据库负载过重宕机</p>
+<p>一、can‘t get a connection from the pool 配置文件的问题<br>二、缓存在高并发和安全压力下的问题<br>缓存击穿<br>    是某一个热点Key在高并发访问的情况下，突然失效，导致大量的并发打进mysql数据库的请求<br>缓存穿透<br>    是利用redis 和 mysql 的机制(redis缓存一旦不存在，就访问mysql) 直接绕过缓存访问mysql ，而 制造的 db请求压力<br>    一般在代码中防止 该现象的发生<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(pmsSkuInfo!=<span class="literal">null</span>)&#123;</span><br><span class="line">                   <span class="comment">//mysql查询结果存入redis</span></span><br><span class="line">                   jedis.set(<span class="string">"sku:"</span>+skuId+<span class="string">":info"</span>,<span class="built_in">JSON</span>.toJSONString(pmsSkuInfo));</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   <span class="comment">//数据库不存在该sku</span></span><br><span class="line">                   <span class="comment">//为了防止缓存穿透将null或者空支付查值设置给redis</span></span><br><span class="line">                   jedis.setex(<span class="string">"sku:"</span>+skuId+<span class="string">":info"</span>,<span class="number">60</span>*<span class="number">3</span>,<span class="built_in">JSON</span>.toJSONString(<span class="string">""</span>));</span><br><span class="line">               &#125;</span><br></pre></td></tr></table></figure></p>
+<p>缓存雪崩<br>    缓存中的很多key失效，导致数据库负载过重宕机</p>
 <p>分布式锁 ：<br>        1,redis自带一个分布式锁，set ex nx<br>        2,redisson框架，一个redis 的带有juc的lock功能的客户端的实现(有jedis也能有juc的功能)</p>
 <p>nx 分布式锁<br>set sku:108:lock 1 px 10000 nx<br>        Key     Value  过期时间   分布式锁参数，只有不存在才能成功<br>10s后过期，用完<br>del sku:108:lock<br>错误自旋<br><img src="/2019/08/15/2019-08-15/1.jpg" alt="无"></p>
-<p>修正return 本方法<br>                    Lua脚本<br>Redis锁的两种意外情况<br>问题1： 如果在redis 中的锁已经过期了，然后锁过期的那个请求又执行完毕，回来删锁，删除了其他线程的锁，怎么办？<br>答： String lockToken = jedis.get(“sku:” + skuId + “:lock”);<br>                if(StringUtils.isNotBlank(lockToken)&amp;&amp;lockToken.equals(token)) {<br>                    jedis.del(“sku:” + skuId + “:lock”); //用token确认删除的是自己的sku的锁<br>                }<br>问题2 ： 如果碰巧在查询redis锁还没删除的时候，正在网络传输时，锁过期了，怎么办</p>
-<p>JUC的实现<br><img src="/2019/08/15/2019-08-15/2.jpg" alt="无"><br>设计成<br><img src="/2019/08/15/2019-08-15/3.jpg" alt="无"></p>
+<p>修正return 本方法<br>                    Lua脚本<br>Redis锁的两种意外情况<br>问题1： 如果在redis 中的锁已经过期了，然后锁过期的那个请求又执行完毕，回来删锁，删除了其他线程的锁，怎么办？<br>答： String lockToken = jedis.get(“sku:” + skuId + “:lock”);<br>                if(StringUtils.isNotBlank(lockToken)&amp;&amp;lockToken.equals(token)) {<br>                    jedis.del(“sku:” + skuId + “:lock”); //用token确认删除的是自己的sku的锁<br>                }<br>问题2 ： 如果碰巧在查询redis锁还没删除的时候，正在网络传输时，锁过期了，怎么办<br>lua脚本<br>jedis.eval<br>JUC的实现<br><img src="/2019/08/15/2019-08-15/2.jpg" alt="无"><br>设计成<br><img src="/2019/08/15/2019-08-15/3.jpg" alt="无"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"testRedisson"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testRedisson</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Jedis jedis = redisUtil.getJedis();</span><br><span class="line">        RLock lock = redissonClient.getLock(<span class="string">"lock"</span>);</span><br><span class="line">        lock.lock();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String v = jedis.get(<span class="string">"k"</span>);</span><br><span class="line">            <span class="keyword">if</span>(StringUtils.isBlank(v))&#123;</span><br><span class="line">                v=<span class="string">"1"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"==="</span>+v);</span><br><span class="line">            jedis.set(<span class="string">"k"</span>,(Integer.parseInt(v)+<span class="number">1</span>)+<span class="string">""</span>);</span><br><span class="line">            jedis.close();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line"></span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>nginx 负载均衡的配置<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">           <span class="comment">#root   html;</span></span><br><span class="line">		<span class="attribute">proxy_pass</span> http://redisTest;</span><br><span class="line">           <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">       &#125;</span><br><span class="line">	</span><br><span class="line">		<span class="attribute">upstream</span> redisTest &#123;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8180</span> weight=<span class="number">3</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8181</span> weight=<span class="number">3</span>;</span><br><span class="line">	<span class="attribute">server</span> <span class="number">127.0.0.1:8182</span> weight=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Apache24 压力测试的命令</p>
 <p>在次之前修改apache 服务的配置文件(服务器的根目录)<br>Define SRVROOT “D:\tools\Apache24”</p>
@@ -632,7 +632,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -673,7 +673,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -712,7 +714,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
