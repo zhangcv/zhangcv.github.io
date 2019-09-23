@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/2.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/3.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/15/2019-08-15/4.jpg">
-<meta property="og:updated_time" content="2019-09-18T03:28:31.740Z">
+<meta property="og:updated_time" content="2019-09-23T10:23:43.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于springboot的学习总结·三">
 <meta name="twitter:description" content="四、 缓存redis 解决页面并发问题        //链接缓存 //查询缓存  //如果缓存中没有，查询mysql  //mysql查询结果存入redis redis 整合步骤1 redis-spring 整合 步骤：      一、引入Service-util里的pom.xml jedis      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)">
@@ -293,7 +293,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">88</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">89</span></a>
 
   </li>
         
@@ -512,7 +512,7 @@
 
 //mysql查询结果存入redis
 </code></pre><p>redis 整合步骤<br>1 redis-spring 整合<br> 步骤：<br>      一、引入Service-util里的pom.xml jedis<br>      二、写一个redis 的工具类(用来将redis的池 初始化到Spring容器中)<br>      三、写一个spring整合redis 的配置类 将redis 的链接池创建到spring 容器中<br>      四、每个用工程引入 service-util后，单独配置自己的redis的配置文件<br>          Service-util的配置文件没有作用<br>2 设计一个数据存储策略<br>存储策略（设计key）<br> 数据对象名：数据对象id：对象属性<br> User:123:password<br> Sku:108:info</p>
-<p> 连接 redis-cli -h 47.94.149.85 -p 6379 -a 1234567<br>Redis 常见的问题</p>
+<p> 连接 redis-cli -h host -p port -a password<br>Redis 常见的问题</p>
 <p>一、can‘t get a connection from the pool 配置文件的问题<br>二、缓存在高并发和安全压力下的问题<br>缓存击穿<br>    是某一个热点Key在高并发访问的情况下，突然失效，导致大量的并发打进mysql数据库的请求<br>缓存穿透<br>    是利用redis 和 mysql 的机制(redis缓存一旦不存在，就访问mysql) 直接绕过缓存访问mysql ，而 制造的 db请求压力<br>    一般在代码中防止 该现象的发生<br>缓存雪崩<br>    缓存中的很多key失效，导致数据库负载过重宕机</p>
 <p>分布式锁 ：<br>        1,redis自带一个分布式锁，set ex nx<br>        2,redisson框架，一个redis 的带有juc的lock功能的客户端的实现(有jedis也能有juc的功能)</p>
 <p>nx 分布式锁<br>set sku:108:lock 1 px 10000 nx<br>        Key     Value  过期时间   分布式锁参数，只有不存在才能成功<br>10s后过期，用完<br>del sku:108:lock<br>错误自旋<br><img src="/2019/08/15/2019-08-15/1.jpg" alt="无"></p>
@@ -567,6 +567,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/19/2019-08-19/" rel="prev" title="elasticsearch配置">
+                elasticsearch配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -628,7 +632,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">88</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
