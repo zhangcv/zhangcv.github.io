@@ -746,6 +746,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[LeetCode12整数转罗马数字]]></title>
+    <url>%2F%2F2019%2F04%2F22%2FLeetCode12%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1:输入: 3输出: “III” 示例 2:输入: 4输出: “IV” 示例 3:输入: 9输出: “IX” 示例 4:输入: 58输出: “LVIII”解释: L = 50, V = 5, III = 3. 示例 5:输入: 1994输出: “MCMXCIV”解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码：1234567891011121314151617class Solution &#123; public String intToRoman(int num) &#123; int values[] = &#123;1000,900,500,400,100,90,50,40,10,9,5,4,1&#125;; String reps[]=&#123;"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"&#125;; String res=""; for(int i = 0;i&lt;13;i++) &#123; while(num&gt;=values[i]) &#123; num -=values[i]; res+=reps[i]; &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode13罗马数字转整数]]></title>
     <url>%2F%2F2019%2F04%2F22%2FLeetCode13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0%2F</url>
     <content type="text"><![CDATA[描述：罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。 示例 1:输入: “III”输出: 3 示例 2：输入: “IV”输出: 4 示例 3:输入: “IX”输出: 9 示例 4:输入: “LVIII”输出: 58解释: L = 50, V= 5, III = 3. 示例 5:输入: “MCMXCIV”输出: 1994解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码： 12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; public int romanToInt(String s) &#123; HashMap&lt;String,Integer&gt; map = new HashMap&lt;String,Integer&gt;(); map.put("I",1); map.put("IV",4); map.put("V",5); map.put("VI",6); map.put("IX",9); map.put("X",10); map.put("XL",40); map.put("L",50); map.put("XC",90); map.put("C",100); map.put("CD",400); map.put("D",500); map.put("CM",900); map.put("M",1000); int res=0; int i=0; int n =s.length(); while(i&lt;n) &#123; if(i&lt;n-1 &amp;&amp; map.containsKey(s.substring(i,i+2))) &#123; res +=map.get(s.substring(i,i+2)); i+=2; &#125; else if(map.containsKey(s.substring(i,i+1))) &#123; res +=map.get(s.substring(i,i+1)); i+=1; &#125; &#125; return res; &#125;&#125;]]></content>
@@ -757,9 +768,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode12整数转罗马数字]]></title>
-    <url>%2F%2F2019%2F04%2F22%2FLeetCode12%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[描述罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。 字符 数值 I 1 V 5 X 10 L 50 C 100 D 500 M 1000 例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况： I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。 示例 1:输入: 3输出: “III” 示例 2:输入: 4输出: “IV” 示例 3:输入: 9输出: “IX” 示例 4:输入: 58输出: “LVIII”解释: L = 50, V = 5, III = 3. 示例 5:输入: 1994输出: “MCMXCIV”解释: M = 1000, CM = 900, XC = 90, IV = 4. 代码：1234567891011121314151617class Solution &#123; public String intToRoman(int num) &#123; int values[] = &#123;1000,900,500,400,100,90,50,40,10,9,5,4,1&#125;; String reps[]=&#123;"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"&#125;; String res=""; for(int i = 0;i&lt;13;i++) &#123; while(num&gt;=values[i]) &#123; num -=values[i]; res+=reps[i]; &#125; &#125; return res; &#125;&#125;]]></content>
+    <title><![CDATA[LEETCode9. 回文数]]></title>
+    <url>%2F%2F2019%2F04%2F20%2FLeetCode09.%20%E5%9B%9E%E6%96%87%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[LEETCode9. 回文数 描述 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:输入: 121 输出: true 示例 2:输入: -121 输出: false 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。 示例 3:输入: 10 输出: false 解释: 从右向左读, 为 01 。因此它不是一个回文数。 进阶:你能不将整数转为字符串来解决这个问题吗？ 代码 1234567891011121314151617181920class Solution &#123; public boolean isPalindrome(int x) &#123; if(x &lt; 0) return false; else&#123; int reverse = 0; int y =x; while(y!=0) &#123; reverse = reverse*10+ y %10; y/=10; &#125; if(reverse==x) &#123; return true; &#125; else return false; &#125; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -782,17 +793,6 @@
     <title><![CDATA[LeetCode11. 盛最多水的容器]]></title>
     <url>%2F%2F2019%2F04%2F20%2FLeetCode11.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%2F</url>
     <content type="text"><![CDATA[描述给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 说明：你不能倾斜容器，且 n 的值至少为 2。 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。 123456789101112class Solution &#123; public int maxArea(int[] height) &#123; int max = 0; for(int i=0,j=height.length-1;i&lt;j;) &#123; int minHeight= height[i]&lt;height[j]? height[i++]:height[j--]; max=Math.max(max,(j-i+1)*minHeight); &#125; return max; &#125;&#125;]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LEETCode9. 回文数]]></title>
-    <url>%2F%2F2019%2F04%2F20%2FLeetCode09.%20%E5%9B%9E%E6%96%87%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[LEETCode9. 回文数 描述 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:输入: 121 输出: true 示例 2:输入: -121 输出: false 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。 示例 3:输入: 10 输出: false 解释: 从右向左读, 为 01 。因此它不是一个回文数。 进阶:你能不将整数转为字符串来解决这个问题吗？ 代码 1234567891011121314151617181920class Solution &#123; public boolean isPalindrome(int x) &#123; if(x &lt; 0) return false; else&#123; int reverse = 0; int y =x; while(y!=0) &#123; reverse = reverse*10+ y %10; y/=10; &#125; if(reverse==x) &#123; return true; &#125; else return false; &#125; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -894,9 +894,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode03无重复字符的最长子串]]></title>
-    <url>%2F%2F2019%2F04%2F08%2FLeetCode03%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[2 LeetCode03无重复字符的最长子串注意先想到的解决思路是先遍历整个字符串，然后对遍历到的每个字符后的字符做处理（检查是否有重复元素），我们通过建立一个空的字符串，如果检查的字符在这个空的字符串中没有的话，我们将他加入这个空字符串中，并且记录这个空字符串的长度。解法 123456789101112131415161718192021222324252627class Solution &#123; public int lengthOfLongestSubstring(String s) &#123; int resultLength=0; int n = s.length(); for(int i=0;i&lt;n;i++) for(int j=i+1;j&lt;=n;j++) if(judgeresult(s,i,j)) resultLength = Math.max(resultLength,j-i);//取length最长 return resultLength; &#125; public boolean judgeresult(String s,int i,int j) &#123; Set&lt;Character&gt; set=new HashSet&lt;&gt;(); for(int k=i;k&lt;j;k++) &#123; char charStr=s.charAt(k); if(set.contains(charStr)) &#123; return false; &#125; else set.add(charStr); &#125; return true; &#125;&#125; 此方法超时 字符串String类中有一个charAt方法来获取字符串中的字符 String s = &quot;nihaoHHH换行&quot;; s.charAt(1); HashMap 123456789101112131415161718class Solution &#123; public static int lengthOfLongestSubstring(String s) &#123; if(s.length()==0) return 0; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int max = 0; for(int i=0,j=0;i&lt;s.length();i++)&#123; if(map.containsKey(s.charAt(i)))&#123; j = Math.max(j,map.get(s.charAt(i))+1); &#125; map.put(s.charAt(i),i); max = Math.max(max,i-j+1); &#125; return max; &#125;&#125;]]></content>
+    <title><![CDATA[LeetCode 67二进制字符串求和（用二进制表示）。]]></title>
+    <url>%2F%2F2019%2F04%2F08%2FLeetCode67.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C-Java%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"><![CDATA[给定两个二进制字符串，返回他们的和（用二进制表示）。输入为非空字符串且只包含数字 1 和 0。 示例 1:12输入: a = "11", b = "1"输出: "100" 示例 2:12输入: a = "1010", b = "1011"输出: "10101" 1234567891011121314151617181920212223242526272829class Solution &#123; public String addBinary(String num1, String num2) &#123; StringBuilder sb =new StringBuilder(); int carry = 0,i =num1.length()-1,j=num2.length()-1; while(i&gt;=0||j&gt;=0) &#123; int sum=carry; if(i&gt;=0) &#123; sum+=(num1.charAt(i) - '0'); i--; &#125; if(j&gt;=0) &#123; sum+=(num2.charAt(j)-'0'); j--; &#125; sb.append(sum%2); //相加结果 carry=sum/2; //进位，如果是1那么carry=0，如果是2则要进位给下面一位+1 &#125; if(carry!=0) sb.append(1); //都加完还要进位的情况 return sb.reverse().toString(); //先翻转再输出 &#125;&#125; 错误Line 10: error: cannot find symbol [in __Driver__.java] String ret = new Solution().addBinary(param_1, param_2); ^ symbol: method addBinary(String,String) location: class Solution 太蠢了 该错误是solution 方法是addBinary我自己改了addString。]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -938,9 +938,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LeetCode 67二进制字符串求和（用二进制表示）。]]></title>
-    <url>%2F%2F2019%2F04%2F08%2FLeetCode67.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C-Java%E5%AE%9E%E7%8E%B0%2F</url>
-    <content type="text"><![CDATA[给定两个二进制字符串，返回他们的和（用二进制表示）。输入为非空字符串且只包含数字 1 和 0。 示例 1:12输入: a = "11", b = "1"输出: "100" 示例 2:12输入: a = "1010", b = "1011"输出: "10101" 1234567891011121314151617181920212223242526272829class Solution &#123; public String addBinary(String num1, String num2) &#123; StringBuilder sb =new StringBuilder(); int carry = 0,i =num1.length()-1,j=num2.length()-1; while(i&gt;=0||j&gt;=0) &#123; int sum=carry; if(i&gt;=0) &#123; sum+=(num1.charAt(i) - '0'); i--; &#125; if(j&gt;=0) &#123; sum+=(num2.charAt(j)-'0'); j--; &#125; sb.append(sum%2); //相加结果 carry=sum/2; //进位，如果是1那么carry=0，如果是2则要进位给下面一位+1 &#125; if(carry!=0) sb.append(1); //都加完还要进位的情况 return sb.reverse().toString(); //先翻转再输出 &#125;&#125; 错误Line 10: error: cannot find symbol [in __Driver__.java] String ret = new Solution().addBinary(param_1, param_2); ^ symbol: method addBinary(String,String) location: class Solution 太蠢了 该错误是solution 方法是addBinary我自己改了addString。]]></content>
+    <title><![CDATA[LeetCode03无重复字符的最长子串]]></title>
+    <url>%2F%2F2019%2F04%2F08%2FLeetCode03%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[2 LeetCode03无重复字符的最长子串注意先想到的解决思路是先遍历整个字符串，然后对遍历到的每个字符后的字符做处理（检查是否有重复元素），我们通过建立一个空的字符串，如果检查的字符在这个空的字符串中没有的话，我们将他加入这个空字符串中，并且记录这个空字符串的长度。解法 123456789101112131415161718192021222324252627class Solution &#123; public int lengthOfLongestSubstring(String s) &#123; int resultLength=0; int n = s.length(); for(int i=0;i&lt;n;i++) for(int j=i+1;j&lt;=n;j++) if(judgeresult(s,i,j)) resultLength = Math.max(resultLength,j-i);//取length最长 return resultLength; &#125; public boolean judgeresult(String s,int i,int j) &#123; Set&lt;Character&gt; set=new HashSet&lt;&gt;(); for(int k=i;k&lt;j;k++) &#123; char charStr=s.charAt(k); if(set.contains(charStr)) &#123; return false; &#125; else set.add(charStr); &#125; return true; &#125;&#125; 此方法超时 字符串String类中有一个charAt方法来获取字符串中的字符 String s = &quot;nihaoHHH换行&quot;; s.charAt(1); HashMap 123456789101112131415161718class Solution &#123; public static int lengthOfLongestSubstring(String s) &#123; if(s.length()==0) return 0; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int max = 0; for(int i=0,j=0;i&lt;s.length();i++)&#123; if(map.containsKey(s.charAt(i)))&#123; j = Math.max(j,map.get(s.charAt(i))+1); &#125; map.put(s.charAt(i),i); max = Math.max(max,i-j+1); &#125; return max; &#125;&#125;]]></content>
       <categories>
         <category>Java</category>
       </categories>
