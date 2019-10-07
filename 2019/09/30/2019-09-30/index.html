@@ -113,7 +113,7 @@
 <meta property="og:description" content="问题 问题： 有五个学生，每个学生有3门课的成绩，从键盘输入以上数据（包括学生号，姓名，三门课成绩），计算   出平均成绩，将原有的数据和计算出的平均分数存放在磁盘文件”stud.txt”中。  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152String[">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://zhangcv.github.io/2019/09/30/2019-09-30/1.jpg">
-<meta property="og:updated_time" content="2019-10-07T10:16:05.208Z">
+<meta property="og:updated_time" content="2019-10-07T10:21:09.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="File">
 <meta name="twitter:description" content="问题 问题： 有五个学生，每个学生有3门课的成绩，从键盘输入以上数据（包括学生号，姓名，三门课成绩），计算   出平均成绩，将原有的数据和计算出的平均分数存放在磁盘文件”stud.txt”中。  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152String[">
@@ -513,7 +513,81 @@
 <h3 id="AOP的应用场景、原理、AOP好处？"><a href="#AOP的应用场景、原理、AOP好处？" class="headerlink" title="AOP的应用场景、原理、AOP好处？"></a>AOP的应用场景、原理、AOP好处？</h3><p>场景一： 记录日志<br>场景二： 监控方法运行时间 （监控性能）<br>场景三： 权限控制<br>场景四： 缓存优化 （第一次调用查询数据库，将查询结果放入内存对象， 第二次调用， 直接从内存对象返回，不需要查询数据库 redis?）<br>场景五： 事务管理 （调用方法前开启事务， 调用方法后提交关闭事务 ）</p>
 <p>实现原理：<br>静态代理<br>JDK动态代理 和cglib动态代理<br>区别：<br>需要有顶层接口才能使用，但是在只有顶层接口的时候也可以使用，常见是mybatis的mapper文件是代理。使用反射完成。而cglib可以直接代理类，使用字节码技术，不能对 final类进行继承<br>Spring中使用的哪种代理？<br>如果一个类有顶层接口，则默认使用jdk的动态代理来代理，如果直接是一个类，则使用cglib动态代理，其次，如果没有需要代理的方法，如所有方法都没有@Transactional注解，Aop这种，则不会被代理。</p>
 <h3 id="mybatis-example方法"><a href="#mybatis-example方法" class="headerlink" title="mybatis example方法"></a>mybatis example方法</h3><p>mybatis的逆向工程中会生成实例及实例对应的example，example用于添加条件，相当where后面的部分<br>xxxExample example = new xxxExample();</p>
-<p>Criteria criteria = new Example().createCriteria();<br>| 方法                                           | 说明                                              |<br>|——————————————–    |———————————————–    |<br>| example.setOrderByClause(“字段名 ASC”);        | 添加升序排列条件，DESC为降序                      |<br>| example.setDistinct(false)                     | 去除重复，boolean型，true为选择不重复的记录。     |<br>| criteria.andXxxIsNull                          | 添加字段xxx为null的条件                           |<br>| criteria.andXxxIsNotNull                       | 添加字段xxx不为null的条件                         |<br>| criteria.andXxxEqualTo(value)                  | 添加xxx字段等于value条件                          |<br>| criteria.andXxxNotEqualTo(value)               | 添加xxx字段不等于value条件                        |<br>| criteria.andXxxGreaterThan(value)              | 添加xxx字段大于value条件                          |<br>| criteria.andXxxGreaterThanOrEqualTo(value)     | 添加xxx字段大于等于value条件                      |<br>| criteria.andXxxLessThan(value)                 | 添加xxx字段小于value条件                          |<br>| criteria.andXxxLessThanOrEqualTo(value)        | 添加xxx字段小于等于value条件                      |<br>| criteria.andXxxIn(List&lt;？&gt;)                    | 添加xxx字段值在List&lt;？&gt;条件                       |<br>| criteria.andXxxNotIn(List&lt;？&gt;)                 | 添加xxx字段值不在List&lt;？&gt;条件                     |<br>| criteria.andXxxLike(“%”+value+”%”)             | 添加xxx字段值为value的模糊查询条件                |<br>| criteria.andXxxNotLike(“%”+value+”%”)          | 添加xxx字段值不为value的模糊查询条件              |<br>| criteria.andXxxBetween(value1,value2)          | 添加xxx字段值在value1和value2之间条件             |<br>| criteria.andXxxNotBetween(value1,value2)       | 添加xxx字段值不在value1和value2之间条件           |</p>
+<p>Criteria criteria = new Example().createCriteria();</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">example.setOrderByClause(“字段名 ASC”);</td>
+<td style="text-align:center">添加升序排列条件，DESC为降序</td>
+</tr>
+<tr>
+<td style="text-align:center">example.setDistinct(false)</td>
+<td style="text-align:center">去除重复，boolean型，true为选择不重复的记录。</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxIsNull</td>
+<td style="text-align:center">添加字段xxx为null的条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxIsNotNull</td>
+<td style="text-align:center">添加字段xxx不为null的条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxEqualTo(value)</td>
+<td style="text-align:center">添加xxx字段等于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxNotEqualTo(value)</td>
+<td style="text-align:center">添加xxx字段不等于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxGreaterThan(value)</td>
+<td style="text-align:center">添加xxx字段大于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxGreaterThanOrEqualTo(value)</td>
+<td style="text-align:center">添加xxx字段大于等于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxLessThan(value)</td>
+<td style="text-align:center">添加xxx字段小于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxLessThanOrEqualTo(value)</td>
+<td style="text-align:center">添加xxx字段小于等于value条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxIn(List&lt;？&gt;)</td>
+<td style="text-align:center">添加xxx字段值在List&lt;？&gt;条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxNotIn(List&lt;？&gt;)</td>
+<td style="text-align:center">添加xxx字段值不在List&lt;？&gt;条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxLike(“%”+value+”%”)</td>
+<td style="text-align:center">添加xxx字段值为value的模糊查询条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxNotLike(“%”+value+”%”)</td>
+<td style="text-align:center">添加xxx字段值不为value的模糊查询条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxBetween(value1,value2)</td>
+<td style="text-align:center">添加xxx字段值在value1和value2之间条件</td>
+</tr>
+<tr>
+<td style="text-align:center">criteria.andXxxNotBetween(value1,value2)</td>
+<td style="text-align:center">添加xxx字段值不在value1和value2之间条件</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
