@@ -104,18 +104,18 @@
 
 
 
-  <meta name="description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法： application.ymlapplication.yml将application.properties 换个样式级别控制举例： logging.level.com.dudu=DE">
+  <meta name="description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法：1234567891011121314151617181920 为什么会生成不同的哈希码值呢？上面我们在比较s1和s2的时候不是生成了同样的哈希码吗？原因就在于我们自己写的Studen">
 <meta name="keywords" content="Test">
 <meta property="og:type" content="article">
 <meta property="og:title" content="总结">
 <meta property="og:url" content="http://zhangcv.github.io/2019/10/09/2019-10-09/index.html">
 <meta property="og:site_name" content="Zhangcv&#39;s Personal Website">
-<meta property="og:description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法： application.ymlapplication.yml将application.properties 换个样式级别控制举例： logging.level.com.dudu=DE">
+<meta property="og:description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法：1234567891011121314151617181920 为什么会生成不同的哈希码值呢？上面我们在比较s1和s2的时候不是生成了同样的哈希码吗？原因就在于我们自己写的Studen">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-09T02:24:36.455Z">
+<meta property="og:updated_time" content="2019-10-09T03:00:29.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="总结">
-<meta name="twitter:description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法： application.ymlapplication.yml将application.properties 换个样式级别控制举例： logging.level.com.dudu=DE">
+<meta name="twitter:description" content="lombok@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）此外还提供了 equals()、hashCode()、toString() 方法 Object中的hashCode()方法：1234567891011121314151617181920 为什么会生成不同的哈希码值呢？上面我们在比较s1和s2的时候不是生成了同样的哈希码吗？原因就在于我们自己写的Studen">
 
 
 
@@ -501,7 +501,7 @@
 
       
         <h3 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h3><p>@Data : 注解在类上, 为类提供读写属性, （Getter，Setter）<br>此外还提供了 equals()、hashCode()、toString() 方法</p>
-<p>Object中的<br>hashCode()方法：</p>
+<p>Object中的<br>hashCode()方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 为什么会生成不同的哈希码值呢？上面我们在比较s1和s2的时候不是生成了同样的哈希码吗？</span><br><span class="line">原因就在于我们自己写的Student类并没有重新自己的hashcode()和equals()方法，所以在比较时，</span><br><span class="line">是继承的object类中的hashcode()方法，而object类中的hashcode()方法是一个本地方法，</span><br><span class="line">比较的是对象的地址（引用地址），使用new方法创建对象，两次生成的当然是不同的对象了，</span><br><span class="line">造成的结果就是两个对象的hashcode()返回的值不一样，所以Hashset会把它们当作不同的对象对待.</span><br><span class="line">=====================</span><br><span class="line">Java的类为什么需要hashCode？---hashCode的作用，从Java中的集合的角度看。</span><br><span class="line"></span><br><span class="line">  总的来说，Java中的集合（Collection）有两类，一类是List，再有一类是Set。你知道它们的区别吗？前者集合内的元素是有序的，元素可以重复；后者元素无序，但元素不可重复。那么这里就有一个比较严重的问题了：要想保证元素不重复，可两个元素是否重复应该依据什么来判断呢？这就是 Object.equals方法了。但是，如果每增加一个元素就检查一次，那么当元素很多时，后添加到集合中的元素比较的次数就非常多了。也就是说，如果集合中现在已经有1000个元素，那么第1001个元素加入集合时，它就要调用1000次equals方法。这显然会大大降低效率。</span><br><span class="line">  于是，Java采用了哈希表的原理。哈希算法也称为散列算法，当集合要添加新的元素时，将对象通过哈希算法计算得到哈希值（正整数），然后将哈希值和集合（数组）长度进行&amp;运算，得到该对象在该数组存放的位置索引。如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就表示发生冲突了，散列表对于冲突有具体的解决办法，但最终还会将新元素保存在适当的位置。</span><br><span class="line"> </span><br><span class="line"> 这样一来，实际调用equals方法比较的次数就大大降低了，几乎只需要一两次。</span><br><span class="line">=====================</span><br><span class="line">对于Java对象的eqauls方法和hashCode方法是这样规定的：</span><br><span class="line"></span><br><span class="line">1、相等（相同）的对象必须具有相等的哈希码（或者散列码）。</span><br><span class="line">	假如两个Java对象A和B，A和B相等（eqauls结果为<span class="literal">true</span>），但A和B的哈希码不同，则A和B存入HashMap时的哈希码计算得到的HashMap内部数组位置索引可能不同，那么A和B很有可能允许同时存入HashMap，显然相等/相同的元素是不允许同时存入HashMap，HashMap不允许存放重复元素。</span><br><span class="line"></span><br><span class="line">2、如果两个对象的hashCode相同，它们并不一定相同。</span><br><span class="line">    不同对象的hashCode可能相同；假如两个Java对象A和B，A和B不相等（eqauls结果为<span class="literal">false</span>），但A和B的哈希码相等，将A和B都存入HashMap时会发生哈希冲突，也就是A和B存放在HashMap内部数组的位置索引相同这时HashMap会在该位置建立一个链接表，将A和B串起来放在该位置，显然，该情况不违反HashMap的使用原则，是允许的。当然，哈希冲突越少越好，尽量采用好的哈希算法以避免哈希冲突。</span><br></pre></td></tr></table></figure></p>
 <h3 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml"></a>application.yml</h3><p>application.yml<br>将application.properties 换个样式<br>级别控制<br>举例：</p>
 <p>logging.level.com.dudu=DEBUG：com.dudu包下所有class以DEBUG级别输出</p>
 <p>logging.level.root=WARN：root日志以WARN级别输出</p>

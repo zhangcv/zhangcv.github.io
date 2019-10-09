@@ -4,7 +4,7 @@
     
   <url>
     <loc>http://zhangcv.github.io/2019/09/29/2019-09-29/</loc>
-    <lastmod>2019-10-09T02:37:35.357Z</lastmod>
+    <lastmod>2019-10-09T08:15:48.795Z</lastmod>
     <data>
         <display>
         <title>Git工具的使用</title>
@@ -23,28 +23,8 @@
 
     
   <url>
-    <loc>http://zhangcv.github.io/2019/10/09/2019-10-09/</loc>
-    <lastmod>2019-10-09T02:24:36.455Z</lastmod>
-    <data>
-        <display>
-        <title>总结</title>
-        <pubTime>2019-10-09T13:31:30.000Z</pubTime>
-        
-        <tag>Test </tag>
-         
-         
-           
-             
-              <breadCrumb title="Test" url="http://zhangcv.github.io/categories/Test/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://zhangcv.github.io/2019/10/08/2019-10-08/</loc>
-    <lastmod>2019-10-09T01:20:34.715Z</lastmod>
+    <lastmod>2019-10-09T03:30:03.037Z</lastmod>
     <data>
         <display>
         <title>Mysql学习 (补充)</title>
@@ -56,6 +36,26 @@
            
              
               <breadCrumb title="Mysql" url="http://zhangcv.github.io/categories/Mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zhangcv.github.io/2019/10/09/2019-10-09/</loc>
+    <lastmod>2019-10-09T03:00:29.641Z</lastmod>
+    <data>
+        <display>
+        <title>总结</title>
+        <pubTime>2019-10-09T13:31:30.000Z</pubTime>
+        
+        <tag>Test </tag>
+         
+         
+           
+             
+              <breadCrumb title="Test" url="http://zhangcv.github.io/categories/Test/"/>
           
         </display>
     </data>
