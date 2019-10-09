@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/27/2019-08-27/8.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/27/2019-08-27/9.jpg">
 <meta property="og:image" content="http://zhangcv.github.io/2019/08/27/2019-08-27/10.jpg">
-<meta property="og:updated_time" content="2019-10-04T08:59:22.538Z">
+<meta property="og:updated_time" content="2019-10-07T14:48:39.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch的简单操作">
 <meta name="twitter:description" content="创建索引123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566Example:GET /movie_chn/movie/_search&amp;#123;  &quot;query&quot;: &amp;#123;    &quot;match&quot;: &amp;">
@@ -261,7 +261,7 @@
       
     
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags<span class="badge">13</span></a>
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags<span class="badge">15</span></a>
 
   </li>
         
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories<span class="badge">14</span></a>
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">92</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">95</span></a>
 
   </li>
         
@@ -527,7 +527,8 @@
 <h3 id="查询dsl的工具类"><a href="#查询dsl的工具类" class="headerlink" title="查询dsl的工具类"></a>查询dsl的工具类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//jest的dsl工具</span></span><br><span class="line">      SearchSourceBuilder searchSourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">      <span class="comment">//bool</span></span><br><span class="line">      BoolQueryBuilder boolQueryBuilder = <span class="keyword">new</span> BoolQueryBuilder();</span><br><span class="line">      <span class="comment">//filter</span></span><br><span class="line">      boolQueryBuilder.filter(<span class="keyword">null</span>);</span><br><span class="line">      <span class="comment">//must</span></span><br><span class="line">      boolQueryBuilder.must(<span class="keyword">null</span>);</span><br><span class="line">      <span class="comment">//query</span></span><br><span class="line">      searchSourceBuilder.query(<span class="keyword">null</span>);</span><br><span class="line">      <span class="comment">//from</span></span><br><span class="line">      searchSourceBuilder.from(<span class="number">0</span>);</span><br><span class="line">      <span class="comment">//size</span></span><br><span class="line">      searchSourceBuilder.size(<span class="number">20</span>);</span><br><span class="line">      <span class="comment">//highlight</span></span><br><span class="line">      searchSourceBuilder.highlight(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
 <p>filter<br><img src="/2019/08/27/2019-08-27/5.jpg" alt="无"><br>Must<br><img src="/2019/08/27/2019-08-27/6.jpg" alt="无"><br>如果还有terms term 再下面继续添加，terms 数组<br><img src="/2019/08/27/2019-08-27/7.jpg" alt="无"></p>
 <p>前端模板文件的引入<br>catalogLoder.js的 引入json路径<br><span class="exturl" data-url="aHR0cDovL2xpc3QuZ21hbGwuY29tL2xpc3QuaHRtbD9jYXRhbG9nM0lkPQ==" title="http://list.gmall.com/list.html?catalog3Id=">http://list.gmall.com/list.html?catalog3Id=<i class="fa fa-external-link"></i></span><br>没有配置 nginx的话  index.html 和catalogLoader.js<br>改为<span class="exturl" data-url="aHR0cDovL3NlYXJjaC5nbWFsbC5jb206ODA4NC9saXN0Lmh0bWw/a2V5d29yZD0=" title="http://search.gmall.com:8084/list.html?keyword=">http://search.gmall.com:8084/list.html?keyword=<i class="fa fa-external-link"></i></span></p>
-<p><img src="/2019/08/27/2019-08-27/8.jpg" alt="无"><br>方式一 去重后的MySQL<br><img src="/2019/08/27/2019-08-27/9.jpg" alt="无"><br>方式二 set<br><img src="/2019/08/27/2019-08-27/10.jpg" alt="无"></p>
+<p><img src="/2019/08/27/2019-08-27/8.jpg" alt="无"><br>方式一 去重后的MySQL<br><img src="/2019/08/27/2019-08-27/9.jpg" alt="无"><br>方式二 set</p>
+<p><img src="/2019/08/27/2019-08-27/10.jpg" alt="无"></p>
 
       
     </div>
@@ -647,7 +648,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -692,7 +693,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -735,7 +740,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
