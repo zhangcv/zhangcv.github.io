@@ -3,8 +3,88 @@
 
     
   <url>
+    <loc>http://zhangcv.github.io/2019/11/01/2019-11-01/</loc>
+    <lastmod>2019-11-01T03:33:19.361Z</lastmod>
+    <data>
+        <display>
+        <title>python重试某个方法</title>
+        <pubTime>2019-11-01T13:31:30.000Z</pubTime>
+        
+        <tag>Python </tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://zhangcv.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zhangcv.github.io/2019/10/18/2019-10-18/</loc>
+    <lastmod>2019-10-31T09:55:14.699Z</lastmod>
+    <data>
+        <display>
+        <title>关于springboot的学习总结·购物车功能</title>
+        <pubTime>2019-10-18T13:31:30.000Z</pubTime>
+        
+        <tag>Spring </tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring" url="http://zhangcv.github.io/categories/Spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zhangcv.github.io/2019/10/20/2019-10-20/</loc>
+    <lastmod>2019-10-30T07:59:48.018Z</lastmod>
+    <data>
+        <display>
+        <title>关于JUC与jvm</title>
+        <pubTime>2019-10-20T13:31:30.000Z</pubTime>
+        
+        <tag>JUC </tag>
+         
+         
+           
+             
+              <breadCrumb title="JUC" url="http://zhangcv.github.io/categories/JUC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://zhangcv.github.io/2019/10/23/2019-10-23/</loc>
+    <lastmod>2019-10-30T01:08:58.072Z</lastmod>
+    <data>
+        <display>
+        <title>java中Stream流、lambda表达式</title>
+        <pubTime>2019-10-23T13:31:30.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://zhangcv.github.io/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zhangcv.github.io/2019/10/22/2019-10-22/</loc>
-    <lastmod>2019-10-22T10:08:15.006Z</lastmod>
+    <lastmod>2019-10-23T08:22:34.933Z</lastmod>
     <data>
         <display>
         <title>java中反射的应用</title>
@@ -36,46 +116,6 @@
            
              
               <breadCrumb title="Java笔记" url="http://zhangcv.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zhangcv.github.io/2019/10/20/2019-10-20/</loc>
-    <lastmod>2019-10-22T02:13:57.199Z</lastmod>
-    <data>
-        <display>
-        <title>关于JUC与jvm</title>
-        <pubTime>2019-10-20T13:31:30.000Z</pubTime>
-        
-        <tag>JUC </tag>
-         
-         
-           
-             
-              <breadCrumb title="JUC" url="http://zhangcv.github.io/categories/JUC/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://zhangcv.github.io/2019/10/18/2019-10-18/</loc>
-    <lastmod>2019-10-18T04:49:03.709Z</lastmod>
-    <data>
-        <display>
-        <title>关于springboot的学习总结·购物车功能</title>
-        <pubTime>2019-10-18T13:31:30.000Z</pubTime>
-        
-        <tag>Spring </tag>
-         
-         
-           
-             
-              <breadCrumb title="Spring" url="http://zhangcv.github.io/categories/Spring/"/>
           
         </display>
     </data>
